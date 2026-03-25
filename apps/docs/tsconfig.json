@@ -1,0 +1,12 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "types": ["vitest/globals"],
+    "baseUrl": ".",
+    "paths": {
+      "@rush-ui/react": ["../../packages/react/src/index.ts"],
+      "@rush-ui/tokens": ["../../packages/tokens/src/index.ts"]
+    }
+  },
+  "include": ["src", ".storybook", "vite.config.ts"]
+}

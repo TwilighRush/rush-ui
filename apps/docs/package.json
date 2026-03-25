@@ -1,0 +1,20 @@
+{
+  "name": "@rush-ui/docs",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "vite build",
+    "dev": "vite",
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit -p tsconfig.json",
+    "test": "vitest run",
+    "storybook": "storybook dev -p 6006"
+  },
+  "dependencies": {
+    "@rush-ui/react": "workspace:*",
+    "@rush-ui/tokens": "workspace:*",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  }
+}
