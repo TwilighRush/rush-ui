@@ -1,4 +1,5 @@
 import { Button } from "@rush-ui/react";
+import type { Meta, StoryObj } from "@storybook/react";
 import type { CSSProperties } from "react";
 
 const iconStyles = {
@@ -10,8 +11,18 @@ const iconStyles = {
 const PlusIcon = () => <span style={iconStyles}>+</span>;
 const ArrowIcon = () => <span style={iconStyles}>→</span>;
 
+const componentDescription = `
+Button 用于触发表单、表格、工具栏和页面级操作。组件渲染原生 button，默认 type 为 button，并在 loading 时使用原生 disabled 阻止重复触发。
+
+可访问性说明：
+- 原生支持 Enter 和 Space 键触发。
+- disabled 与 loading 都会进入不可交互状态。
+- loading 状态会设置 aria-busy，并优先展示 loadingText。
+- startIcon 和 endIcon 作为装饰图标处理，按钮名称应来自文本内容。
+`;
+
 const meta = {
-  title: "Components/Button",
+  title: "组件/Button",
   component: Button,
   args: {
     children: "保存变更",
@@ -29,14 +40,26 @@ const meta = {
       control: "inline-radio",
       options: ["sm", "md", "lg"]
     }
+  },
+  parameters: {
+    docs: {
+      description: {
+        component: componentDescription
+      }
+    }
   }
-};
+} satisfies Meta<typeof Button>;
 
 export default meta;
 
-export const Playground = {};
+type Story = StoryObj<typeof meta>;
 
-export const Variants = {
+export const Playground: Story = {
+  name: "交互预览"
+};
+
+export const Variants: Story = {
+  name: "视觉层级",
   render: () => (
     <div style={{ display: "flex", flexWrap: "wrap", gap: "12px" }}>
       <Button variant="solid">主要操作</Button>
@@ -47,7 +70,8 @@ export const Variants = {
   )
 };
 
-export const Sizes = {
+export const Sizes: Story = {
+  name: "尺寸",
   render: () => (
     <div style={{ alignItems: "center", display: "flex", flexWrap: "wrap", gap: "12px" }}>
       <Button size="sm">小按钮</Button>
@@ -57,7 +81,8 @@ export const Sizes = {
   )
 };
 
-export const LoadingStates = {
+export const LoadingStates: Story = {
+  name: "加载状态",
   render: () => (
     <div style={{ display: "flex", flexWrap: "wrap", gap: "12px" }}>
       <Button loading>保存</Button>
@@ -68,7 +93,23 @@ export const LoadingStates = {
   )
 };
 
-export const WithIcons = {
+export const DisabledStates: Story = {
+  name: "禁用状态",
+  render: () => (
+    <div style={{ display: "flex", flexWrap: "wrap", gap: "12px" }}>
+      <Button disabled>不可用操作</Button>
+      <Button disabled variant="outline">
+        不可用次要操作
+      </Button>
+      <Button disabled variant="ghost">
+        不可用轻量操作
+      </Button>
+    </div>
+  )
+};
+
+export const WithIcons: Story = {
+  name: "图标插槽",
   render: () => (
     <div style={{ display: "flex", flexWrap: "wrap", gap: "12px" }}>
       <Button startIcon={<PlusIcon />}>新建记录</Button>
@@ -82,7 +123,8 @@ export const WithIcons = {
   )
 };
 
-export const InFormContext = {
+export const InFormContext: Story = {
+  name: "表单场景",
   render: () => (
     <form style={{ display: "flex", gap: "12px" }}>
       <Button type="button" variant="ghost">
@@ -93,7 +135,8 @@ export const InFormContext = {
   )
 };
 
-export const FocusVisible = {
+export const FocusVisible: Story = {
+  name: "键盘焦点",
   render: () => (
     <div style={{ display: "flex", gap: "12px" }}>
       <Button autoFocus>默认聚焦</Button>

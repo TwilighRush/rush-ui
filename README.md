@@ -1,6 +1,6 @@
 # Rush UI
 
-Rush UI 是一个基于 `pnpm workspace` 的 React 组件库 monorepo，面向后台与管理端场景，当前已经完成基础工程搭建，并落地了首个基础组件 `Button`。
+Rush UI 是一个基于 `pnpm workspace` 的 React 组件库 monorepo，面向后台与管理端场景，当前已经完成基础工程搭建，并落地了 `Button` 和 `IconButton` 两个基础操作组件。
 
 仓库技术栈：
 
@@ -36,14 +36,15 @@ docs/
 当前已提供：
 
 - `Button`
+- `IconButton`
 - `ButtonProps`
 - `ButtonVariant`
 - `ButtonSize`
+- `IconButtonProps`
+- `IconButtonVariant`
+- `IconButtonSize`
 
-同时保留了组件内部使用的基础类名工具：
-
-- `COMPONENT_PREFIX`
-- `createComponentClassName`
+组件内部类名工具仅供源码使用，不从 npm 入口导出。
 
 ### `@rush-ui/tokens`
 
@@ -89,7 +90,24 @@ docs/
 
 相关文档：
 
+- Button 文档: [docs/components/button.md](/Users/shuang/Documents/frontend/proj/RushUI/docs/components/button.md)
 - Button RFC: [docs/rfcs/button.md](/Users/shuang/Documents/frontend/proj/RushUI/docs/rfcs/button.md)
+
+### IconButton
+
+`IconButton` 用于纯图标操作，支持：
+
+- `variant`: `solid | outline | ghost | subtle`
+- `size`: `sm | md | lg`
+- `disabled`
+- `loading`
+- `icon`
+- `aria-label` 或 `aria-labelledby`
+- `forwardRef<HTMLButtonElement>`
+
+相关文档：
+
+- IconButton 文档: [docs/components/icon-button.md](/Users/shuang/Documents/frontend/proj/RushUI/docs/components/icon-button.md)
 
 ## 开发命令
 
@@ -109,6 +127,12 @@ pnpm dev
 
 ```bash
 pnpm storybook
+```
+
+启用 Git 提交校验：
+
+```bash
+pnpm setup-hooks
 ```
 
 执行检查：
@@ -134,6 +158,7 @@ pnpm release
 
 - [AGENTS.md](/Users/shuang/Documents/frontend/proj/RushUI/AGENTS.md)
 - [component-conventions.md](/Users/shuang/Documents/frontend/proj/RushUI/component-conventions.md)
+- [Git 提交规范](/Users/shuang/Documents/frontend/proj/RushUI/docs/contributing/git-commit.md)
 
 核心原则：
 
@@ -157,6 +182,6 @@ pnpm release
 
 下一阶段比较自然的推进方向：
 
-1. 补充 `Button` 的正式文档页，而不只是在 docs 首页展示示例。
-2. 基于同一套约定继续实现 `IconButton`、`Input`、`Badge` 等基础组件。
-3. 逐步把 token 和组件样式体系抽成更清晰的 Less 结构分层。
+1. 继续实现 `Input`、`Badge` 等后台高频基础组件。
+2. 为 Storybook 补充更系统的文档导航和用例分组。
+3. 随组件增长继续扩展语义化 token，并保持 CSS 变量层与组件样式同步。

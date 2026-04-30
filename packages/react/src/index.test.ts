@@ -1,10 +1,10 @@
 import { describe, expect, it } from "vitest";
 
-import { createComponentClassName } from "./index";
+import { Button, IconButton } from "./index";
 
-describe("createComponentClassName", () => {
-  it("creates stable slot class names for future components", () => {
-    expect(createComponentClassName("button")).toBe("rui-button-root");
-    expect(createComponentClassName("button", "icon")).toBe("rui-button-icon");
+describe("@rush-ui/react entry", () => {
+  it("exports public components", () => {
+    expect(Button).toBeTypeOf("object");
+    expect(IconButton).toBeTypeOf("object");
   });
 });

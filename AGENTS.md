@@ -43,6 +43,13 @@ This repository is a React component library for admin and dashboard web apps. A
 - Cover disabled, loading, error, and keyboard behavior
 - Add story cases for edge states
 
+## Git commit rules
+- Do not create commits unless the user explicitly asks.
+- Before creating a commit, read and follow docs/contributing/git-commit.md.
+- Commit messages must use Chinese Conventional Commits format.
+- Public API, component behavior, style output, or release content changes must include a changeset.
+- Before committing, state which verification commands were run. If any required check was not run, explain why.
+
 ## Definition of done
 A task is done only if:
 1. code compiles

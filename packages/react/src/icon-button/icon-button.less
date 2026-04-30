@@ -1,0 +1,143 @@
+.rui-icon-button {
+  --rui-icon-button-bg: transparent;
+  --rui-icon-button-border: transparent;
+  --rui-icon-button-text: var(--rui-color-ink);
+  --rui-icon-button-hover-bg: rgba(29, 26, 22, 0.06);
+  --rui-icon-button-hover-border: transparent;
+  --rui-icon-button-shadow: none;
+  --rui-icon-button-focus-ring: var(--rui-color-focus-ring);
+  --rui-icon-button-size: 2.5rem;
+  --rui-icon-button-icon-size: 1rem;
+  --rui-icon-button-spinner-color: currentcolor;
+  align-items: center;
+  appearance: none;
+  background: var(--rui-icon-button-bg);
+  border: 1px solid var(--rui-icon-button-border);
+  border-radius: var(--rui-radius-pill);
+  box-shadow: var(--rui-icon-button-shadow);
+  color: var(--rui-icon-button-text);
+  cursor: pointer;
+  display: inline-flex;
+  flex: 0 0 auto;
+  font-family: inherit;
+  height: var(--rui-icon-button-size);
+  justify-content: center;
+  line-height: 1;
+  padding: 0;
+  position: relative;
+  transition:
+    background-color 160ms ease,
+    border-color 160ms ease,
+    box-shadow 160ms ease,
+    color 160ms ease,
+    transform 160ms ease;
+  vertical-align: middle;
+  width: var(--rui-icon-button-size);
+
+  &:hover:not(:disabled) {
+    background: var(--rui-icon-button-hover-bg);
+    border-color: var(--rui-icon-button-hover-border);
+    transform: translateY(-1px);
+  }
+
+  &:focus-visible {
+    box-shadow:
+      0 0 0 4px var(--rui-icon-button-focus-ring),
+      var(--rui-icon-button-shadow);
+    outline: none;
+  }
+
+  &:disabled {
+    box-shadow: none;
+    cursor: not-allowed;
+    opacity: 0.58;
+    transform: none;
+  }
+
+  &[data-variant="solid"] {
+    --rui-icon-button-bg: var(--rui-color-ink);
+    --rui-icon-button-border: var(--rui-color-ink);
+    --rui-icon-button-text: var(--rui-color-surface);
+    --rui-icon-button-hover-bg: var(--rui-color-ink-hover);
+    --rui-icon-button-hover-border: var(--rui-color-ink-hover);
+    --rui-icon-button-shadow: var(--rui-shadow-action);
+  }
+
+  &[data-variant="outline"] {
+    --rui-icon-button-bg: transparent;
+    --rui-icon-button-border: var(--rui-color-border-strong);
+    --rui-icon-button-text: var(--rui-color-ink);
+    --rui-icon-button-hover-bg: rgba(29, 26, 22, 0.04);
+    --rui-icon-button-hover-border: var(--rui-color-border-hover);
+    --rui-icon-button-shadow: none;
+  }
+
+  &[data-variant="ghost"] {
+    --rui-icon-button-bg: transparent;
+    --rui-icon-button-border: transparent;
+    --rui-icon-button-text: var(--rui-color-ink);
+    --rui-icon-button-hover-bg: rgba(29, 26, 22, 0.06);
+    --rui-icon-button-hover-border: transparent;
+    --rui-icon-button-shadow: none;
+  }
+
+  &[data-variant="subtle"] {
+    --rui-icon-button-bg: var(--rui-color-accent-muted);
+    --rui-icon-button-border: var(--rui-color-accent-muted);
+    --rui-icon-button-text: var(--rui-color-accent-text);
+    --rui-icon-button-hover-bg: var(--rui-color-accent-muted-hover);
+    --rui-icon-button-hover-border: var(--rui-color-accent-muted-hover);
+    --rui-icon-button-shadow: none;
+  }
+
+  &[data-size="sm"] {
+    --rui-icon-button-size: 2rem;
+    --rui-icon-button-icon-size: 0.875rem;
+  }
+
+  &[data-size="md"] {
+    --rui-icon-button-size: 2.5rem;
+    --rui-icon-button-icon-size: 1rem;
+  }
+
+  &[data-size="lg"] {
+    --rui-icon-button-size: 3rem;
+    --rui-icon-button-icon-size: 1.125rem;
+  }
+}
+
+.rui-icon-button__icon,
+.rui-icon-button__spinner {
+  align-items: center;
+  aspect-ratio: 1;
+  box-sizing: border-box;
+  display: inline-flex;
+  flex: 0 0 auto;
+  height: var(--rui-icon-button-icon-size);
+  justify-content: center;
+  min-width: var(--rui-icon-button-icon-size);
+  width: var(--rui-icon-button-icon-size);
+}
+
+.rui-icon-button__spinner::before {
+  animation: rui-icon-button-spin 0.9s linear infinite;
+  border: 2px solid color-mix(in srgb, var(--rui-icon-button-spinner-color) 28%, transparent);
+  border-radius: 50%;
+  border-top-color: var(--rui-icon-button-spinner-color);
+  box-sizing: border-box;
+  content: "";
+  display: block;
+  flex: 0 0 auto;
+  height: 100%;
+  width: 100%;
+}
+
+@keyframes rui-icon-button-spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}

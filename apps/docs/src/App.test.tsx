@@ -7,7 +7,7 @@ describe("App", () => {
   it("renders the monorepo overview", () => {
     render(<App />);
 
-    expect(screen.getByText("React component library monorepo foundation")).toBeInTheDocument();
+    expect(screen.getByText("面向后台系统的 React 组件库基础工程")).toBeInTheDocument();
     expect(screen.getByText("@rush-ui/react")).toBeInTheDocument();
   });
 });

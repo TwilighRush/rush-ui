@@ -1,0 +1,32 @@
+#!/bin/sh
+
+message_file="$1"
+first_line="$(sed -n '1p' "$message_file")"
+
+type_pattern='(feat|fix|docs|style|refactor|test|build|ci|chore|perf|revert)'
+scope_pattern='(\([a-z0-9-]+\))?'
+subject_pattern=': .+'
+full_pattern="^${type_pattern}${scope_pattern}${subject_pattern}"
+
+if ! printf '%s\n' "$first_line" | grep -Eq "$full_pattern"; then
+  printf '%s\n' "提交信息不符合 Rush UI 规范：$first_line"
+  printf '%s\n' "请参考 docs/contributing/git-commit.md"
+  printf '%s\n' "示例：feat(button): 新增按钮组件"
+  exit 1
+fi
+
+subject="$(printf '%s\n' "$first_line" | sed -E "s/^${type_pattern}${scope_pattern}: //")"
+
+if ! printf '%s\n' "$subject" | LC_ALL=C grep -q '[^ -~]'; then
+  printf '%s\n' "提交主题必须包含中文：$subject"
+  printf '%s\n' "示例：fix(button): 修复加载态 spinner 椭圆变形"
+  exit 1
+fi
+
+subject_length="$(printf '%s' "$subject" | wc -m | tr -d ' ')"
+
+if [ "$subject_length" -gt 72 ]; then
+  printf '%s\n' "提交主题超过 72 个字符：$subject"
+  printf '%s\n' "请精简提交主题，更多说明放到正文。"
+  exit 1
+fi

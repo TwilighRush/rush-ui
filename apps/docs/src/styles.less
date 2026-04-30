@@ -1,8 +1,8 @@
 :root {
-  color: #1d1a16;
+  color: var(--rui-color-ink, #1d1a16);
   background:
     radial-gradient(circle at top, rgba(197, 106, 27, 0.18), transparent 30%),
-    linear-gradient(180deg, #f6efe3 0%, #fffaf1 100%);
+    linear-gradient(180deg, var(--rui-color-canvas, #f6efe3) 0%, var(--rui-color-surface, #fffaf1) 100%);
   font-family: "Avenir Next", "Segoe UI", sans-serif;
   line-height: 1.5;
   font-weight: 400;
@@ -26,10 +26,10 @@ body {
 .hero-card,
 .info-card,
 .token-card {
-  border: 1px solid #d6c6b2;
-  border-radius: 24px;
-  background: rgba(255, 250, 241, 0.88);
-  box-shadow: 0 10px 30px rgba(29, 26, 22, 0.08);
+  border: 1px solid var(--rui-color-border, #d6c6b2);
+  border-radius: var(--rui-radius-lg, 20px);
+  background: color-mix(in srgb, var(--rui-color-surface, #fffaf1) 88%, transparent);
+  box-shadow: var(--rui-shadow-card, 0 10px 30px rgba(29, 26, 22, 0.08));
   backdrop-filter: blur(12px);
 }
 
@@ -41,7 +41,7 @@ body {
   margin: 0 0 12px;
   text-transform: uppercase;
   letter-spacing: 0.14em;
-  color: #c56a1b;
+  color: var(--rui-color-accent, #c56a1b);
   font-size: 0.8rem;
 }
 
@@ -90,7 +90,7 @@ body {
   display: inline-block;
   width: 40px;
   height: 40px;
-  border-radius: 999px;
+  border-radius: var(--rui-radius-pill, 999px);
   border: 1px solid rgba(29, 26, 22, 0.12);
 }
 

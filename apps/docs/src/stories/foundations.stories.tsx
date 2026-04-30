@@ -1,7 +1,7 @@
 import { App } from "../App";
 
 const meta = {
-  title: "Foundation/Workspace Overview",
+  title: "基础/工作区概览",
   render: () => <App />,
   parameters: {
     layout: "fullscreen"

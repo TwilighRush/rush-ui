@@ -2,6 +2,7 @@ import { forwardRef } from "react";
 import type { ButtonHTMLAttributes, ReactNode } from "react";
 
 import { createComponentClassName } from "../internal/component-class-name";
+import { joinClassNames } from "../internal/join-class-names";
 import "./button.less";
 
 export type ButtonVariant = "solid" | "outline" | "ghost" | "subtle";
@@ -14,10 +15,6 @@ export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   loadingText?: string;
   startIcon?: ReactNode;
   endIcon?: ReactNode;
-}
-
-function joinClassNames(...values: Array<string | undefined | false>): string {
-  return values.filter(Boolean).join(" ");
 }
 
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(function Button(
@@ -53,9 +50,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(function Button
       type={type}
     >
       {loading ? (
-        <span aria-hidden="true" className={createComponentClassName("button", "spinner")}>
-          <span className="rui-button__spinner" />
-        </span>
+        <span aria-hidden="true" className={joinClassNames(createComponentClassName("button", "spinner"), "rui-button__spinner")} />
       ) : startIcon ? (
         <span aria-hidden="true" className={joinClassNames(createComponentClassName("button", "icon"), "rui-button__icon")}>
           {startIcon}
