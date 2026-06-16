@@ -1,0 +1,199 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-06-16T03:01:54Z",
+  "title": "Design System: Rush UI",
+  "extensions": {
+    "colorMeta": {
+      "surface": {
+        "role": "neutral",
+        "displayName": "Warm Surface",
+        "canonical": "#fffaf1",
+        "tonalRamp": ["oklch(18% 0.015 70)", "oklch(28% 0.015 70)", "oklch(40% 0.015 70)", "oklch(52% 0.015 70)", "oklch(64% 0.015 70)", "oklch(76% 0.015 70)", "oklch(88% 0.015 70)", "oklch(97% 0.015 70)"]
+      },
+      "canvas": {
+        "role": "neutral",
+        "displayName": "Quiet Canvas",
+        "canonical": "#f6efe3",
+        "tonalRamp": ["oklch(16% 0.018 72)", "oklch(27% 0.018 72)", "oklch(39% 0.018 72)", "oklch(51% 0.018 72)", "oklch(63% 0.018 72)", "oklch(75% 0.018 72)", "oklch(87% 0.018 72)", "oklch(95% 0.018 72)"]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Deep Ink",
+        "canonical": "#1d1a16",
+        "tonalRamp": ["oklch(14% 0.01 65)", "oklch(22% 0.01 65)", "oklch(32% 0.01 65)", "oklch(44% 0.01 65)", "oklch(56% 0.01 65)", "oklch(68% 0.01 65)", "oklch(80% 0.01 65)", "oklch(92% 0.01 65)"]
+      },
+      "accent": {
+        "role": "primary",
+        "displayName": "Copper Command",
+        "canonical": "#c56a1b",
+        "tonalRamp": ["oklch(18% 0.08 58)", "oklch(28% 0.1 58)", "oklch(40% 0.12 58)", "oklch(52% 0.13 58)", "oklch(64% 0.11 58)", "oklch(76% 0.08 58)", "oklch(86% 0.05 58)", "oklch(94% 0.03 58)"]
+      },
+      "border": {
+        "role": "neutral",
+        "displayName": "Warm Border",
+        "canonical": "#d6c6b2",
+        "tonalRamp": ["oklch(20% 0.018 65)", "oklch(32% 0.018 65)", "oklch(44% 0.018 65)", "oklch(56% 0.018 65)", "oklch(68% 0.018 65)", "oklch(78% 0.018 65)", "oklch(86% 0.018 65)", "oklch(94% 0.018 65)"]
+      },
+      "error": {
+        "role": "error",
+        "displayName": "Error Red",
+        "canonical": "#b42318",
+        "tonalRamp": ["oklch(18% 0.08 28)", "oklch(28% 0.11 28)", "oklch(40% 0.15 28)", "oklch(52% 0.16 28)", "oklch(64% 0.12 28)", "oklch(76% 0.08 28)", "oklch(86% 0.05 28)", "oklch(94% 0.025 28)"]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Documentation hero and page-level statements only."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Docs sections and component documentation headings."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Cards, examples, and compact section titles."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Chinese-first documentation prose and interface copy."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Buttons, controls, dense UI labels, and metadata."
+      }
+    },
+    "shadows": [
+      {
+        "name": "card-ambient",
+        "value": "0 10px 30px rgba(29, 26, 22, 0.08)",
+        "purpose": "Top-level documentation containers only."
+      },
+      {
+        "name": "action-lift",
+        "value": "0 10px 24px rgba(29, 26, 22, 0.14)",
+        "purpose": "Solid action controls that need clickability emphasis."
+      },
+      {
+        "name": "focus-ring",
+        "value": "0 0 0 4px rgba(197, 106, 27, 0.28)",
+        "purpose": "Keyboard focus and focus-within interaction feedback."
+      }
+    ],
+    "motion": [
+      {
+        "name": "state-standard",
+        "value": "160ms ease",
+        "purpose": "Default hover, focus, border, background, shadow, color, and small transform transitions."
+      },
+      {
+        "name": "spinner-loop",
+        "value": "0.9s linear infinite",
+        "purpose": "Loading spinner rotation in Button and IconButton."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "docs-mobile",
+        "value": "720px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Solid Button",
+      "kind": "button",
+      "refersTo": "button-solid",
+      "description": "Primary action button using Deep Ink and a compact pill silhouette.",
+      "html": "<button class=\"ds-button-solid\">保存变更</button>",
+      "css": ".ds-button-solid { background: var(--rui-color-ink, #1d1a16); border: 1px solid var(--rui-color-ink, #1d1a16); border-radius: var(--rui-radius-pill, 999px); box-shadow: var(--rui-shadow-action, 0 10px 24px rgba(29, 26, 22, 0.14)); color: var(--rui-color-surface, #fffaf1); cursor: pointer; font: 600 0.9375rem/1 Avenir Next, Segoe UI, system-ui, sans-serif; min-height: 2.5rem; padding: 0 1rem; transition: background-color 160ms ease, border-color 160ms ease, box-shadow 160ms ease, transform 160ms ease; } .ds-button-solid:hover { background: var(--rui-color-ink-hover, #342f2a); border-color: var(--rui-color-ink-hover, #342f2a); transform: translateY(-1px); } .ds-button-solid:focus-visible { box-shadow: 0 0 0 4px var(--rui-color-focus-ring, rgba(197, 106, 27, 0.28)), var(--rui-shadow-action, 0 10px 24px rgba(29, 26, 22, 0.14)); outline: none; }"
+    },
+    {
+      "name": "Outline Button",
+      "kind": "button",
+      "refersTo": "button-outline",
+      "description": "Secondary action with a transparent fill and strong warm border.",
+      "html": "<button class=\"ds-button-outline\">次要操作</button>",
+      "css": ".ds-button-outline { background: transparent; border: 1px solid var(--rui-color-border-strong, #8f7c67); border-radius: var(--rui-radius-pill, 999px); color: var(--rui-color-ink, #1d1a16); cursor: pointer; font: 600 0.9375rem/1 Avenir Next, Segoe UI, system-ui, sans-serif; min-height: 2.5rem; padding: 0 1rem; transition: background-color 160ms ease, border-color 160ms ease, box-shadow 160ms ease, transform 160ms ease; } .ds-button-outline:hover { background: rgba(29, 26, 22, 0.04); border-color: var(--rui-color-border-hover, #6f5f50); transform: translateY(-1px); } .ds-button-outline:focus-visible { box-shadow: 0 0 0 4px var(--rui-color-focus-ring, rgba(197, 106, 27, 0.28)); outline: none; }"
+    },
+    {
+      "name": "Subtle Button",
+      "kind": "button",
+      "refersTo": "button-subtle",
+      "description": "Quiet copper action for low-emphasis creation or contextual actions.",
+      "html": "<button class=\"ds-button-subtle\">新建项目</button>",
+      "css": ".ds-button-subtle { background: var(--rui-color-accent-muted, #f2d3b3); border: 1px solid var(--rui-color-accent-muted, #f2d3b3); border-radius: var(--rui-radius-pill, 999px); color: var(--rui-color-accent-text, #5f3309); cursor: pointer; font: 600 0.9375rem/1 Avenir Next, Segoe UI, system-ui, sans-serif; min-height: 2.5rem; padding: 0 1rem; transition: background-color 160ms ease, border-color 160ms ease, box-shadow 160ms ease, transform 160ms ease; } .ds-button-subtle:hover { background: var(--rui-color-accent-muted-hover, #ebc59b); border-color: var(--rui-color-accent-muted-hover, #ebc59b); transform: translateY(-1px); } .ds-button-subtle:focus-visible { box-shadow: 0 0 0 4px var(--rui-color-focus-ring, rgba(197, 106, 27, 0.28)); outline: none; }"
+    },
+    {
+      "name": "Icon Button",
+      "kind": "button",
+      "refersTo": "icon-button",
+      "description": "Square icon-only control with the same variant language as Button.",
+      "html": "<button class=\"ds-icon-button\" aria-label=\"刷新列表\"><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M17.65 6.35A7.95 7.95 0 0 0 12 4a8 8 0 1 0 7.75 10h-2.1A6 6 0 1 1 12 6c1.66 0 3.14.69 4.22 1.78L13 11h8V3l-3.35 3.35Z\" fill=\"currentColor\"/></svg></button>",
+      "css": ".ds-icon-button { align-items: center; background: transparent; border: 1px solid transparent; border-radius: var(--rui-radius-pill, 999px); color: var(--rui-color-ink, #1d1a16); cursor: pointer; display: inline-flex; height: 2.5rem; justify-content: center; padding: 0; transition: background-color 160ms ease, border-color 160ms ease, box-shadow 160ms ease, transform 160ms ease; width: 2.5rem; } .ds-icon-button svg { height: 1rem; width: 1rem; } .ds-icon-button:hover { background: rgba(29, 26, 22, 0.06); transform: translateY(-1px); } .ds-icon-button:focus-visible { box-shadow: 0 0 0 4px var(--rui-color-focus-ring, rgba(197, 106, 27, 0.28)); outline: none; }"
+    },
+    {
+      "name": "Input Field",
+      "kind": "input",
+      "refersTo": "input-field",
+      "description": "Single-line admin field with border-first structure and clear focus treatment.",
+      "html": "<label class=\"ds-input-label\" for=\"ds-project-name\">项目名称</label><span class=\"ds-input-wrap\"><input class=\"ds-input\" id=\"ds-project-name\" value=\"客户运营后台\" /></span>",
+      "css": ".ds-input-label { color: var(--rui-color-ink, #1d1a16); display: block; font: 600 0.875rem/1.2 Avenir Next, Segoe UI, system-ui, sans-serif; margin-bottom: 0.5rem; } .ds-input-wrap { align-items: center; background: var(--rui-color-surface, #fffaf1); border: 1px solid var(--rui-color-border, #d6c6b2); border-radius: var(--rui-radius-sm, 6px); color: var(--rui-color-ink, #1d1a16); display: inline-flex; min-height: 2.5rem; padding: 0 0.875rem; transition: border-color 160ms ease, box-shadow 160ms ease; width: min(100%, 360px); } .ds-input-wrap:focus-within { border-color: var(--rui-color-ink, #1d1a16); box-shadow: 0 0 0 4px var(--rui-color-focus-ring, rgba(197, 106, 27, 0.28)); } .ds-input { background: transparent; border: 0; color: inherit; font: 0.9375rem/1.4 Avenir Next, Segoe UI, system-ui, sans-serif; outline: none; padding: 0; width: 100%; }"
+    },
+    {
+      "name": "Documentation Surface",
+      "kind": "card",
+      "refersTo": "surface-card",
+      "description": "Top-level docs container for explaining tokens or component examples.",
+      "html": "<article class=\"ds-surface-card\"><h3>Input 文档示例</h3><p>单行输入框支持受控/非受控、错误态、清空按钮和字数统计。</p></article>",
+      "css": ".ds-surface-card { background: var(--rui-color-surface, #fffaf1); border: 1px solid var(--rui-color-border, #d6c6b2); border-radius: var(--rui-radius-lg, 20px); box-shadow: var(--rui-shadow-card, 0 10px 30px rgba(29, 26, 22, 0.08)); color: var(--rui-color-ink, #1d1a16); max-width: 420px; padding: 24px; } .ds-surface-card h3 { font: 700 1.125rem/1.35 Avenir Next, Segoe UI, system-ui, sans-serif; margin: 0; } .ds-surface-card p { font: 0.9375rem/1.5 Avenir Next, Segoe UI, system-ui, sans-serif; margin: 12px 0 0; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Confident Console",
+    "overview": "Rush UI should feel like a carefully built control surface for serious admin work: direct, composed, and quietly distinctive. It is not trying to surprise users with invented affordances; it earns trust through precise state handling, legible density, and a restrained visual vocabulary that still has taste.\n\nThe system's personality is simple, innovative, confident, and aesthetically deliberate. Its product UI should be familiar enough for dashboard builders to adopt quickly, but it must not collapse into AntD clone territory. The signature is in the spacing, API restraint, state clarity, warm-but-controlled palette, and a component vocabulary that treats accessibility as part of the design.",
+    "keyCharacteristics": [
+      "Restrained product UI with one warm accent used as a signal, not decoration.",
+      "Pill-shaped action buttons paired with sharply legible, low-radius input fields.",
+      "Warm neutral surfaces, dark ink text, and visible borders for durable admin interfaces.",
+      "State-first motion: 160ms transitions for hover, focus, loading, and disabled feedback.",
+      "Documentation examples should show real admin tasks, not isolated cosmetic samples."
+    ],
+    "rules": [
+      {
+        "name": "The Accent Rarity Rule",
+        "body": "Copper is a product signal, not decoration. Keep it under 10% of any screen unless the surface is explicitly an onboarding or brand moment.",
+        "section": "colors"
+      },
+      {
+        "name": "The Ink Authority Rule",
+        "body": "Primary actions use Deep Ink by default. This prevents the palette from becoming a generic orange admin theme and keeps the interface self-assured.",
+        "section": "colors"
+      },
+      {
+        "name": "The Product Sans Rule",
+        "body": "Do not introduce display fonts into labels, buttons, inputs, tables, or control surfaces. The component library should feel like a tool, not a campaign.",
+        "section": "typography"
+      },
+      {
+        "name": "The Border-First Rule",
+        "body": "Inputs, outline buttons, cards, and dense admin surfaces should read through clear borders before shadows. Shadow is earned by action or high-level documentation framing.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do keep public component APIs small, typed, and aligned with established `size`, `variant`, `disabled`, `loading`, and `className` conventions.",
+      "Do use Deep Ink for primary actions and reserve Copper Command for emphasis, focus support, and selected-state accents.",
+      "Do document disabled, loading, error, keyboard, and edge states in stories and tests for every exported interactive component.",
+      "Do keep component surfaces familiar to admin users while making the spacing, state model, and visual polish distinctly Rush UI.",
+      "Do use CSS variables backed by tokens for colors, radius, spacing, focus rings, and shadows."
+    ],
+    "donts": [
+      "Don't create an AntD clone feel. Familiar management UI patterns are allowed; copied visual language, component rhythm, or API shape is not.",
+      "Don't use template SaaS visuals: hero metrics, repeated identical card grids, decorative glass panels, wide soft shadows, or generic marketing copy.",
+      "Don't use glassmorphism as the default component language. The current docs blur treatment is not a license to put blur into primitives.",
+      "Don't use colored side-stripe borders, gradient text, oversized rounded cards, or nested cards as a default way to add interest.",
+      "Don't let muted placeholder or helper text fall below readable contrast; form text must remain usable in long admin sessions."
+    ]
+  }
+}

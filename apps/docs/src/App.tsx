@@ -1,4 +1,4 @@
-import { Button, IconButton } from "@rush-ui/react";
+import { Button, IconButton, Input } from "@rush-ui/react";
 import { tokens } from "@rush-ui/tokens";
 
 const packageRoles = [
@@ -54,7 +54,7 @@ export function App() {
       <section className="token-card">
         <h2>Button 文档示例</h2>
         <p className="lede">
-          首版 Button 已接入 RFC 约定，支持 variant、size、disabled、loading，以及前后图标插槽。
+          Button 已接入 RFC 约定，支持 variant、size、disabled、loading，以及前后图标插槽。
         </p>
         <div className="button-demo-row">
           <Button>默认按钮</Button>
@@ -79,6 +79,16 @@ export function App() {
           <IconButton aria-label="刷新列表" icon={<span>↻</span>} variant="outline" />
           <IconButton aria-label="更多操作" icon={<span>⋯</span>} />
           <IconButton aria-label="关闭面板" icon={<span>×</span>} loading variant="subtle" />
+        </div>
+      </section>
+
+      <section className="token-card">
+        <h2>Input 文档示例</h2>
+        <p className="lede">单行输入框支持受控/非受控、禁用、只读、错误态、清空按钮、字数统计、图标和前后缀。</p>
+        <div className="input-demo-grid">
+          <Input allowClear aria-label="项目名称" defaultValue="客户运营后台" maxLength={20} showCount />
+          <Input aria-label="金额" endAddon="CNY" placeholder="0.00" startAddon="¥" />
+          <Input allowClear aria-label="邮箱" errorText="请输入有效邮箱" invalid placeholder="name@example.com" suffix="@" />
         </div>
       </section>
     </main>
