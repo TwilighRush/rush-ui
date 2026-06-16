@@ -4,6 +4,8 @@
   --rui-button-text: var(--rui-color-surface);
   --rui-button-hover-bg: var(--rui-color-ink-hover);
   --rui-button-hover-border: var(--rui-color-ink-hover);
+  --rui-button-active-bg: var(--rui-button-hover-bg);
+  --rui-button-active-border: var(--rui-button-hover-border);
   --rui-button-shadow: var(--rui-shadow-action);
   --rui-button-focus-ring: var(--rui-color-focus-ring);
   --rui-button-font-size: 0.9375rem;
@@ -46,6 +48,12 @@
     transform: translateY(-1px);
   }
 
+  &:active:not(:disabled) {
+    background: var(--rui-button-active-bg);
+    border-color: var(--rui-button-active-border);
+    transform: translateY(0);
+  }
+
   &:focus-visible {
     box-shadow:
       0 0 0 4px var(--rui-button-focus-ring),
@@ -66,6 +74,8 @@
     --rui-button-text: var(--rui-color-surface);
     --rui-button-hover-bg: var(--rui-color-ink-hover);
     --rui-button-hover-border: var(--rui-color-ink-hover);
+    --rui-button-active-bg: var(--rui-color-ink);
+    --rui-button-active-border: var(--rui-color-ink);
   }
 
   &[data-variant="outline"] {
@@ -74,6 +84,8 @@
     --rui-button-text: var(--rui-color-ink);
     --rui-button-hover-bg: rgba(29, 26, 22, 0.04);
     --rui-button-hover-border: var(--rui-color-border-hover);
+    --rui-button-active-bg: rgba(29, 26, 22, 0.08);
+    --rui-button-active-border: var(--rui-color-border-hover);
     --rui-button-shadow: none;
   }
 
@@ -83,6 +95,8 @@
     --rui-button-text: var(--rui-color-ink);
     --rui-button-hover-bg: rgba(29, 26, 22, 0.06);
     --rui-button-hover-border: transparent;
+    --rui-button-active-bg: rgba(29, 26, 22, 0.1);
+    --rui-button-active-border: transparent;
     --rui-button-shadow: none;
   }
 
@@ -92,6 +106,8 @@
     --rui-button-text: var(--rui-color-accent-text);
     --rui-button-hover-bg: var(--rui-color-accent-muted-hover);
     --rui-button-hover-border: var(--rui-color-accent-muted-hover);
+    --rui-button-active-bg: var(--rui-color-accent-muted);
+    --rui-button-active-border: var(--rui-color-accent-muted);
     --rui-button-shadow: none;
   }
 
@@ -159,5 +175,20 @@
 
   to {
     transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rui-button {
+    transition-duration: 0.01ms;
+
+    &:hover:not(:disabled),
+    &:active:not(:disabled) {
+      transform: none;
+    }
+  }
+
+  .rui-button__spinner::before {
+    animation: none;
   }
 }

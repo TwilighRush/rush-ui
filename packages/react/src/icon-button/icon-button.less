@@ -4,6 +4,8 @@
   --rui-icon-button-text: var(--rui-color-ink);
   --rui-icon-button-hover-bg: rgba(29, 26, 22, 0.06);
   --rui-icon-button-hover-border: transparent;
+  --rui-icon-button-active-bg: rgba(29, 26, 22, 0.1);
+  --rui-icon-button-active-border: transparent;
   --rui-icon-button-shadow: none;
   --rui-icon-button-focus-ring: var(--rui-color-focus-ring);
   --rui-icon-button-size: 2.5rem;
@@ -40,6 +42,12 @@
     transform: translateY(-1px);
   }
 
+  &:active:not(:disabled) {
+    background: var(--rui-icon-button-active-bg);
+    border-color: var(--rui-icon-button-active-border);
+    transform: translateY(0);
+  }
+
   &:focus-visible {
     box-shadow:
       0 0 0 4px var(--rui-icon-button-focus-ring),
@@ -60,6 +68,8 @@
     --rui-icon-button-text: var(--rui-color-surface);
     --rui-icon-button-hover-bg: var(--rui-color-ink-hover);
     --rui-icon-button-hover-border: var(--rui-color-ink-hover);
+    --rui-icon-button-active-bg: var(--rui-color-ink);
+    --rui-icon-button-active-border: var(--rui-color-ink);
     --rui-icon-button-shadow: var(--rui-shadow-action);
   }
 
@@ -69,6 +79,8 @@
     --rui-icon-button-text: var(--rui-color-ink);
     --rui-icon-button-hover-bg: rgba(29, 26, 22, 0.04);
     --rui-icon-button-hover-border: var(--rui-color-border-hover);
+    --rui-icon-button-active-bg: rgba(29, 26, 22, 0.08);
+    --rui-icon-button-active-border: var(--rui-color-border-hover);
     --rui-icon-button-shadow: none;
   }
 
@@ -78,6 +90,8 @@
     --rui-icon-button-text: var(--rui-color-ink);
     --rui-icon-button-hover-bg: rgba(29, 26, 22, 0.06);
     --rui-icon-button-hover-border: transparent;
+    --rui-icon-button-active-bg: rgba(29, 26, 22, 0.1);
+    --rui-icon-button-active-border: transparent;
     --rui-icon-button-shadow: none;
   }
 
@@ -87,6 +101,8 @@
     --rui-icon-button-text: var(--rui-color-accent-text);
     --rui-icon-button-hover-bg: var(--rui-color-accent-muted-hover);
     --rui-icon-button-hover-border: var(--rui-color-accent-muted-hover);
+    --rui-icon-button-active-bg: var(--rui-color-accent-muted);
+    --rui-icon-button-active-border: var(--rui-color-accent-muted);
     --rui-icon-button-shadow: none;
   }
 
@@ -139,5 +155,20 @@
 
   to {
     transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rui-icon-button {
+    transition-duration: 0.01ms;
+
+    &:hover:not(:disabled),
+    &:active:not(:disabled) {
+      transform: none;
+    }
+  }
+
+  .rui-icon-button__spinner::before {
+    animation: none;
   }
 }

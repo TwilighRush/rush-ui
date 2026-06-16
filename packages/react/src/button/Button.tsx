@@ -57,7 +57,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(function Button
         </span>
       ) : null}
 
-      <span className={createComponentClassName("button", "label")}>{label}</span>
+      <span className={joinClassNames(createComponentClassName("button", "label"), "rui-button__label")}>{label}</span>
 
       {!loading && endIcon ? (
         <span aria-hidden="true" className={joinClassNames(createComponentClassName("button", "icon"), "rui-button__icon")}>

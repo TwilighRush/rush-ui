@@ -164,7 +164,7 @@ Rush UI currently uses a hybrid depth model: most components rely on borders and
 ### Shadow Vocabulary
 
 - **Card Ambient** (`box-shadow: 0 10px 30px rgba(29, 26, 22, 0.08)`): documentation containers and broad surfaces only. Do not pair this with dense nested cards.
-- **Action Lift** (`box-shadow: 0 10px 24px rgba(29, 26, 22, 0.14)`): solid action buttons and icon buttons where clickability needs emphasis.
+- **Action Lift** (`box-shadow: 0 4px 8px rgba(29, 26, 22, 0.12)`): solid action buttons and icon buttons where clickability needs emphasis.
 - **Focus Ring** (`box-shadow: 0 0 0 4px rgba(197, 106, 27, 0.28)`): keyboard focus and focus-within states. This is interaction feedback, not decoration.
 
 ### Named Rules
@@ -178,6 +178,7 @@ Rush UI currently uses a hybrid depth model: most components rely on borders and
 - **Shape:** full pill actions (`999px`) with fixed heights (`2rem`, `2.5rem`, `3rem`) and compact horizontal padding.
 - **Primary:** Deep Ink background with Warm Surface text; used for the main action in a focused area.
 - **Hover / Focus:** hover shifts to Ink Hover and moves up by 1px; keyboard focus adds the copper focus ring.
+- **Active:** press feedback returns the control to rest height and deepens the tonal fill without changing layout.
 - **Secondary / Ghost / Tertiary:** outline uses Strong Border with transparent fill; ghost is text-forward; subtle uses Copper Muted with Accent Text for quiet emphasis.
 - **Loading:** loading replaces the leading icon with a spinner and disables the button. The label may switch to `loadingText`.
 

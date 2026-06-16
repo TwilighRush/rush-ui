@@ -71,7 +71,7 @@
       },
       {
         "name": "action-lift",
-        "value": "0 10px 24px rgba(29, 26, 22, 0.14)",
+        "value": "0 4px 8px rgba(29, 26, 22, 0.12)",
         "purpose": "Solid action controls that need clickability emphasis."
       },
       {
@@ -106,7 +106,7 @@
       "refersTo": "button-solid",
       "description": "Primary action button using Deep Ink and a compact pill silhouette.",
       "html": "<button class=\"ds-button-solid\">保存变更</button>",
-      "css": ".ds-button-solid { background: var(--rui-color-ink, #1d1a16); border: 1px solid var(--rui-color-ink, #1d1a16); border-radius: var(--rui-radius-pill, 999px); box-shadow: var(--rui-shadow-action, 0 10px 24px rgba(29, 26, 22, 0.14)); color: var(--rui-color-surface, #fffaf1); cursor: pointer; font: 600 0.9375rem/1 Avenir Next, Segoe UI, system-ui, sans-serif; min-height: 2.5rem; padding: 0 1rem; transition: background-color 160ms ease, border-color 160ms ease, box-shadow 160ms ease, transform 160ms ease; } .ds-button-solid:hover { background: var(--rui-color-ink-hover, #342f2a); border-color: var(--rui-color-ink-hover, #342f2a); transform: translateY(-1px); } .ds-button-solid:focus-visible { box-shadow: 0 0 0 4px var(--rui-color-focus-ring, rgba(197, 106, 27, 0.28)), var(--rui-shadow-action, 0 10px 24px rgba(29, 26, 22, 0.14)); outline: none; }"
+      "css": ".ds-button-solid { background: var(--rui-color-ink, #1d1a16); border: 1px solid var(--rui-color-ink, #1d1a16); border-radius: var(--rui-radius-pill, 999px); box-shadow: var(--rui-shadow-action, 0 4px 8px rgba(29, 26, 22, 0.12)); color: var(--rui-color-surface, #fffaf1); cursor: pointer; font: 600 0.9375rem/1 Avenir Next, Segoe UI, system-ui, sans-serif; min-height: 2.5rem; padding: 0 1rem; transition: background-color 160ms ease, border-color 160ms ease, box-shadow 160ms ease, transform 160ms ease; } .ds-button-solid:hover { background: var(--rui-color-ink-hover, #342f2a); border-color: var(--rui-color-ink-hover, #342f2a); transform: translateY(-1px); } .ds-button-solid:active { background: var(--rui-color-ink, #1d1a16); border-color: var(--rui-color-ink, #1d1a16); transform: translateY(0); } .ds-button-solid:focus-visible { box-shadow: 0 0 0 4px var(--rui-color-focus-ring, rgba(197, 106, 27, 0.28)), var(--rui-shadow-action, 0 4px 8px rgba(29, 26, 22, 0.12)); outline: none; }"
     },
     {
       "name": "Outline Button",
