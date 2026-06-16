@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 
-import { Badge, Button, IconButton, Input } from "./index";
+import { Badge, Button, IconButton, Input, Textarea } from "./index";
 
 describe("@rush-ui/react entry", () => {
   it("exports public components", () => {
@@ -8,5 +8,6 @@ describe("@rush-ui/react entry", () => {
     expect(Button).toBeTypeOf("object");
     expect(IconButton).toBeTypeOf("object");
     expect(Input).toBeTypeOf("object");
+    expect(Textarea).toBeTypeOf("object");
   });
 });

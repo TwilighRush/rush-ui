@@ -1,4 +1,4 @@
-import { Badge, Button, IconButton, Input } from "@rush-ui/react";
+import { Badge, Button, IconButton, Input, Textarea } from "@rush-ui/react";
 import { tokens } from "@rush-ui/tokens";
 
 const packageRoles = [
@@ -111,6 +111,22 @@ export function App() {
           <Input allowClear aria-label="项目名称" defaultValue="客户运营后台" maxLength={20} showCount />
           <Input aria-label="金额" endAddon="CNY" placeholder="0.00" startAddon="¥" />
           <Input allowClear aria-label="邮箱" errorText="请输入有效邮箱" invalid placeholder="name@example.com" suffix="@" />
+        </div>
+      </section>
+
+      <section className="token-card">
+        <h2>Textarea 文档示例</h2>
+        <p className="lede">多行文本域与 Input 保持同族表单输入样式，支持错误态、字数统计、受控/非受控、自适应高度和后置内容。</p>
+        <div className="input-demo-grid">
+          <Textarea
+            aria-label="处理说明"
+            autoSize={{ minRows: 2, maxRows: 5 }}
+            defaultValue={"已完成客户资料核对。\n待销售同事补充跟进记录。"}
+            maxLength={160}
+            showCount
+          />
+          <Textarea aria-label="快捷备注" placeholder="输入后按快捷键提交" suffix="⌘ Enter" />
+          <Textarea aria-label="审批意见" errorText="请输入审批意见" invalid placeholder="请输入审批意见" />
         </div>
       </section>
     </main>

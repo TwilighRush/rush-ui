@@ -1,6 +1,6 @@
 # Rush UI
 
-Rush UI 是一个基于 `pnpm workspace` 的 React 组件库 monorepo，面向后台与管理端场景，当前已经完成基础工程搭建，并落地了 `Badge`、`Button`、`IconButton` 和 `Input` 等基础组件。
+Rush UI 是一个基于 `pnpm workspace` 的 React 组件库 monorepo，面向后台与管理端场景，当前已经完成基础工程搭建，并落地了 `Badge`、`Button`、`IconButton`、`Input` 和 `Textarea` 等基础组件。
 
 仓库技术栈：
 
@@ -39,6 +39,7 @@ docs/
 - `Button`
 - `IconButton`
 - `Input`
+- `Textarea`
 - `BadgeProps`
 - `BadgeVariant`
 - `BadgeSize`
@@ -50,6 +51,9 @@ docs/
 - `IconButtonSize`
 - `InputProps`
 - `InputSize`
+- `TextareaProps`
+- `TextareaSize`
+- `TextareaAutoSizeOptions`
 
 组件内部类名工具仅供源码使用，不从 npm 入口导出。
 
@@ -155,6 +159,27 @@ docs/
 - Input 文档: [docs/components/input.md](/Users/shuang/Documents/frontend/proj/RushUI/docs/components/input.md)
 - Input RFC: [docs/rfcs/input.md](/Users/shuang/Documents/frontend/proj/RushUI/docs/rfcs/input.md)
 
+### Textarea
+
+`Textarea` 用于备注、说明、审批意见和长文本配置，支持：
+
+- `size`: `sm | md | lg`
+- `disabled`
+- `readOnly`
+- `invalid`
+- `errorText`
+- `suffix`
+- `showCount`
+- `autoSize`
+- `value` / `defaultValue`
+- `onValueChange`
+- `forwardRef<HTMLTextAreaElement>`
+
+相关文档：
+
+- Textarea 文档: [docs/components/textarea.md](/Users/shuang/Documents/frontend/proj/RushUI/docs/components/textarea.md)
+- Textarea RFC: [docs/rfcs/textarea.md](/Users/shuang/Documents/frontend/proj/RushUI/docs/rfcs/textarea.md)
+
 ## 开发命令
 
 安装依赖：
@@ -228,6 +253,6 @@ pnpm release
 
 下一阶段比较自然的推进方向：
 
-1. 继续实现 `Badge`、`Textarea` 等后台高频基础组件。
+1. 继续实现 `Select`、`Checkbox`、`Radio` 等后台高频基础组件。
 2. 为 Storybook 补充更系统的文档导航和用例分组。
 3. 随组件增长继续扩展语义化 token，并保持 CSS 变量层与组件样式同步。

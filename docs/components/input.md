@@ -69,4 +69,4 @@ const [value, setValue] = useState("");
 - `Input` 只负责单行输入控件，不负责 label、帮助文本、表单布局和校验调度。
 - `allowClear` 只负责把值清空并触发 `onValueChange("")` / `onClear`；受控模式下仍需要调用方更新 `value`。
 - 复杂输入组合、密码可见性切换和选择器能力不放进首版 API。
-- 多行文本应使用后续独立的 `Textarea` 组件。
+- 多行文本请使用独立的 `Textarea` 组件。
