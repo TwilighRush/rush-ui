@@ -1,6 +1,6 @@
 # Rush UI
 
-Rush UI 是一个基于 `pnpm workspace` 的 React 组件库 monorepo，面向后台与管理端场景，当前已经完成基础工程搭建，并落地了 `Button`、`IconButton` 和 `Input` 等基础组件。
+Rush UI 是一个基于 `pnpm workspace` 的 React 组件库 monorepo，面向后台与管理端场景，当前已经完成基础工程搭建，并落地了 `Badge`、`Button`、`IconButton` 和 `Input` 等基础组件。
 
 仓库技术栈：
 
@@ -35,9 +35,13 @@ docs/
 
 当前已提供：
 
+- `Badge`
 - `Button`
 - `IconButton`
 - `Input`
+- `BadgeProps`
+- `BadgeVariant`
+- `BadgeSize`
 - `ButtonProps`
 - `ButtonVariant`
 - `ButtonSize`
@@ -54,6 +58,7 @@ docs/
 设计 token 包，当前包含：
 
 - 色板
+- 语义状态色
 - 圆角
 - 间距
 - 阴影
@@ -77,6 +82,20 @@ docs/
 - 组件集成展示
 
 ## 已实现内容
+
+### Badge
+
+`Badge` 用于表格、详情页、筛选器和流程记录中的轻量状态标识，支持：
+
+- `variant`: `default | success | warning | error | info | processing`
+- `size`: `sm | md | lg`
+- `className`
+- `forwardRef<HTMLSpanElement>`
+
+相关文档：
+
+- Badge 文档: [docs/components/badge.md](/Users/shuang/Documents/frontend/proj/RushUI/docs/components/badge.md)
+- Badge RFC: [docs/rfcs/badge.md](/Users/shuang/Documents/frontend/proj/RushUI/docs/rfcs/badge.md)
 
 ### Button
 

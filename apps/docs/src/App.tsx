@@ -1,4 +1,4 @@
-import { Button, IconButton, Input } from "@rush-ui/react";
+import { Badge, Button, IconButton, Input } from "@rush-ui/react";
 import { tokens } from "@rush-ui/tokens";
 
 const packageRoles = [
@@ -14,6 +14,15 @@ const packageRoles = [
     name: "@rush-ui/utils",
     description: "跨包共享的通用工具函数，不绑定具体框架。"
   }
+] as const;
+
+const colorSwatches = [
+  { name: "surface", value: tokens.color.surface },
+  { name: "canvas", value: tokens.color.canvas },
+  { name: "ink", value: tokens.color.ink },
+  { name: "accent", value: tokens.color.accent },
+  { name: "accentMuted", value: tokens.color.accentMuted },
+  { name: "border", value: tokens.color.border }
 ] as const;
 
 export function App() {
@@ -39,7 +48,7 @@ export function App() {
       <section className="token-card">
         <h2>基础设计 token</h2>
         <div className="swatches">
-          {Object.entries(tokens.color).map(([name, value]) => (
+          {colorSwatches.map(({ name, value }) => (
             <div className="swatch" key={name}>
               <span className="chip" style={{ backgroundColor: value }} />
               <div>
@@ -48,6 +57,19 @@ export function App() {
               </div>
             </div>
           ))}
+        </div>
+      </section>
+
+      <section className="token-card">
+        <h2>Badge 文档示例</h2>
+        <p className="lede">Badge 用于表格、筛选器和流程记录中的轻量状态标识，支持六种状态语义和三档尺寸。</p>
+        <div className="button-demo-row">
+          <Badge>默认</Badge>
+          <Badge variant="success">成功</Badge>
+          <Badge variant="warning">警告</Badge>
+          <Badge variant="error">错误</Badge>
+          <Badge variant="info">信息</Badge>
+          <Badge variant="processing">处理中</Badge>
         </div>
       </section>
 
