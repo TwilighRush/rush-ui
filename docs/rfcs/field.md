@@ -6,7 +6,7 @@
 
 ## 摘要
 
-`Field` 是 `@rush-ui/react` 的基础表单项组件，用于把 label、说明文本、必填标记、错误态和 Rush 输入控件组合成稳定结构。它服务 `Input`、`Textarea` 与 `RadioGroup` 等 Rush 表单控件，让基础输入组件继续专注输入行为，避免每个业务表单重复处理 id、`htmlFor`、`aria-labelledby` 和 `aria-describedby`。
+`Field` 是 `@rush-ui/react` 的基础表单项组件，用于把 label、说明文本、必填标记、错误态和 Rush 输入控件组合成稳定结构。它服务 `Input`、`Textarea`、`RadioGroup` 与 `Select` 等 Rush 表单控件，让基础输入组件继续专注输入行为，避免每个业务表单重复处理 id、`htmlFor`、`aria-labelledby` 和 `aria-describedby`。
 
 本文档只定义 `Field` 的组件设计与接口约束，不包含任何代码实现。
 
@@ -16,7 +16,7 @@
 - 自动建立 label 与子输入控件或组控件的关联。
 - 自动把说明文本追加到子输入控件的 `aria-describedby`。
 - 将 `required`、`invalid` 和 `errorText` 传递给 Rush 输入控件。
-- 与 `Input`、`Textarea`、`RadioGroup` 形成表单输入组合。
+- 与 `Input`、`Textarea`、`RadioGroup`、`Select` 形成表单输入组合。
 - 支持 `className` 作为逃生口。
 - 暴露指向根节点 `HTMLDivElement` 的 `ref`。
 
@@ -62,7 +62,7 @@ interface FieldProps extends Omit<React.HTMLAttributes<HTMLDivElement>, "childre
   说明文本。自动追加到子输入控件的 `aria-describedby`。
 
 - `errorText`
-  错误提示内容。传递给子输入控件，由 `Input` / `Textarea` 渲染错误文本和错误语义。
+  错误提示内容。传递给子输入控件，由 Rush 表单控件渲染错误文本和错误语义。
 
 - `invalid`
   手动进入错误状态。会传递给子输入控件。
@@ -80,7 +80,7 @@ interface FieldProps extends Omit<React.HTMLAttributes<HTMLDivElement>, "childre
   子输入控件 id。未传入时优先沿用子控件已有 `id`，否则自动生成。
 
 - `children`
-  Rush 输入控件，例如 `Input`、`Textarea`、`RadioGroup`。
+  Rush 输入控件，例如 `Input`、`Textarea`、`RadioGroup`、`Select`。
 
 ## 组合规则
 
@@ -89,14 +89,14 @@ interface FieldProps extends Omit<React.HTMLAttributes<HTMLDivElement>, "childre
 - 未提供任何 id 时，Field 自动生成 id。
 - Field 会合并子控件已有 `aria-labelledby` 与 label 文本 id，不覆盖既有关联。
 - Field 会合并子控件已有 `aria-describedby` 与 `helpText` id，不覆盖既有关联。
-- Field 不自己渲染 `errorText`，而是传递给 `Input` / `Textarea`，让错误文本与字数统计继续在输入组件 meta 区域内协同。
+- Field 不自己渲染 `errorText`，而是传递给子控件，让错误文本与字数统计、选项弹层或组控件状态继续在对应组件内协同。
 
 ## ref 行为
 
 组件必须使用 `React.forwardRef`。
 
 - `ref` 指向根节点 `HTMLDivElement`。
-- 子输入控件自身 `ref` 继续由使用方直接传给 `Input` 或 `Textarea`。
+- 子输入控件自身 `ref` 继续由使用方直接传给对应 Rush 表单控件。
 
 ## 可访问性要求
 
@@ -112,4 +112,4 @@ interface FieldProps extends Omit<React.HTMLAttributes<HTMLDivElement>, "childre
 
 - `Field` 不拥有输入值，不提供受控/非受控状态。
 - `Field` 不处理验证时机；业务层或后续表单组件负责校验调度。
-- `Field` 不替代 `Input` / `Textarea` 的 props；输入行为仍由子组件定义。
+- `Field` 不替代子控件 props；输入、选择和键盘行为仍由子组件定义。

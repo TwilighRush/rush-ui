@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 
-import { Badge, Button, Checkbox, Field, IconButton, Input, Radio, RadioGroup, Textarea } from "./index";
+import { Badge, Button, Checkbox, Field, IconButton, Input, Radio, RadioGroup, Select, Textarea } from "./index";
 
 describe("@rush-ui/react entry", () => {
   it("exports public components", () => {
@@ -12,6 +12,7 @@ describe("@rush-ui/react entry", () => {
     expect(Input).toBeTypeOf("object");
     expect(Radio).toBeTypeOf("object");
     expect(RadioGroup).toBeTypeOf("object");
+    expect(Select).toBeTypeOf("object");
     expect(Textarea).toBeTypeOf("object");
   });
 });

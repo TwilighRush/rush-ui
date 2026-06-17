@@ -1,4 +1,4 @@
-import { Badge, Button, Checkbox, Field, IconButton, Input, Radio, RadioGroup, Textarea } from "@rush-ui/react";
+import { Badge, Button, Checkbox, Field, IconButton, Input, Radio, RadioGroup, Select, Textarea } from "@rush-ui/react";
 import { tokens } from "@rush-ui/tokens";
 
 const packageRoles = [
@@ -23,6 +23,12 @@ const colorSwatches = [
   { name: "accent", value: tokens.color.accent },
   { name: "accentMuted", value: tokens.color.accentMuted },
   { name: "border", value: tokens.color.border }
+] as const;
+
+const selectStatusOptions = [
+  { label: "待处理", textValue: "pending", value: "pending" },
+  { label: "处理中", textValue: "processing", value: "processing" },
+  { label: "已完成", textValue: "done", value: "done" }
 ] as const;
 
 export function App() {
@@ -155,6 +161,26 @@ export function App() {
       </section>
 
       <section className="token-card">
+        <h2>Select 文档示例</h2>
+        <p className="lede">选择器采用 combobox/listbox 模式，支持单选受控、键盘导航、typeahead、空态、错误态和 Field 组合。</p>
+        <div className="input-demo-grid">
+          <Field helpText="支持方向键、Enter、Escape、Home、End 和首字母定位。" label="项目状态" required>
+            <Select name="status" options={selectStatusOptions} placeholder="请选择状态" />
+          </Field>
+          <Select
+            aria-label="客户范围"
+            defaultValue="owner"
+            options={[
+              { description: "只显示当前登录成员负责的记录。", label: "我的客户", textValue: "owner", value: "owner" },
+              { description: "显示所在团队有权限访问的记录。", label: "团队客户", textValue: "team", value: "team" },
+              { description: "需要管理员权限。", disabled: true, label: "全部客户", textValue: "all", value: "all" }
+            ]}
+          />
+          <Select aria-label="导出状态" emptyText="暂无状态" options={[]} placeholder="请选择状态" />
+        </div>
+      </section>
+
+      <section className="token-card">
         <h2>Textarea 文档示例</h2>
         <p className="lede">多行文本域与 Input 保持同族表单输入样式，支持错误态、字数统计、受控/非受控、自适应高度和后置内容。</p>
         <div className="input-demo-grid">
@@ -172,7 +198,7 @@ export function App() {
 
       <section className="token-card">
         <h2>Field 文档示例</h2>
-        <p className="lede">表单项负责标签、说明文本、必填标记和错误态传递，让 Input、Textarea 与 RadioGroup 形成稳定组合。</p>
+        <p className="lede">表单项负责标签、说明文本、必填标记和错误态传递，让 Input、Textarea、RadioGroup 与 Select 形成稳定组合。</p>
         <div className="input-demo-grid">
           <Field helpText="用于侧边栏、面包屑和操作日志展示。" label="项目名称" required>
             <Input allowClear defaultValue="客户运营后台" maxLength={20} showCount />
