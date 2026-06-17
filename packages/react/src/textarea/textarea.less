@@ -14,9 +14,9 @@
   --rui-textarea-padding-inline: 0.875rem;
   --rui-textarea-muted-text: rgba(29, 26, 22, 0.66);
   --rui-textarea-placeholder: var(--rui-textarea-muted-text);
-  --rui-textarea-resize: vertical;
+  --rui-textarea-resize: both;
   --rui-textarea-text: var(--rui-color-ink);
-  display: inline-flex;
+  display: flex;
   flex-direction: column;
   gap: var(--rui-space-xs);
   min-width: 0;
@@ -81,7 +81,9 @@
   line-height: var(--rui-textarea-line-height);
   min-height: var(--rui-textarea-min-height);
   min-width: 0;
+  overflow: hidden;
   padding: var(--rui-textarea-padding-block) var(--rui-textarea-padding-inline);
+  resize: var(--rui-textarea-resize);
   transition:
     background-color 160ms ease,
     border-color 160ms ease,
@@ -113,6 +115,7 @@
   border: 0;
   box-sizing: border-box;
   color: inherit;
+  align-self: stretch;
   flex: 1 1 auto;
   font: inherit;
   line-height: var(--rui-textarea-line-height);
@@ -121,7 +124,7 @@
   outline: none;
   overflow-y: auto;
   padding: 0;
-  resize: var(--rui-textarea-resize);
+  resize: none;
   width: 100%;
 
   &::placeholder {

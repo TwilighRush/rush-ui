@@ -151,6 +151,17 @@ describe("Textarea", () => {
     });
   });
 
+  it("preserves manually resized height while typing without autoSize", () => {
+    render(<Textarea aria-label="备注" defaultValue="第一行" />);
+
+    const textarea = screen.getByRole<HTMLTextAreaElement>("textbox", { name: "备注" });
+    textarea.style.height = "140px";
+
+    fireEvent.change(textarea, { target: { value: "第一行\n第二行" } });
+
+    expect(textarea.style.height).toBe("140px");
+  });
+
   it("keeps native keyboard events available", () => {
     const handleKeyDown = vi.fn((event: KeyboardEvent<HTMLTextAreaElement>) => event.key);
 

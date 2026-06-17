@@ -120,6 +120,7 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(function 
   ref
 ) {
   const textareaRef = useRef<HTMLTextAreaElement>(null);
+  const wasAutoSizeRef = useRef(Boolean(autoSize));
   const generatedId = useId();
   const isControlled = value !== undefined;
   const [uncontrolledValue, setUncontrolledValue] = useState(() => getTextareaValueText(defaultValue));
@@ -141,7 +142,16 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(function 
       return;
     }
 
-    syncTextareaAutoHeight(textarea, autoSize);
+    if (autoSize) {
+      syncTextareaAutoHeight(textarea, autoSize);
+      wasAutoSizeRef.current = true;
+      return;
+    }
+
+    if (wasAutoSizeRef.current) {
+      syncTextareaAutoHeight(textarea, autoSize);
+      wasAutoSizeRef.current = false;
+    }
   }, [autoSize, currentValue, size]);
 
   function handleChange(event: ChangeEvent<HTMLTextAreaElement>) {
