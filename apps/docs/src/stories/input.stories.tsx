@@ -40,7 +40,7 @@ function ControlledInputStory() {
 }
 
 const meta = {
-  title: "组件/Input",
+  title: "组件/表单/Input",
   component: Input,
   args: {
     "aria-label": "项目名称",

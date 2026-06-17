@@ -67,7 +67,7 @@ function ControlledSelectStory() {
 }
 
 const meta = {
-  title: "组件/Select",
+  title: "组件/表单/Select",
   component: Select,
   args: {
     "aria-label": "项目状态",

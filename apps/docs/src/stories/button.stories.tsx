@@ -22,7 +22,7 @@ Button 用于触发表单、表格、工具栏和页面级操作。组件渲染�
 `;
 
 const meta = {
-  title: "组件/Button",
+  title: "组件/基础/Button",
   component: Button,
   args: {
     children: "保存变更",

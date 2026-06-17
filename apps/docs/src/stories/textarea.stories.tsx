@@ -41,7 +41,7 @@ function ControlledTextareaStory() {
 }
 
 const meta = {
-  title: "组件/Textarea",
+  title: "组件/表单/Textarea",
   component: Textarea,
   args: {
     "aria-label": "备注",

@@ -41,7 +41,7 @@ function ControlledCheckboxStory() {
 }
 
 const meta = {
-  title: "组件/Checkbox",
+  title: "组件/表单/Checkbox",
   component: Checkbox,
   args: {
     children: "接收审批通知",
