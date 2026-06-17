@@ -1,6 +1,6 @@
 # Rush UI
 
-Rush UI 是一个基于 `pnpm workspace` 的 React 组件库 monorepo，面向后台与管理端场景，当前已经完成基础工程搭建，并落地了 `Badge`、`Button`、`IconButton`、`Input` 和 `Textarea` 等基础组件。
+Rush UI 是一个基于 `pnpm workspace` 的 React 组件库 monorepo，面向后台与管理端场景，当前已经完成基础工程搭建，并落地了 `Badge`、`Button`、`Field`、`IconButton`、`Input` 和 `Textarea` 等基础组件。
 
 仓库技术栈：
 
@@ -37,6 +37,7 @@ docs/
 
 - `Badge`
 - `Button`
+- `Field`
 - `IconButton`
 - `Input`
 - `Textarea`
@@ -46,6 +47,8 @@ docs/
 - `ButtonProps`
 - `ButtonVariant`
 - `ButtonSize`
+- `FieldProps`
+- `FieldControlProps`
 - `IconButtonProps`
 - `IconButtonVariant`
 - `IconButtonSize`
@@ -118,6 +121,26 @@ docs/
 
 - Button 文档: [docs/components/button.md](/Users/shuang/Documents/frontend/proj/RushUI/docs/components/button.md)
 - Button RFC: [docs/rfcs/button.md](/Users/shuang/Documents/frontend/proj/RushUI/docs/rfcs/button.md)
+
+### Field
+
+`Field` 用于把标签、说明文本、必填标记、错误态和 Rush 输入控件组合成表单项，支持：
+
+- `label`
+- `helpText`
+- `errorText`
+- `invalid`
+- `required`
+- `requiredMark`
+- `optionalText`
+- `controlId`
+- `className`
+- `forwardRef<HTMLDivElement>`
+
+相关文档：
+
+- Field 文档: [docs/components/field.md](/Users/shuang/Documents/frontend/proj/RushUI/docs/components/field.md)
+- Field RFC: [docs/rfcs/field.md](/Users/shuang/Documents/frontend/proj/RushUI/docs/rfcs/field.md)
 
 ### IconButton
 

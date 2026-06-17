@@ -1,0 +1,76 @@
+.rui-field {
+  --rui-field-error: #b42318;
+  --rui-field-gap: var(--rui-space-xs);
+  --rui-field-help: rgba(29, 26, 22, 0.66);
+  --rui-field-label: var(--rui-color-ink);
+  --rui-field-label-font-size: 0.875rem;
+  --rui-field-meta-font-size: 0.8125rem;
+  display: grid;
+  gap: var(--rui-field-gap);
+  min-width: 0;
+  width: 100%;
+}
+
+.rui-field__header {
+  align-items: baseline;
+  display: flex;
+  gap: var(--rui-space-sm);
+  justify-content: space-between;
+  min-width: 0;
+}
+
+.rui-field__label-group,
+.rui-field__label {
+  align-items: baseline;
+  display: inline-flex;
+  min-width: 0;
+}
+
+.rui-field__label-group {
+  gap: 0.25rem;
+}
+
+.rui-field__label {
+  color: var(--rui-field-label);
+  font-size: var(--rui-field-label-font-size);
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+.rui-field__label-text {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.rui-field__required-mark {
+  color: var(--rui-field-error);
+  flex: 0 0 auto;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.rui-field__optional-text,
+.rui-field__help {
+  color: var(--rui-field-help);
+  font-size: var(--rui-field-meta-font-size);
+  line-height: 1.4;
+}
+
+.rui-field__optional-text {
+  flex: 0 0 auto;
+  white-space: nowrap;
+}
+
+.rui-field__help {
+  max-width: 72ch;
+  min-width: 0;
+}
+
+.rui-field__control {
+  min-width: 0;
+}
+
+.rui-field__control > .rui-input,
+.rui-field__control > .rui-textarea {
+  width: 100%;
+}

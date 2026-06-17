@@ -4,6 +4,8 @@ export { Badge } from "./badge";
 export type { BadgeProps, BadgeSize, BadgeVariant } from "./badge";
 export { Button } from "./button";
 export type { ButtonProps, ButtonSize, ButtonVariant } from "./button";
+export { Field } from "./field";
+export type { FieldControlProps, FieldProps } from "./field";
 export { IconButton } from "./icon-button";
 export type { IconButtonProps, IconButtonSize, IconButtonVariant } from "./icon-button";
 export { Input } from "./input";

@@ -1,4 +1,4 @@
-import { Badge, Button, IconButton, Input, Textarea } from "@rush-ui/react";
+import { Badge, Button, Field, IconButton, Input, Textarea } from "@rush-ui/react";
 import { tokens } from "@rush-ui/tokens";
 
 const packageRoles = [
@@ -127,6 +127,22 @@ export function App() {
           />
           <Textarea aria-label="快捷备注" placeholder="输入后按快捷键提交" suffix="⌘ Enter" />
           <Textarea aria-label="审批意见" errorText="请输入审批意见" invalid placeholder="请输入审批意见" />
+        </div>
+      </section>
+
+      <section className="token-card">
+        <h2>Field 文档示例</h2>
+        <p className="lede">表单项负责标签、说明文本、必填标记和错误态传递，让 Input 与 Textarea 形成稳定组合。</p>
+        <div className="input-demo-grid">
+          <Field helpText="用于侧边栏、面包屑和操作日志展示。" label="项目名称" required>
+            <Input allowClear defaultValue="客户运营后台" maxLength={20} showCount />
+          </Field>
+          <Field label="项目域名" optionalText="选填">
+            <Input endAddon=".rushui.cn" placeholder="workspace" />
+          </Field>
+          <Field errorText="请补充处理动作和下一步跟进计划" label="审批意见" required>
+            <Textarea maxLength={120} placeholder="请输入审批意见" showCount />
+          </Field>
         </div>
       </section>
     </main>
