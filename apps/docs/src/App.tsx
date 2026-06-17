@@ -1,4 +1,4 @@
-import { Badge, Button, Field, IconButton, Input, Textarea } from "@rush-ui/react";
+import { Badge, Button, Checkbox, Field, IconButton, Input, Textarea } from "@rush-ui/react";
 import { tokens } from "@rush-ui/tokens";
 
 const packageRoles = [
@@ -111,6 +111,20 @@ export function App() {
           <Input allowClear aria-label="项目名称" defaultValue="客户运营后台" maxLength={20} showCount />
           <Input aria-label="金额" endAddon="CNY" placeholder="0.00" startAddon="¥" />
           <Input allowClear aria-label="邮箱" errorText="请输入有效邮箱" invalid placeholder="name@example.com" suffix="@" />
+        </div>
+      </section>
+
+      <section className="token-card">
+        <h2>Checkbox 文档示例</h2>
+        <p className="lede">复选框支持原生表单语义、受控/非受控、半选、说明文本和错误态，适合权限、筛选和批量选择。</p>
+        <div className="input-demo-grid">
+          <Checkbox defaultChecked description="开启后成员可以查看当前工作区内所有客户资料。">
+            授予客户资料访问权限
+          </Checkbox>
+          <Checkbox indeterminate>本页部分记录已选</Checkbox>
+          <Checkbox errorText="请确认后再保存权限配置" invalid>
+            我已确认影响范围
+          </Checkbox>
         </div>
       </section>
 

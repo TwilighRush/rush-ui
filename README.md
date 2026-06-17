@@ -1,6 +1,6 @@
 # Rush UI
 
-Rush UI 是一个基于 `pnpm workspace` 的 React 组件库 monorepo，面向后台与管理端场景，当前已经完成基础工程搭建，并落地了 `Badge`、`Button`、`Field`、`IconButton`、`Input` 和 `Textarea` 等基础组件。
+Rush UI 是一个基于 `pnpm workspace` 的 React 组件库 monorepo，面向后台与管理端场景，当前已经完成基础工程搭建，并落地了 `Badge`、`Button`、`Checkbox`、`Field`、`IconButton`、`Input` 和 `Textarea` 等基础组件。
 
 仓库技术栈：
 
@@ -37,6 +37,7 @@ docs/
 
 - `Badge`
 - `Button`
+- `Checkbox`
 - `Field`
 - `IconButton`
 - `Input`
@@ -47,6 +48,8 @@ docs/
 - `ButtonProps`
 - `ButtonVariant`
 - `ButtonSize`
+- `CheckboxProps`
+- `CheckboxSize`
 - `FieldProps`
 - `FieldControlProps`
 - `IconButtonProps`
@@ -141,6 +144,25 @@ docs/
 
 - Field 文档: [docs/components/field.md](/Users/shuang/Documents/frontend/proj/RushUI/docs/components/field.md)
 - Field RFC: [docs/rfcs/field.md](/Users/shuang/Documents/frontend/proj/RushUI/docs/rfcs/field.md)
+
+### Checkbox
+
+`Checkbox` 用于确认项、多选筛选、批量选择和权限配置，支持：
+
+- `size`: `sm | md | lg`
+- `checked` / `defaultChecked`
+- `disabled`
+- `indeterminate`
+- `invalid`
+- `description`
+- `errorText`
+- `onCheckedChange`
+- `forwardRef<HTMLInputElement>`
+
+相关文档：
+
+- Checkbox 文档: [docs/components/checkbox.md](/Users/shuang/Documents/frontend/proj/RushUI/docs/components/checkbox.md)
+- Checkbox RFC: [docs/rfcs/checkbox.md](/Users/shuang/Documents/frontend/proj/RushUI/docs/rfcs/checkbox.md)
 
 ### IconButton
 
