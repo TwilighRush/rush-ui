@@ -6,17 +6,17 @@
 
 ## 摘要
 
-`Field` 是 `@rush-ui/react` 的基础表单项组件，用于把 label、说明文本、必填标记、错误态和 Rush 输入控件组合成稳定结构。它优先服务 `Input` 与 `Textarea`，让基础输入组件继续专注输入行为，避免每个业务表单重复处理 id、`htmlFor` 和 `aria-describedby`。
+`Field` 是 `@rush-ui/react` 的基础表单项组件，用于把 label、说明文本、必填标记、错误态和 Rush 输入控件组合成稳定结构。它服务 `Input`、`Textarea` 与 `RadioGroup` 等 Rush 表单控件，让基础输入组件继续专注输入行为，避免每个业务表单重复处理 id、`htmlFor`、`aria-labelledby` 和 `aria-describedby`。
 
 本文档只定义 `Field` 的组件设计与接口约束，不包含任何代码实现。
 
 ## 目标
 
 - 提供稳定、可复用的表单项外壳。
-- 自动建立 label 与子输入控件的关联。
+- 自动建立 label 与子输入控件或组控件的关联。
 - 自动把说明文本追加到子输入控件的 `aria-describedby`。
 - 将 `required`、`invalid` 和 `errorText` 传递给 Rush 输入控件。
-- 与 `Input`、`Textarea` 形成表单输入组合。
+- 与 `Input`、`Textarea`、`RadioGroup` 形成表单输入组合。
 - 支持 `className` 作为逃生口。
 - 暴露指向根节点 `HTMLDivElement` 的 `ref`。
 
@@ -26,13 +26,14 @@
 - 首版不提供 Field Group、Form Provider、栅格布局或 label 宽度管理。
 - 首版不提供横向布局 API，避免过早固化表单页面结构。
 - 首版不接管子输入的值、事件、禁用、只读和键盘行为。
-- 首版不面向任意复杂交互子组件，只保证与 Rush 输入控件组合稳定。
+- 首版不面向任意复杂交互子组件，只保证与 Rush 表单控件组合稳定。
 
 ## 建议 API
 
 ```ts
 interface FieldControlProps {
   "aria-describedby"?: string;
+  "aria-labelledby"?: string;
   errorText?: React.ReactNode;
   id?: string;
   invalid?: boolean;
@@ -55,7 +56,7 @@ interface FieldProps extends Omit<React.HTMLAttributes<HTMLDivElement>, "childre
 ## Props 设计
 
 - `label`
-  表单项标签。渲染为原生 `<label>`，并通过 `htmlFor` 关联到子输入控件。
+  表单项标签。渲染为原生 `<label>`，通过 `htmlFor` 关联到子输入控件，并把标签文本 id 合并到子控件的 `aria-labelledby`。
 
 - `helpText`
   说明文本。自动追加到子输入控件的 `aria-describedby`。
@@ -79,13 +80,14 @@ interface FieldProps extends Omit<React.HTMLAttributes<HTMLDivElement>, "childre
   子输入控件 id。未传入时优先沿用子控件已有 `id`，否则自动生成。
 
 - `children`
-  Rush 输入控件。首版主要面向 `Input` 和 `Textarea`。
+  Rush 输入控件，例如 `Input`、`Textarea`、`RadioGroup`。
 
 ## 组合规则
 
 - `controlId` 优先级高于子控件已有 `id`。
 - 未提供 `controlId` 且子控件已有 `id` 时，沿用子控件 `id`。
 - 未提供任何 id 时，Field 自动生成 id。
+- Field 会合并子控件已有 `aria-labelledby` 与 label 文本 id，不覆盖既有关联。
 - Field 会合并子控件已有 `aria-describedby` 与 `helpText` id，不覆盖既有关联。
 - Field 不自己渲染 `errorText`，而是传递给 `Input` / `Textarea`，让错误文本与字数统计继续在输入组件 meta 区域内协同。
 
@@ -99,7 +101,7 @@ interface FieldProps extends Omit<React.HTMLAttributes<HTMLDivElement>, "childre
 ## 可访问性要求
 
 - 标签必须使用原生 `<label>`。
-- `label` 与输入控件必须通过 `htmlFor` / `id` 建立关联。
+- `label` 与输入控件必须通过 `htmlFor` / `id` 建立关联；与组控件必须通过 `aria-labelledby` 建立关联。
 - `helpText` 必须通过 `aria-describedby` 与输入控件关联。
 - 合并 `aria-describedby` 时不得覆盖使用方已有描述关系。
 - `required` 语义来自子输入控件的原生 `required` 属性。

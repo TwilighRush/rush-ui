@@ -1,4 +1,4 @@
-import { Field, Input, Textarea } from "@rush-ui/react";
+import { Field, Input, Radio, RadioGroup, Textarea } from "@rush-ui/react";
 import type { Meta, StoryObj } from "@storybook/react";
 import type { CSSProperties } from "react";
 
@@ -15,13 +15,13 @@ const compactFormStyles = {
 } satisfies CSSProperties;
 
 const componentDescription = `
-Field 用于把 label、说明文本、必填标记、错误态和 Rush 输入控件组合成稳定的表单项。组件会为子输入生成或沿用 id，并把 helpText 自动合并到 aria-describedby。
+Field 用于把 label、说明文本、必填标记、错误态和 Rush 输入控件组合成稳定的表单项。组件会为子输入生成或沿用 id，把 label 自动合并到 aria-labelledby，并把 helpText 自动合并到 aria-describedby。
 
 可访问性说明：
-- label 会通过 htmlFor 关联到子输入控件。
+- label 会通过 htmlFor 关联到子输入控件，并通过 aria-labelledby 支持 RadioGroup 这类组控件。
 - helpText 会自动追加到子输入控件的 aria-describedby。
 - required 会传递给子输入控件，并渲染视觉必填标记。
-- errorText 会传递给 Input / Textarea，由输入组件设置 aria-invalid 并渲染 role="alert" 错误文本。
+- errorText 会传递给 Input / Textarea / RadioGroup，由输入组件设置 aria-invalid 并渲染 role="alert" 错误文本。
 - Field 不改变子输入的键盘、禁用、只读和表单提交语义。
 `;
 
@@ -104,6 +104,29 @@ export const FormExample: Story = {
       </Field>
       <Field helpText="填写最近一次客户沟通结论。" label="客户备注">
         <Textarea autoSize={{ minRows: 3, maxRows: 6 }} maxLength={160} placeholder="请输入备注" showCount />
+      </Field>
+    </form>
+  )
+};
+
+export const WithRadioGroup: Story = {
+  name: "组合 RadioGroup",
+  render: () => (
+    <form style={formStyles}>
+      <Field helpText="方向键会在可用选项之间移动焦点并更新选择。" label="默认通知方式" required>
+        <RadioGroup defaultValue="email" name="defaultNotice">
+          <Radio value="email">邮件通知</Radio>
+          <Radio value="sms">短信通知</Radio>
+          <Radio disabled value="webhook">
+            Webhook 暂不可用
+          </Radio>
+        </RadioGroup>
+      </Field>
+      <Field errorText="请选择导出范围" label="导出范围" required>
+        <RadioGroup name="exportScope">
+          <Radio value="current">当前页</Radio>
+          <Radio value="all">全部结果</Radio>
+        </RadioGroup>
       </Field>
     </form>
   )

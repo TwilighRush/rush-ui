@@ -7,6 +7,7 @@ import "./field.less";
 
 export interface FieldControlProps {
   "aria-describedby"?: string;
+  "aria-labelledby"?: string;
   errorText?: ReactNode;
   id?: string;
   invalid?: boolean;
@@ -52,11 +53,14 @@ export const Field = forwardRef<HTMLDivElement, FieldProps>(function Field(
   const generatedId = useId();
   const childProps = children.props;
   const resolvedControlId = controlId ?? childProps.id ?? `${generatedId}-control`;
+  const labelId = label ? `${resolvedControlId}-label` : undefined;
   const helpId = helpText ? `${resolvedControlId}-help` : undefined;
   const describedBy = mergeDescribedBy(childProps["aria-describedby"], helpId);
+  const labelledBy = mergeDescribedBy(childProps["aria-labelledby"], labelId);
   const isInvalid = invalid || Boolean(errorText) || Boolean(childProps.invalid);
   const control = cloneElement(children, {
     "aria-describedby": describedBy,
+    "aria-labelledby": labelledBy,
     errorText: errorText ?? childProps.errorText,
     id: resolvedControlId,
     invalid: isInvalid,
@@ -75,7 +79,9 @@ export const Field = forwardRef<HTMLDivElement, FieldProps>(function Field(
         <div className={joinClassNames(createComponentClassName("field", "header"), "rui-field__header")}>
           <span className={joinClassNames(createComponentClassName("field", "labelGroup"), "rui-field__label-group")}>
             <label className={joinClassNames(createComponentClassName("field", "label"), "rui-field__label")} htmlFor={resolvedControlId}>
-              <span className={joinClassNames(createComponentClassName("field", "labelText"), "rui-field__label-text")}>{label}</span>
+              <span className={joinClassNames(createComponentClassName("field", "labelText"), "rui-field__label-text")} id={labelId}>
+                {label}
+              </span>
             </label>
 
             {required ? (

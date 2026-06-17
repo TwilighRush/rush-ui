@@ -67,6 +67,21 @@ describe("Field", () => {
     expect(input.getAttribute("aria-describedby")).toContain(screen.getByText("用于侧边栏和面包屑展示").id);
   });
 
+  it("links label text through aria-labelledby without dropping existing label references", () => {
+    render(
+      <>
+        <span id="external-label">外部标签</span>
+        <Field label="项目名称">
+          <Input aria-labelledby="external-label" />
+        </Field>
+      </>
+    );
+
+    const input = screen.getByRole("textbox", { name: "外部标签 项目名称" });
+    expect(input.getAttribute("aria-labelledby")).toContain("external-label");
+    expect(input.getAttribute("aria-labelledby")).toContain(screen.getByText("项目名称").id);
+  });
+
   it("passes required semantics and renders the required mark", () => {
     render(
       <Field label="项目名称" required>

@@ -1,6 +1,6 @@
 # Rush UI
 
-Rush UI 是一个基于 `pnpm workspace` 的 React 组件库 monorepo，面向后台与管理端场景，当前已经完成基础工程搭建，并落地了 `Badge`、`Button`、`Checkbox`、`Field`、`IconButton`、`Input` 和 `Textarea` 等基础组件。
+Rush UI 是一个基于 `pnpm workspace` 的 React 组件库 monorepo，面向后台与管理端场景，当前已经完成基础工程搭建，并落地了 `Badge`、`Button`、`Checkbox`、`Field`、`IconButton`、`Input`、`Radio`、`RadioGroup` 和 `Textarea` 等基础组件。
 
 仓库技术栈：
 
@@ -41,6 +41,8 @@ docs/
 - `Field`
 - `IconButton`
 - `Input`
+- `Radio`
+- `RadioGroup`
 - `Textarea`
 - `BadgeProps`
 - `BadgeVariant`
@@ -57,6 +59,10 @@ docs/
 - `IconButtonSize`
 - `InputProps`
 - `InputSize`
+- `RadioProps`
+- `RadioGroupProps`
+- `RadioGroupOrientation`
+- `RadioSize`
 - `TextareaProps`
 - `TextareaSize`
 - `TextareaAutoSizeOptions`
@@ -163,6 +169,29 @@ docs/
 
 - Checkbox 文档: [docs/components/checkbox.md](/Users/shuang/Documents/frontend/proj/RushUI/docs/components/checkbox.md)
 - Checkbox RFC: [docs/rfcs/checkbox.md](/Users/shuang/Documents/frontend/proj/RushUI/docs/rfcs/checkbox.md)
+
+### Radio
+
+`Radio` / `RadioGroup` 用于互斥选项、筛选条件、默认策略和配置分支，支持：
+
+- `size`: `sm | md | lg`
+- `value` / `defaultValue`
+- `disabled`
+- `invalid`
+- `required`
+- `description`
+- `errorText`
+- `orientation`: `vertical | horizontal`
+- `onCheckedChange`
+- `onValueChange`
+- 方向键、Home 和 End 组内移动
+- `Radio` `forwardRef<HTMLInputElement>`
+- `RadioGroup` `forwardRef<HTMLDivElement>`
+
+相关文档：
+
+- Radio 文档: [docs/components/radio.md](/Users/shuang/Documents/frontend/proj/RushUI/docs/components/radio.md)
+- Radio RFC: [docs/rfcs/radio.md](/Users/shuang/Documents/frontend/proj/RushUI/docs/rfcs/radio.md)
 
 ### IconButton
 

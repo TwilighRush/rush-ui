@@ -1,4 +1,4 @@
-import { Badge, Button, Checkbox, Field, IconButton, Input, Textarea } from "@rush-ui/react";
+import { Badge, Button, Checkbox, Field, IconButton, Input, Radio, RadioGroup, Textarea } from "@rush-ui/react";
 import { tokens } from "@rush-ui/tokens";
 
 const packageRoles = [
@@ -129,6 +129,32 @@ export function App() {
       </section>
 
       <section className="token-card">
+        <h2>Radio 文档示例</h2>
+        <p className="lede">单选组使用原生 radio 表单语义，并补齐组内方向键移动、错误态和 Field 组合。</p>
+        <div className="input-demo-grid">
+          <Field helpText="方向键会在可用选项之间移动焦点并更新选择。" label="默认通知方式" required>
+            <RadioGroup defaultValue="email" name="defaultNotice">
+              <Radio description="适合审批、账单和权限变更等高优先级事件。" value="email">
+                邮件通知
+              </Radio>
+              <Radio value="sms">短信通知</Radio>
+              <Radio disabled value="webhook">
+                Webhook 暂不可用
+              </Radio>
+            </RadioGroup>
+          </Field>
+          <RadioGroup aria-label="审批模式" defaultValue="manual" orientation="horizontal">
+            <Radio value="manual">人工审批</Radio>
+            <Radio value="auto">自动通过低风险项</Radio>
+          </RadioGroup>
+          <RadioGroup aria-label="导出范围" errorText="请选择导出范围" invalid>
+            <Radio value="current">当前页</Radio>
+            <Radio value="all">全部结果</Radio>
+          </RadioGroup>
+        </div>
+      </section>
+
+      <section className="token-card">
         <h2>Textarea 文档示例</h2>
         <p className="lede">多行文本域与 Input 保持同族表单输入样式，支持错误态、字数统计、受控/非受控、自适应高度和后置内容。</p>
         <div className="input-demo-grid">
@@ -146,7 +172,7 @@ export function App() {
 
       <section className="token-card">
         <h2>Field 文档示例</h2>
-        <p className="lede">表单项负责标签、说明文本、必填标记和错误态传递，让 Input 与 Textarea 形成稳定组合。</p>
+        <p className="lede">表单项负责标签、说明文本、必填标记和错误态传递，让 Input、Textarea 与 RadioGroup 形成稳定组合。</p>
         <div className="input-demo-grid">
           <Field helpText="用于侧边栏、面包屑和操作日志展示。" label="项目名称" required>
             <Input allowClear defaultValue="客户运营后台" maxLength={20} showCount />

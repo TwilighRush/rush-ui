@@ -1,11 +1,11 @@
 # Field 表单项
 
-`Field` 用于把 label、说明文本、必填标记、错误态和 Rush 输入控件组合成稳定的表单项。它适合与 `Input`、`Textarea` 搭配使用，让基础输入组件继续专注输入行为，由 `Field` 负责表单项结构和可访问性关联。
+`Field` 用于把 label、说明文本、必填标记、错误态和 Rush 输入控件组合成稳定的表单项。它适合与 `Input`、`Textarea`、`RadioGroup` 搭配使用，让基础输入组件继续专注输入行为，由 `Field` 负责表单项结构和可访问性关联。
 
 ## 导入
 
 ```tsx
-import { Field, Input, Textarea } from "@rush-ui/react";
+import { Field, Input, Radio, RadioGroup, Textarea } from "@rush-ui/react";
 ```
 
 ## 基础用法
@@ -22,6 +22,13 @@ import { Field, Input, Textarea } from "@rush-ui/react";
 <Field errorText="审批意见不能为空" label="审批意见" required>
   <Textarea />
 </Field>
+
+<Field helpText="方向键会在可用选项之间移动焦点并更新选择。" label="默认通知方式" required>
+  <RadioGroup defaultValue="email" name="defaultNotice">
+    <Radio value="email">邮件通知</Radio>
+    <Radio value="sms">短信通知</Radio>
+  </RadioGroup>
+</Field>
 ```
 
 ## API
@@ -36,17 +43,17 @@ import { Field, Input, Textarea } from "@rush-ui/react";
 | `requiredMark` | `ReactNode` | `"*"` | 必填标记内容。 |
 | `optionalText` | `ReactNode` | `undefined` | 非必填字段的辅助标识，例如 `选填`。 |
 | `controlId` | `string` | `undefined` | 子输入控件 id。未传入时会优先沿用子控件已有 `id`，否则自动生成。 |
-| `children` | `ReactElement<FieldControlProps>` | 必填 | Rush 输入控件，首版主要面向 `Input` 与 `Textarea`。 |
+| `children` | `ReactElement<FieldControlProps>` | 必填 | Rush 输入控件，例如 `Input`、`Textarea`、`RadioGroup`。 |
 
 组件同时继承 `React.HTMLAttributes<HTMLDivElement>`，可以使用 `className`、`style`、`data-*` 等根节点属性。
 
 ## 可访问性
 
-- `label` 会渲染为原生 `<label>`，并通过 `htmlFor` 指向子输入控件。
+- `label` 会渲染为原生 `<label>`，通过 `htmlFor` 指向子输入控件，并把标签文本 id 合并到子控件的 `aria-labelledby`，支持 `RadioGroup` 这类组控件。
 - 未提供 `controlId` 且子输入没有 `id` 时，组件会自动生成稳定 id。
 - `helpText` 会自动合并到子输入控件的 `aria-describedby`，不会覆盖已有描述关系。
 - `required` 会传递给子输入控件；视觉必填标记使用 `aria-hidden`，必填语义来自原生 `required`。
-- `errorText` 会传递给 `Input` / `Textarea`，由输入组件设置 `aria-invalid`、渲染错误文本并关联 `aria-describedby`。
+- `errorText` 会传递给 `Input` / `Textarea` / `RadioGroup`，由输入组件设置 `aria-invalid`、渲染错误文本并关联 `aria-describedby`。
 - `Field` 不改变子输入的键盘、禁用、只读、复制粘贴和表单提交语义。
 
 ## 设计边界

@@ -12,5 +12,7 @@ export { IconButton } from "./icon-button";
 export type { IconButtonProps, IconButtonSize, IconButtonVariant } from "./icon-button";
 export { Input } from "./input";
 export type { InputProps, InputSize } from "./input";
+export { Radio, RadioGroup } from "./radio";
+export type { RadioGroupOrientation, RadioGroupProps, RadioProps, RadioSize } from "./radio";
 export { Textarea } from "./textarea";
 export type { TextareaAutoSizeOptions, TextareaProps, TextareaSize } from "./textarea";
