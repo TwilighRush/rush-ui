@@ -33,7 +33,7 @@ jobs:
           ref: ${{ github.event.workflow_run.head_sha || github.sha }}
 
       - name: Set up pnpm
-        uses: pnpm/action-setup@v4
+        uses: pnpm/action-setup@v6
 
       - name: Set up Node.js
         uses: actions/setup-node@v6
@@ -52,4 +52,4 @@ jobs:
         run: pnpm release
 
       - name: Push release tags
-        run: git push origin --follow-tags
+        run: git push origin --tags
