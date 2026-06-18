@@ -1,5 +1,12 @@
 # @rush-ui/docs
 
+## 0.0.2
+
+### Patch Changes
+
+- Updated dependencies [6ac140e]
+  - @rush-ui/react@0.1.1
+
 ## 0.0.1
 
 ### Patch Changes
