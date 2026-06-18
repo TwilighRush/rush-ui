@@ -1,6 +1,6 @@
 # Rush UI
 
-Rush UI 是一个基于 `pnpm workspace` 的 React 组件库 monorepo，面向后台与管理端场景，当前已经完成基础工程搭建，并落地了 `Badge`、`Button`、`Checkbox`、`Field`、`IconButton`、`Input`、`Radio`、`RadioGroup`、`Select` 和 `Textarea` 等基础组件。
+Rush UI 是一个基于 `pnpm workspace` 的 React 组件库 monorepo，面向后台与管理端场景，当前已经完成基础工程搭建，并落地了 `Badge`、`Button`、`Checkbox`、`CheckboxGroup`、`Field`、`IconButton`、`Input`、`Radio`、`RadioGroup`、`Select` 和 `Textarea` 等基础组件。
 
 仓库技术栈：
 
@@ -38,6 +38,7 @@ docs/
 - `Badge`
 - `Button`
 - `Checkbox`
+- `CheckboxGroup`
 - `Field`
 - `IconButton`
 - `Input`
@@ -52,6 +53,8 @@ docs/
 - `ButtonVariant`
 - `ButtonSize`
 - `CheckboxProps`
+- `CheckboxGroupProps`
+- `CheckboxGroupOrientation`
 - `CheckboxSize`
 - `FieldProps`
 - `FieldControlProps`
@@ -157,17 +160,21 @@ docs/
 
 ### Checkbox
 
-`Checkbox` 用于确认项、多选筛选、批量选择和权限配置，支持：
+`Checkbox` / `CheckboxGroup` 用于确认项、多选筛选、批量选择和权限配置，支持：
 
 - `size`: `sm | md | lg`
 - `checked` / `defaultChecked`
+- `value` / `defaultValue`
+- `orientation`: `vertical | horizontal`
 - `disabled`
 - `indeterminate`
 - `invalid`
 - `description`
 - `errorText`
 - `onCheckedChange`
+- `onValueChange`
 - `forwardRef<HTMLInputElement>`
+- `CheckboxGroup` `forwardRef<HTMLDivElement>`
 
 相关文档：
 
@@ -353,6 +360,6 @@ pnpm release
 
 下一阶段比较自然的推进方向：
 
-1. 补充 `CheckboxGroup` 或表单分组能力，承接多选组标题、说明和错误聚合。
+1. 补充 `FieldGroup` 或表单分区能力，承接一组字段的标题、说明、错误摘要和布局关系。
 2. 为 Storybook 补充更系统的文档导航和用例分组。
 3. 随组件增长继续扩展语义化 token，并保持 CSS 变量层与组件样式同步。

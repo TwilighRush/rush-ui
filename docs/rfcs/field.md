@@ -6,7 +6,7 @@
 
 ## 摘要
 
-`Field` 是 `@rush-ui/react` 的基础表单项组件，用于把 label、说明文本、必填标记、错误态和 Rush 输入控件组合成稳定结构。它服务 `Input`、`Textarea`、`RadioGroup` 与 `Select` 等 Rush 表单控件，让基础输入组件继续专注输入行为，避免每个业务表单重复处理 id、`htmlFor`、`aria-labelledby` 和 `aria-describedby`。
+`Field` 是 `@rush-ui/react` 的基础表单项组件，用于把 label、说明文本、必填标记、错误态和 Rush 输入控件组合成稳定结构。它服务 `Input`、`Textarea`、`CheckboxGroup`、`RadioGroup` 与 `Select` 等 Rush 表单控件，让基础输入组件继续专注输入行为，避免每个业务表单重复处理 id、`htmlFor`、`aria-labelledby` 和 `aria-describedby`。
 
 本文档只定义 `Field` 的组件设计与接口约束，不包含任何代码实现。
 
@@ -16,7 +16,7 @@
 - 自动建立 label 与子输入控件或组控件的关联。
 - 自动把说明文本追加到子输入控件的 `aria-describedby`。
 - 将 `required`、`invalid` 和 `errorText` 传递给 Rush 输入控件。
-- 与 `Input`、`Textarea`、`RadioGroup`、`Select` 形成表单输入组合。
+- 与 `Input`、`Textarea`、`CheckboxGroup`、`RadioGroup`、`Select` 形成表单输入组合。
 - 支持 `className` 作为逃生口。
 - 暴露指向根节点 `HTMLDivElement` 的 `ref`。
 
@@ -80,7 +80,7 @@ interface FieldProps extends Omit<React.HTMLAttributes<HTMLDivElement>, "childre
   子输入控件 id。未传入时优先沿用子控件已有 `id`，否则自动生成。
 
 - `children`
-  Rush 输入控件，例如 `Input`、`Textarea`、`RadioGroup`、`Select`。
+  Rush 输入控件，例如 `Input`、`Textarea`、`CheckboxGroup`、`RadioGroup`、`Select`。
 
 ## 组合规则
 

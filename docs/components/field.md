@@ -1,11 +1,11 @@
 # Field 表单项
 
-`Field` 用于把 label、说明文本、必填标记、错误态和 Rush 输入控件组合成稳定的表单项。它适合与 `Input`、`Textarea`、`RadioGroup`、`Select` 搭配使用，让基础输入组件继续专注输入行为，由 `Field` 负责表单项结构和可访问性关联。
+`Field` 用于把 label、说明文本、必填标记、错误态和 Rush 输入控件组合成稳定的表单项。它适合与 `Input`、`Textarea`、`CheckboxGroup`、`RadioGroup`、`Select` 搭配使用，让基础输入组件继续专注输入行为，由 `Field` 负责表单项结构和可访问性关联。
 
 ## 导入
 
 ```tsx
-import { Field, Input, Radio, RadioGroup, Select, Textarea } from "@rush-ui/react";
+import { Checkbox, CheckboxGroup, Field, Input, Radio, RadioGroup, Select, Textarea } from "@rush-ui/react";
 ```
 
 ## 基础用法
@@ -28,6 +28,13 @@ import { Field, Input, Radio, RadioGroup, Select, Textarea } from "@rush-ui/reac
     <Radio value="email">邮件通知</Radio>
     <Radio value="sms">短信通知</Radio>
   </RadioGroup>
+</Field>
+
+<Field helpText="用于控制成员在客户资料中的操作范围。" label="权限范围" required>
+  <CheckboxGroup defaultValue={["read"]} name="permission">
+    <Checkbox value="read">查看</Checkbox>
+    <Checkbox value="export">导出</Checkbox>
+  </CheckboxGroup>
 </Field>
 
 <Field helpText="支持方向键、Enter、Escape、Home、End 和首字母定位。" label="项目状态" required>
@@ -54,17 +61,17 @@ import { Field, Input, Radio, RadioGroup, Select, Textarea } from "@rush-ui/reac
 | `requiredMark` | `ReactNode` | `"*"` | 必填标记内容。 |
 | `optionalText` | `ReactNode` | `undefined` | 非必填字段的辅助标识，例如 `选填`。 |
 | `controlId` | `string` | `undefined` | 子输入控件 id。未传入时会优先沿用子控件已有 `id`，否则自动生成。 |
-| `children` | `ReactElement<FieldControlProps>` | 必填 | Rush 输入控件，例如 `Input`、`Textarea`、`RadioGroup`、`Select`。 |
+| `children` | `ReactElement<FieldControlProps>` | 必填 | Rush 输入控件，例如 `Input`、`Textarea`、`CheckboxGroup`、`RadioGroup`、`Select`。 |
 
 组件同时继承 `React.HTMLAttributes<HTMLDivElement>`，可以使用 `className`、`style`、`data-*` 等根节点属性。
 
 ## 可访问性
 
-- `label` 会渲染为原生 `<label>`，通过 `htmlFor` 指向子输入控件，并把标签文本 id 合并到子控件的 `aria-labelledby`，支持 `RadioGroup`、`Select` 这类组控件。
+- `label` 会渲染为原生 `<label>`，通过 `htmlFor` 指向子输入控件，并把标签文本 id 合并到子控件的 `aria-labelledby`，支持 `CheckboxGroup`、`RadioGroup`、`Select` 这类组控件。
 - 未提供 `controlId` 且子输入没有 `id` 时，组件会自动生成稳定 id。
 - `helpText` 会自动合并到子输入控件的 `aria-describedby`，不会覆盖已有描述关系。
 - `required` 会传递给子输入控件；视觉必填标记使用 `aria-hidden`，必填语义来自原生 `required`。
-- `errorText` 会传递给 `Input` / `Textarea` / `RadioGroup` / `Select`，由输入组件设置 `aria-invalid`、渲染错误文本并关联 `aria-describedby`。
+- `errorText` 会传递给 `Input` / `Textarea` / `CheckboxGroup` / `RadioGroup` / `Select`，由输入组件设置 `aria-invalid`、渲染错误文本并关联 `aria-describedby`。
 - `Field` 不改变子输入的键盘、禁用、只读、复制粘贴和表单提交语义。
 
 ## 设计边界

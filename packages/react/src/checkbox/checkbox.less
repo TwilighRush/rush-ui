@@ -214,6 +214,51 @@
   text-wrap: pretty;
 }
 
+.rui-checkbox-group {
+  --rui-checkbox-group-error: #b42318;
+  --rui-checkbox-group-gap: var(--rui-space-sm);
+  display: grid;
+  gap: var(--rui-checkbox-group-gap);
+  min-width: 0;
+
+  &[data-disabled] {
+    cursor: not-allowed;
+  }
+}
+
+.rui-checkbox-group__items {
+  display: grid;
+  gap: var(--rui-space-sm);
+  min-width: 0;
+
+  .rui-checkbox-group[data-orientation="horizontal"] & {
+    align-items: flex-start;
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--rui-space-sm) var(--rui-space-md);
+  }
+}
+
+.rui-checkbox-group__error {
+  color: var(--rui-checkbox-group-error);
+  font-size: 0.8125rem;
+  line-height: 1.4;
+  text-wrap: pretty;
+}
+
+.rui-checkbox-group__required-text {
+  border: 0;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .rui-checkbox__box,
   .rui-checkbox__mark::before,

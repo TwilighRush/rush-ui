@@ -4,7 +4,8 @@ import type { KeyboardEvent } from "react";
 import { fireEvent, render, screen } from "@testing-library/react";
 import { describe, expect, it, vi } from "vitest";
 
-import { Checkbox } from "./Checkbox";
+import { Field } from "../field";
+import { Checkbox, CheckboxGroup } from "./Checkbox";
 
 describe("Checkbox", () => {
   it("renders a native checkbox with label text", () => {
@@ -166,5 +167,161 @@ describe("Checkbox", () => {
 
     fireEvent.keyDown(screen.getByRole("checkbox", { name: "键盘选项" }), { key: " " });
     expect(handleKeyDown).toHaveBeenCalledTimes(1);
+  });
+});
+
+describe("CheckboxGroup", () => {
+  it("renders a named group and applies a shared name to checkboxes", () => {
+    render(
+      <CheckboxGroup aria-label="通知渠道" name="channels">
+        <Checkbox value="email">邮件</Checkbox>
+        <Checkbox value="sms">短信</Checkbox>
+      </CheckboxGroup>
+    );
+
+    expect(screen.getByRole("group", { name: "通知渠道" })).toBeInTheDocument();
+    expect(screen.getByRole("checkbox", { name: "邮件" })).toHaveAttribute("name", "channels");
+    expect(screen.getByRole("checkbox", { name: "短信" })).toHaveAttribute("name", "channels");
+  });
+
+  it("supports uncontrolled values through defaultValue", () => {
+    const handleValueChange = vi.fn();
+
+    render(
+      <CheckboxGroup defaultValue={["email"]} onValueChange={handleValueChange}>
+        <Checkbox value="email">邮件</Checkbox>
+        <Checkbox value="sms">短信</Checkbox>
+      </CheckboxGroup>
+    );
+
+    const emailCheckbox = screen.getByRole("checkbox", { name: "邮件" });
+    const smsCheckbox = screen.getByRole("checkbox", { name: "短信" });
+
+    expect(emailCheckbox).toBeChecked();
+    expect(smsCheckbox).not.toBeChecked();
+
+    fireEvent.click(smsCheckbox);
+    expect(smsCheckbox).toBeChecked();
+    expect(handleValueChange).toHaveBeenLastCalledWith(["email", "sms"]);
+
+    fireEvent.click(emailCheckbox);
+    expect(emailCheckbox).not.toBeChecked();
+    expect(handleValueChange).toHaveBeenLastCalledWith(["sms"]);
+  });
+
+  it("supports controlled values with onValueChange", () => {
+    function ControlledGroup() {
+      const [value, setValue] = useState(["read"]);
+
+      return (
+        <CheckboxGroup aria-label="权限范围" onValueChange={setValue} value={value}>
+          <Checkbox value="read">查看</Checkbox>
+          <Checkbox value="export">导出</Checkbox>
+        </CheckboxGroup>
+      );
+    }
+
+    render(<ControlledGroup />);
+
+    expect(screen.getByRole("checkbox", { name: "查看" })).toBeChecked();
+    fireEvent.click(screen.getByRole("checkbox", { name: "导出" }));
+    expect(screen.getByRole("checkbox", { name: "导出" })).toBeChecked();
+  });
+
+  it("keeps child onChange and onCheckedChange available inside a group", () => {
+    const handleChange = vi.fn();
+    const handleCheckedChange = vi.fn();
+    const handleValueChange = vi.fn();
+
+    render(
+      <CheckboxGroup onValueChange={handleValueChange}>
+        <Checkbox onChange={handleChange} onCheckedChange={handleCheckedChange} value="archive">
+          自动归档
+        </Checkbox>
+      </CheckboxGroup>
+    );
+
+    fireEvent.click(screen.getByRole("checkbox", { name: "自动归档" }));
+
+    expect(handleChange).toHaveBeenCalledTimes(1);
+    expect(handleCheckedChange).toHaveBeenCalledWith(true);
+    expect(handleValueChange).toHaveBeenCalledWith(["archive"]);
+  });
+
+  it("passes group size, disabled and invalid state to child checkboxes", () => {
+    render(
+      <CheckboxGroup disabled invalid required size="lg">
+        <Checkbox value="delete">删除记录</Checkbox>
+      </CheckboxGroup>
+    );
+
+    const group = screen.getByRole("group");
+    const checkbox = screen.getByRole("checkbox", { name: "删除记录" });
+    const root = checkbox.closest(".rui-checkbox");
+
+    expect(group).toHaveAttribute("data-required", "");
+    expect(group).toHaveAttribute("aria-invalid", "true");
+    expect(group.getAttribute("aria-describedby")).toContain("required");
+    expect(checkbox).toBeDisabled();
+    expect(checkbox).toHaveAttribute("aria-invalid", "true");
+    expect(checkbox).not.toBeRequired();
+    expect(root).toHaveAttribute("data-size", "lg");
+    expect(root).toHaveAttribute("data-disabled", "");
+    expect(root).toHaveAttribute("data-invalid", "");
+  });
+
+  it("renders group error text and preserves external descriptions", () => {
+    render(
+      <>
+        <p id="external-help">至少选择一个渠道。</p>
+        <CheckboxGroup aria-describedby="external-help" aria-label="通知渠道" errorText="请选择通知渠道" invalid>
+          <Checkbox value="email">邮件</Checkbox>
+          <Checkbox value="sms">短信</Checkbox>
+        </CheckboxGroup>
+      </>
+    );
+
+    const group = screen.getByRole("group", { name: "通知渠道" });
+    const error = screen.getByRole("alert");
+
+    expect(group.getAttribute("aria-describedby")).toContain("external-help");
+    expect(group.getAttribute("aria-describedby")).toContain(error.id);
+    expect(error).toHaveTextContent("请选择通知渠道");
+  });
+
+  it("combines with Field for label, help text, required and error state", () => {
+    render(
+      <Field errorText="请至少选择一个权限" helpText="用于控制成员在客户资料中的操作范围。" label="权限范围" required>
+        <CheckboxGroup defaultValue={["read"]}>
+          <Checkbox value="read">查看</Checkbox>
+          <Checkbox value="export">导出</Checkbox>
+        </CheckboxGroup>
+      </Field>
+    );
+
+    const group = screen.getByRole("group", { name: "权限范围" });
+    const readCheckbox = screen.getByRole("checkbox", { name: "查看" });
+    const help = screen.getByText("用于控制成员在客户资料中的操作范围。");
+    const error = screen.getByRole("alert");
+
+    expect(group).toHaveAttribute("aria-invalid", "true");
+    expect(group).toHaveAttribute("data-required", "");
+    expect(group.getAttribute("aria-describedby")).toContain(help.id);
+    expect(group.getAttribute("aria-describedby")).toContain("required");
+    expect(group.getAttribute("aria-describedby")).toContain(error.id);
+    expect(readCheckbox).toBeChecked();
+    expect(readCheckbox).not.toBeRequired();
+  });
+
+  it("supports horizontal orientation marker", () => {
+    render(
+      <CheckboxGroup aria-label="筛选条件" orientation="horizontal">
+        <Checkbox value="active">启用</Checkbox>
+        <Checkbox value="paused">停用</Checkbox>
+      </CheckboxGroup>
+    );
+
+    const group = screen.getByRole("group", { name: "筛选条件" });
+    expect(group).toHaveAttribute("data-orientation", "horizontal");
   });
 });
