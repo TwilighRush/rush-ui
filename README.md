@@ -287,6 +287,21 @@ docs/
 - Textarea 文档: [docs/components/textarea.md](/Users/shuang/Documents/frontend/proj/RushUI/docs/components/textarea.md)
 - Textarea RFC: [docs/rfcs/textarea.md](/Users/shuang/Documents/frontend/proj/RushUI/docs/rfcs/textarea.md)
 
+## 安装与使用
+
+安装 React 组件包：
+
+```bash
+pnpm add @rush-ui/react
+```
+
+在应用入口加载组件样式，再按需导入组件：
+
+```tsx
+import "@rush-ui/react/styles.css";
+import { Button } from "@rush-ui/react";
+```
+
 ## 开发命令
 
 安装依赖：

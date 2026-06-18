@@ -9,7 +9,7 @@ export default defineConfig({
       fileName: (format) => (format === "es" ? "index.js" : "index.cjs")
     },
     rollupOptions: {
-      external: ["react", "react-dom"]
+      external: [/^react(?:\/.*)?$/, /^react-dom(?:\/.*)?$/]
     }
   },
   plugins: [
