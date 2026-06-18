@@ -1,0 +1,23 @@
+# @rush-ui/react
+
+## 0.1.0
+
+### Minor Changes
+
+- 2bb55b4: 新增 IconButton 组件，补齐图标按钮的类型、样式、测试、Storybook 用例和可访问性文档；同时收紧 React 包入口，只保留稳定的组件 API 导出。
+- d9c6c8b: 新增 Field 表单项组件，补齐类型、样式、测试、Storybook 用例、组件文档和 RFC，并从 React 包入口导出；支持 label、helpText、required、optionalText、错误态传递和 aria-describedby 合并。
+- 957430d: 新增 Radio / RadioGroup 单选组件，补齐类型、样式、测试、Storybook 用例、组件文档和 RFC，并从 React 包入口导出；支持受控/非受控、组内方向键移动、说明文本、错误态、Field 组合和原生表单语义。
+- 39cd8d3: 新增 Input 输入框组件，补齐类型、样式、测试、Storybook 用例、组件文档和 RFC，并从 React 包入口导出；支持清空按钮、字数统计、prefix/suffix 图标插槽和前后缀内容。
+- cf7beef: 新增 CheckboxGroup 复选组组件，并从 React 包入口导出；支持受控/非受控值数组、组级 disabled / invalid / required、横向或纵向排列、Field 组合、组级错误文本和原生 checkbox 表单语义。
+- 35eeba4: 新增 Select 单选选择器，补齐类型、样式、测试、Storybook 用例、组件文档和 RFC，并从 React 包入口导出；支持受控/非受控、Field 组合、combobox/listbox 语义、键盘导航、typeahead、占位、空态、禁用态和错误态。
+- a71f0ae: 新增 Checkbox 复选框组件，补齐类型、样式、测试、Storybook 用例、组件文档和 RFC，并从 React 包入口导出；支持受控/非受控、半选、说明文本、错误态和原生表单语义。
+- cef12d9: 新增 Textarea 文本域组件，补齐类型、样式、测试、Storybook 用例、组件文档和 RFC，并从 React 包入口导出；支持错误态、字数统计、受控/非受控、自适应高度和后置装饰内容。
+
+### Patch Changes
+
+- e3a8c15: 新增 Badge 状态标识组件，支持 default、success、warning、error、info、processing 六种状态以及 sm、md、lg 三档尺寸。
+
+  补充语义状态色 token，供 Badge 和后续状态类组件复用。
+
+- fd73dbb: 修复 Textarea 默认拖拽只能纵向调整的问题，并避免非自适应高度模式下输入内容时重置用户手动拖拽后的高度。
+- fa82065: 打磨 Button 和 IconButton 的交互状态与动效细节：补充 active 反馈、降低动作阴影强度、为 loading spinner 增加 reduced-motion 处理，并修正 Button label 的稳定样式类名。
