@@ -1,5 +1,11 @@
 # @rush_ui/tokens
 
+## 0.0.2
+
+### Patch Changes
+
+- 687fcfe: 修正 npm 发布作用域为实际组织 `@rush_ui`，同步组件包、设计 token 包、工作区依赖、构建别名和使用文档中的包名。
+
 ## 0.0.1
 
 ### Patch Changes

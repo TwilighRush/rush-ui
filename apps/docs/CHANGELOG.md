@@ -1,5 +1,13 @@
 # @rush_ui/docs
 
+## 0.0.3
+
+### Patch Changes
+
+- Updated dependencies [687fcfe]
+  - @rush_ui/react@0.1.2
+  - @rush_ui/tokens@0.0.2
+
 ## 0.0.2
 
 ### Patch Changes
