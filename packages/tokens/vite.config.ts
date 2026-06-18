@@ -9,7 +9,13 @@ export default defineConfig({
       fileName: (format) => (format === "es" ? "index.js" : "index.cjs")
     }
   },
-  plugins: [dts({ insertTypesEntry: true })],
+  plugins: [
+    dts({
+      include: ["src"],
+      exclude: ["src/**/*.test.ts", "src/**/*.test.tsx"],
+      insertTypesEntry: true
+    })
+  ],
   test: {
     environment: "node",
     globals: true

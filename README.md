@@ -345,6 +345,8 @@ pnpm version-packages
 pnpm release
 ```
 
+CI、版本 PR 与 Trusted Publishing 发布流程参见 [发布流程](https://github.com/TwilighRush/rush-ui/blob/main/docs/contributing/release.md)。
+
 ## 开发约定
 
 组件与仓库约定请优先参考：
@@ -352,6 +354,7 @@ pnpm release
 - [AGENTS.md](/Users/shuang/Documents/frontend/proj/RushUI/AGENTS.md)
 - [component-conventions.md](/Users/shuang/Documents/frontend/proj/RushUI/component-conventions.md)
 - [Git 提交规范](/Users/shuang/Documents/frontend/proj/RushUI/docs/contributing/git-commit.md)
+- [发布流程](/Users/shuang/Documents/frontend/proj/RushUI/docs/contributing/release.md)
 
 核心原则：
 

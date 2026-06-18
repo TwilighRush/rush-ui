@@ -2,6 +2,8 @@
   "name": "@rush_ui/tokens",
   "version": "0.0.2",
   "private": false,
+  "description": "Rush UI 组件库使用的设计 token。",
+  "license": "MIT",
   "type": "module",
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
@@ -12,6 +14,24 @@
       "import": "./dist/index.js",
       "require": "./dist/index.cjs"
     }
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/TwilighRush/rush-ui.git",
+    "directory": "packages/tokens"
+  },
+  "homepage": "https://github.com/TwilighRush/rush-ui#readme",
+  "bugs": {
+    "url": "https://github.com/TwilighRush/rush-ui/issues"
+  },
+  "keywords": [
+    "design-tokens",
+    "react",
+    "admin",
+    "dashboard"
+  ],
+  "publishConfig": {
+    "access": "public"
   },
   "files": [
     "dist"

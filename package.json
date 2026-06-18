@@ -2,6 +2,7 @@
   "name": "rush-ui-monorepo",
   "private": true,
   "version": "0.0.0",
+  "license": "MIT",
   "packageManager": "pnpm@10.6.3",
   "type": "module",
   "scripts": {
@@ -11,10 +12,11 @@
     "typecheck": "pnpm --filter './packages/**' --filter './apps/**' -r run typecheck",
     "test": "pnpm --filter './packages/**' --filter './apps/**' -r run test",
     "storybook": "pnpm --filter @rush_ui/docs storybook",
+    "storybook:build": "pnpm --filter @rush_ui/docs exec storybook build",
     "setup-hooks": "git config core.hooksPath .githooks && chmod +x .githooks/commit-msg",
     "changeset": "changeset",
     "version-packages": "changeset version",
-    "release": "changeset publish"
+    "release": "pnpm build && changeset publish"
   },
   "devDependencies": {
     "@changesets/cli": "^2.29.2",

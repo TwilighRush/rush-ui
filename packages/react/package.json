@@ -2,6 +2,8 @@
   "name": "@rush_ui/react",
   "version": "0.1.2",
   "private": false,
+  "description": "面向后台与管理端场景的 React 组件库。",
+  "license": "MIT",
   "type": "module",
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
@@ -18,6 +20,24 @@
   "sideEffects": [
     "**/*.css"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/TwilighRush/rush-ui.git",
+    "directory": "packages/react"
+  },
+  "homepage": "https://github.com/TwilighRush/rush-ui#readme",
+  "bugs": {
+    "url": "https://github.com/TwilighRush/rush-ui/issues"
+  },
+  "keywords": [
+    "react",
+    "components",
+    "admin",
+    "dashboard"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
   "files": [
     "dist"
   ],
