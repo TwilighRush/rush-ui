@@ -1,11 +1,11 @@
-# @rush-ui/docs
+# @rush_ui/docs
 
 ## 0.0.2
 
 ### Patch Changes
 
 - Updated dependencies [6ac140e]
-  - @rush-ui/react@0.1.1
+  - @rush_ui/react@0.1.1
 
 ## 0.0.1
 
@@ -22,5 +22,5 @@
 - Updated dependencies [35eeba4]
 - Updated dependencies [a71f0ae]
 - Updated dependencies [cef12d9]
-  - @rush-ui/react@0.1.0
-  - @rush-ui/tokens@0.0.1
+  - @rush_ui/react@0.1.0
+  - @rush_ui/tokens@0.0.1

@@ -121,7 +121,7 @@ fix(button): 修复加载态 spinner 椭圆变形
 加载态之前使用了双层 span，外层没有继承固定尺寸，部分布局下旋转环会被压扁。
 现在将 spinner 收敛为单个受控方形节点，并通过 aspect-ratio 和 box-sizing 保持圆形。
 
-验证：pnpm --filter @rush-ui/react test
+验证：pnpm --filter @rush_ui/react test
 ```
 
 ## footer 页脚
@@ -133,7 +133,7 @@ fix(button): 修复加载态 spinner 椭圆变形
 ```text
 feat(react): 移除内部工具的公开导出
 
-BREAKING CHANGE: 不再从 @rush-ui/react 导出 createComponentClassName。
+BREAKING CHANGE: 不再从 @rush_ui/react 导出 createComponentClassName。
 ```
 
 关联 issue 可以使用：
@@ -164,9 +164,9 @@ Closes #18
 
 需要 changeset 的情况：
 
-- 新增、删除或修改 `@rush-ui/react` 导出的组件、类型或 props。
+- 新增、删除或修改 `@rush_ui/react` 导出的组件、类型或 props。
 - 改变组件默认行为、视觉状态、可访问性语义。
-- 修改 `@rush-ui/tokens` 或 `@rush-ui/utils` 的公开导出。
+- 修改 `@rush_ui/tokens` 或 `@rush_ui/utils` 的公开导出。
 - 修复会影响使用者的组件 bug。
 
 通常不需要 changeset 的情况：
@@ -201,9 +201,9 @@ pnpm build
 如果只改动某个包，可以先跑对应包的过滤命令，但合并前仍建议跑全量检查：
 
 ```bash
-pnpm --filter @rush-ui/react test
-pnpm --filter @rush-ui/react typecheck
-pnpm --filter @rush-ui/react build
+pnpm --filter @rush_ui/react test
+pnpm --filter @rush_ui/react typecheck
+pnpm --filter @rush_ui/react build
 ```
 
 组件相关改动还需要确认：

@@ -1,4 +1,4 @@
-import { Textarea } from "@rush-ui/react";
+import { Textarea } from "@rush_ui/react";
 import type { Meta, StoryObj } from "@storybook/react";
 import type { CSSProperties } from "react";
 import { useState } from "react";

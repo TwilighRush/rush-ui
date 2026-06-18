@@ -1,4 +1,4 @@
-import { Button } from "@rush-ui/react";
+import { Button } from "@rush_ui/react";
 import type { Meta, StoryObj } from "@storybook/react";
 import type { CSSProperties } from "react";
 

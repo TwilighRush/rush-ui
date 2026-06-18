@@ -5,7 +5,7 @@
 ## 导入
 
 ```tsx
-import { Input } from "@rush-ui/react";
+import { Input } from "@rush_ui/react";
 ```
 
 ## 基础用法

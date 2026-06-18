@@ -5,7 +5,7 @@
 ## 导入
 
 ```tsx
-import { Badge } from "@rush-ui/react";
+import { Badge } from "@rush_ui/react";
 ```
 
 ## 基础用法

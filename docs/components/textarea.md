@@ -5,7 +5,7 @@
 ## 导入
 
 ```tsx
-import { Textarea } from "@rush-ui/react";
+import { Textarea } from "@rush_ui/react";
 ```
 
 ## 基础用法

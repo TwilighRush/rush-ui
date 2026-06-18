@@ -5,7 +5,7 @@
 ## 导入
 
 ```tsx
-import { IconButton } from "@rush-ui/react";
+import { IconButton } from "@rush_ui/react";
 ```
 
 ## 基础用法

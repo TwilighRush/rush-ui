@@ -1,17 +1,17 @@
-import { Badge, Button, Checkbox, CheckboxGroup, Field, IconButton, Input, Radio, RadioGroup, Select, Textarea } from "@rush-ui/react";
-import { tokens } from "@rush-ui/tokens";
+import { Badge, Button, Checkbox, CheckboxGroup, Field, IconButton, Input, Radio, RadioGroup, Select, Textarea } from "@rush_ui/react";
+import { tokens } from "@rush_ui/tokens";
 
 const packageRoles = [
   {
-    name: "@rush-ui/react",
+    name: "@rush_ui/react",
     description: "对外发布的 React 组件入口，承载组件、类型和组合约定。"
   },
   {
-    name: "@rush-ui/tokens",
+    name: "@rush_ui/tokens",
     description: "可序列化的设计 token，覆盖颜色、间距、圆角和阴影。"
   },
   {
-    name: "@rush-ui/utils",
+    name: "@rush_ui/utils",
     description: "跨包共享的通用工具函数，不绑定具体框架。"
   }
 ] as const;

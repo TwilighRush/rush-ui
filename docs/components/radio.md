@@ -5,7 +5,7 @@
 ## 导入
 
 ```tsx
-import { Field, Radio, RadioGroup } from "@rush-ui/react";
+import { Field, Radio, RadioGroup } from "@rush_ui/react";
 ```
 
 ## 基础用法

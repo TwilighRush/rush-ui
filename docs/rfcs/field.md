@@ -6,7 +6,7 @@
 
 ## 摘要
 
-`Field` 是 `@rush-ui/react` 的基础表单项组件，用于把 label、说明文本、必填标记、错误态和 Rush 输入控件组合成稳定结构。它服务 `Input`、`Textarea`、`CheckboxGroup`、`RadioGroup` 与 `Select` 等 Rush 表单控件，让基础输入组件继续专注输入行为，避免每个业务表单重复处理 id、`htmlFor`、`aria-labelledby` 和 `aria-describedby`。
+`Field` 是 `@rush_ui/react` 的基础表单项组件，用于把 label、说明文本、必填标记、错误态和 Rush 输入控件组合成稳定结构。它服务 `Input`、`Textarea`、`CheckboxGroup`、`RadioGroup` 与 `Select` 等 Rush 表单控件，让基础输入组件继续专注输入行为，避免每个业务表单重复处理 id、`htmlFor`、`aria-labelledby` 和 `aria-describedby`。
 
 本文档只定义 `Field` 的组件设计与接口约束，不包含任何代码实现。
 

@@ -6,7 +6,7 @@
 
 ## 摘要
 
-`Radio` / `RadioGroup` 是 `@rush-ui/react` 的基础单选组件，用于互斥选项、筛选条件、默认策略和配置分支。单个 `Radio` 保持原生 radio 语义；`RadioGroup` 负责同组选项的值管理、统一 `name`、方向键移动、错误态和 `Field` 组合。
+`Radio` / `RadioGroup` 是 `@rush_ui/react` 的基础单选组件，用于互斥选项、筛选条件、默认策略和配置分支。单个 `Radio` 保持原生 radio 语义；`RadioGroup` 负责同组选项的值管理、统一 `name`、方向键移动、错误态和 `Field` 组合。
 
 本文档只定义组件设计与接口约束，不包含任何代码实现。
 

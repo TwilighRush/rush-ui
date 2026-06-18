@@ -1,4 +1,4 @@
-import { Checkbox, CheckboxGroup, Field, Input, Radio, RadioGroup, Select, Textarea } from "@rush-ui/react";
+import { Checkbox, CheckboxGroup, Field, Input, Radio, RadioGroup, Select, Textarea } from "@rush_ui/react";
 import type { Meta, StoryObj } from "@storybook/react";
 import type { CSSProperties } from "react";
 

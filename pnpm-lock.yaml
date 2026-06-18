@@ -80,10 +80,10 @@ importers:
 
   apps/docs:
     dependencies:
-      '@rush-ui/react':
+      '@rush_ui/react':
         specifier: workspace:*
         version: link:../../packages/react
-      '@rush-ui/tokens':
+      '@rush_ui/tokens':
         specifier: workspace:*
         version: link:../../packages/tokens
       react:

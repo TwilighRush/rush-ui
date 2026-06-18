@@ -5,7 +5,7 @@
 ## 导入
 
 ```tsx
-import { Checkbox, CheckboxGroup, Field, Input, Radio, RadioGroup, Select, Textarea } from "@rush-ui/react";
+import { Checkbox, CheckboxGroup, Field, Input, Radio, RadioGroup, Select, Textarea } from "@rush_ui/react";
 ```
 
 ## 基础用法

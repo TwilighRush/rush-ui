@@ -1,5 +1,5 @@
 {
-  "name": "@rush-ui/docs",
+  "name": "@rush_ui/docs",
   "version": "0.0.2",
   "private": true,
   "type": "module",
@@ -12,8 +12,8 @@
     "storybook": "storybook dev -p 6006"
   },
   "dependencies": {
-    "@rush-ui/react": "workspace:*",
-    "@rush-ui/tokens": "workspace:*",
+    "@rush_ui/react": "workspace:*",
+    "@rush_ui/tokens": "workspace:*",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
   }

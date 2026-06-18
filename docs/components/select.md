@@ -5,7 +5,7 @@
 ## 导入
 
 ```tsx
-import { Field, Select } from "@rush-ui/react";
+import { Field, Select } from "@rush_ui/react";
 ```
 
 ## 基础用法

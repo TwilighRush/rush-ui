@@ -29,7 +29,7 @@ docs/
 
 ## 各包职责
 
-### `@rush-ui/react`
+### `@rush_ui/react`
 
 主组件包，对外暴露 React 组件与相关类型。
 
@@ -76,7 +76,7 @@ docs/
 
 组件内部类名工具仅供源码使用，不从 npm 入口导出。
 
-### `@rush-ui/tokens`
+### `@rush_ui/tokens`
 
 设计 token 包，当前包含：
 
@@ -88,7 +88,7 @@ docs/
 
 这部分主要作为样式系统和组件视觉实现的基础层。
 
-### `@rush-ui/utils`
+### `@rush_ui/utils`
 
 通用工具包，当前包含轻量工具函数：
 
@@ -96,7 +96,7 @@ docs/
 
 用于基础 className 拼接等通用场景。
 
-### `@rush-ui/docs`
+### `@rush_ui/docs`
 
 文档站与组件预览应用，承担：
 
@@ -292,14 +292,14 @@ docs/
 安装 React 组件包：
 
 ```bash
-pnpm add @rush-ui/react
+pnpm add @rush_ui/react
 ```
 
 在应用入口加载组件样式，再按需导入组件：
 
 ```tsx
-import "@rush-ui/react/styles.css";
-import { Button } from "@rush-ui/react";
+import "@rush_ui/react/styles.css";
+import { Button } from "@rush_ui/react";
 ```
 
 ## 开发命令

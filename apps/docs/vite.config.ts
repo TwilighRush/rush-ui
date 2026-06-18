@@ -4,8 +4,8 @@ import { defineConfig } from "vitest/config";
 export default defineConfig({
   resolve: {
     alias: {
-      "@rush-ui/react": new URL("../../packages/react/src/index.ts", import.meta.url).pathname,
-      "@rush-ui/tokens": new URL("../../packages/tokens/src/index.ts", import.meta.url).pathname
+      "@rush_ui/react": new URL("../../packages/react/src/index.ts", import.meta.url).pathname,
+      "@rush_ui/tokens": new URL("../../packages/tokens/src/index.ts", import.meta.url).pathname
     }
   },
   plugins: [react()],

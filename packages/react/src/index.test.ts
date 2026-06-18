@@ -2,7 +2,7 @@ import { describe, expect, it } from "vitest";
 
 import { Badge, Button, Checkbox, CheckboxGroup, Field, IconButton, Input, Radio, RadioGroup, Select, Textarea } from "./index";
 
-describe("@rush-ui/react entry", () => {
+describe("@rush_ui/react entry", () => {
   it("exports public components", () => {
     expect(Badge).toBeTypeOf("object");
     expect(Button).toBeTypeOf("object");

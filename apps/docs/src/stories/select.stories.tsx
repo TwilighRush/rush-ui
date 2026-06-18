@@ -1,4 +1,4 @@
-import { Field, Select } from "@rush-ui/react";
+import { Field, Select } from "@rush_ui/react";
 import type { Meta, StoryObj } from "@storybook/react";
 import type { CSSProperties } from "react";
 import { useState } from "react";

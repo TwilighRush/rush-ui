@@ -6,11 +6,11 @@
   "type": "module",
   "scripts": {
     "build": "pnpm --filter './packages/**' --filter './apps/**' -r run build",
-    "dev": "pnpm --filter @rush-ui/docs dev",
+    "dev": "pnpm --filter @rush_ui/docs dev",
     "lint": "pnpm --filter './packages/**' --filter './apps/**' -r run lint",
     "typecheck": "pnpm --filter './packages/**' --filter './apps/**' -r run typecheck",
     "test": "pnpm --filter './packages/**' --filter './apps/**' -r run test",
-    "storybook": "pnpm --filter @rush-ui/docs storybook",
+    "storybook": "pnpm --filter @rush_ui/docs storybook",
     "setup-hooks": "git config core.hooksPath .githooks && chmod +x .githooks/commit-msg",
     "changeset": "changeset",
     "version-packages": "changeset version",

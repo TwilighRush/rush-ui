@@ -1,4 +1,4 @@
-import { Badge } from "@rush-ui/react";
+import { Badge } from "@rush_ui/react";
 import type { Meta, StoryObj } from "@storybook/react";
 
 const componentDescription = `

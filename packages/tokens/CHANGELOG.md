@@ -1,4 +1,4 @@
-# @rush-ui/tokens
+# @rush_ui/tokens
 
 ## 0.0.1
 

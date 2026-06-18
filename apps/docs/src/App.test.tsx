@@ -8,6 +8,6 @@ describe("App", () => {
     render(<App />);
 
     expect(screen.getByText("面向后台系统的 React 组件库基础工程")).toBeInTheDocument();
-    expect(screen.getByText("@rush-ui/react")).toBeInTheDocument();
+    expect(screen.getByText("@rush_ui/react")).toBeInTheDocument();
   });
 });

@@ -6,7 +6,7 @@
 
 ## 摘要
 
-`Select` 是 `@rush-ui/react` 的基础单选选择器，用于筛选条件、默认负责人、审批模式和配置分支。组件采用 WAI-ARIA combobox / listbox 模式，支持受控/非受控值、键盘导航、typeahead、空态、错误态、禁用态和 `Field` 组合。
+`Select` 是 `@rush_ui/react` 的基础单选选择器，用于筛选条件、默认负责人、审批模式和配置分支。组件采用 WAI-ARIA combobox / listbox 模式，支持受控/非受控值、键盘导航、typeahead、空态、错误态、禁用态和 `Field` 组合。
 
 本文档只定义组件设计与接口约束，不包含任何代码实现。
 

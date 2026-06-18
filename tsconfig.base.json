@@ -7,9 +7,9 @@
     "moduleResolution": "Bundler",
     "baseUrl": ".",
     "paths": {
-      "@rush-ui/react": ["packages/react/src/index.ts"],
-      "@rush-ui/tokens": ["packages/tokens/src/index.ts"],
-      "@rush-ui/utils": ["packages/utils/src/index.ts"]
+      "@rush_ui/react": ["packages/react/src/index.ts"],
+      "@rush_ui/tokens": ["packages/tokens/src/index.ts"],
+      "@rush_ui/utils": ["packages/utils/src/index.ts"]
     },
     "allowImportingTsExtensions": false,
     "resolveJsonModule": true,
