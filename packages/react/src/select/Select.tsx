@@ -4,15 +4,18 @@ import {
   useEffect,
   useId,
   useImperativeHandle,
-  useLayoutEffect,
+  useMemo,
   useRef,
   useState
 } from "react";
-import type { CSSProperties, HTMLAttributes, KeyboardEvent, MouseEvent, ReactNode } from "react";
-import { createPortal } from "react-dom";
+import type { HTMLAttributes, KeyboardEvent, MouseEvent, ReactNode } from "react";
 
+import { Portal } from "../internal/Portal";
 import { createComponentClassName } from "../internal/component-class-name";
 import { joinClassNames } from "../internal/join-class-names";
+import { useModalBranch } from "../internal/modal-layer";
+import { useAnchoredPosition } from "../internal/use-anchored-position";
+import { useDismissableLayer } from "../internal/use-dismissable-layer";
 import "./select.less";
 
 export type SelectSize = "sm" | "md" | "lg";
@@ -41,11 +44,7 @@ export interface SelectProps extends Omit<HTMLAttributes<HTMLDivElement>, "child
 }
 
 const TYPEAHEAD_TIMEOUT = 700;
-const POPUP_GAP = 6;
 const POPUP_MAX_HEIGHT = 280;
-const POPUP_MIN_HEIGHT = 120;
-
-const useIsomorphicLayoutEffect = typeof window === "undefined" ? useEffect : useLayoutEffect;
 
 function isAriaInvalid(value: SelectProps["aria-invalid"]): boolean {
   return value === true || value === "true" || value === "grammar" || value === "spelling";
@@ -163,8 +162,6 @@ export const Select = forwardRef<HTMLButtonElement, SelectProps>(function Select
   const [uncontrolledValue, setUncontrolledValue] = useState(defaultValue);
   const [open, setOpen] = useState(false);
   const [activeIndex, setActiveIndex] = useState(-1);
-  const [popupStyle, setPopupStyle] = useState<CSSProperties>({});
-  const [portalContainer, setPortalContainer] = useState<HTMLElement | null>(null);
   const typeaheadRef = useRef("");
   const typeaheadTimerRef = useRef<number | undefined>(undefined);
   const currentValue = isControlled ? value : uncontrolledValue;
@@ -179,10 +176,6 @@ export const Select = forwardRef<HTMLButtonElement, SelectProps>(function Select
 
   useImperativeHandle(ref, () => triggerRef.current as HTMLButtonElement);
 
-  useIsomorphicLayoutEffect(() => {
-    setPortalContainer(triggerRef.current?.ownerDocument.body ?? null);
-  }, []);
-
   const getInitialActiveIndex = useCallback(
     (fallback: "first" | "last" = "first") => {
       if (selectedIndex >= 0 && !options[selectedIndex]?.disabled) {
@@ -194,52 +187,16 @@ export const Select = forwardRef<HTMLButtonElement, SelectProps>(function Select
     [options, selectedIndex]
   );
 
-  const syncPopupPosition = useCallback(() => {
-    const trigger = triggerRef.current;
-
-    if (!trigger || typeof window === "undefined") {
-      return;
-    }
-
-    const rect = trigger.getBoundingClientRect();
-    const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
-    const viewportWidth = window.innerWidth || document.documentElement.clientWidth;
-    const spaceBelow = viewportHeight - rect.bottom - POPUP_GAP;
-    const spaceAbove = rect.top - POPUP_GAP;
-    const shouldOpenUp = spaceBelow < POPUP_MIN_HEIGHT && spaceAbove > spaceBelow;
-    const availableHeight = Math.min(POPUP_MAX_HEIGHT, Math.max(0, shouldOpenUp ? spaceAbove : spaceBelow));
-    const left = Math.max(POPUP_GAP, Math.min(rect.left, viewportWidth - rect.width - POPUP_GAP));
-    const width = Math.min(rect.width, Math.max(0, viewportWidth - POPUP_GAP * 2));
-
-    if (shouldOpenUp) {
-      setPopupStyle({
-        bottom: Math.max(POPUP_GAP, viewportHeight - rect.top + POPUP_GAP),
-        left,
-        maxHeight: availableHeight,
-        width
-      });
-      return;
-    }
-
-    setPopupStyle({
-      left,
-      maxHeight: availableHeight,
-      top: rect.bottom + POPUP_GAP,
-      width
-    });
-  }, []);
-
   const openListbox = useCallback(
     (fallback: "first" | "last" = "first") => {
       if (disabled) {
         return;
       }
 
-      syncPopupPosition();
       setOpen(true);
       setActiveIndex(getInitialActiveIndex(fallback));
     },
-    [disabled, getInitialActiveIndex, syncPopupPosition]
+    [disabled, getInitialActiveIndex]
   );
 
   const closeListbox = useCallback(() => {
@@ -315,45 +272,21 @@ export const Select = forwardRef<HTMLButtonElement, SelectProps>(function Select
     [activeIndex, options, selectedIndex]
   );
 
-  useIsomorphicLayoutEffect(() => {
-    if (open) {
-      syncPopupPosition();
-    }
-  }, [open, syncPopupPosition]);
+  const popupPosition = useAnchoredPosition({
+    open,
+    triggerRef,
+    contentRef: popupRef,
+    matchTriggerWidth: true,
+    maxHeight: POPUP_MAX_HEIGHT
+  });
+  const dismissableRefs = useMemo(() => [rootRef, popupRef], []);
+  useModalBranch(popupRef, open);
 
-  useEffect(() => {
-    if (!open) {
-      return;
-    }
-
-    const handleDocumentPointerDown = (event: MouseEvent | globalThis.MouseEvent | TouchEvent) => {
-      const target = event.target;
-
-      if (target instanceof Node && rootRef.current?.contains(target)) {
-        return;
-      }
-
-      if (target instanceof Node && popupRef.current?.contains(target)) {
-        return;
-      }
-
-      closeListbox();
-    };
-
-    const handleViewportChange = () => syncPopupPosition();
-
-    document.addEventListener("mousedown", handleDocumentPointerDown);
-    document.addEventListener("touchstart", handleDocumentPointerDown);
-    window.addEventListener("resize", handleViewportChange);
-    window.addEventListener("scroll", handleViewportChange, true);
-
-    return () => {
-      document.removeEventListener("mousedown", handleDocumentPointerDown);
-      document.removeEventListener("touchstart", handleDocumentPointerDown);
-      window.removeEventListener("resize", handleViewportChange);
-      window.removeEventListener("scroll", handleViewportChange, true);
-    };
-  }, [closeListbox, open, syncPopupPosition]);
+  useDismissableLayer({
+    open,
+    refs: dismissableRefs,
+    onDismiss: closeListbox
+  });
 
   useEffect(() => {
     return () => {
@@ -465,7 +398,8 @@ export const Select = forwardRef<HTMLButtonElement, SelectProps>(function Select
     <div
       ref={popupRef}
       className={joinClassNames(createComponentClassName("select", "popup"), "rui-select__popup")}
-      style={popupStyle}
+      style={popupPosition.style}
+      data-side={popupPosition.side}
       data-empty={options.length === 0 ? "" : undefined}
       data-size={size}
     >
@@ -576,7 +510,7 @@ export const Select = forwardRef<HTMLButtonElement, SelectProps>(function Select
         ) : null}
       </div>
 
-      {portalContainer && popup ? createPortal(popup, portalContainer) : null}
+      {popup ? <Portal>{popup}</Portal> : null}
     </>
   );
 });

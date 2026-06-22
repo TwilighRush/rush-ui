@@ -1,6 +1,6 @@
 # Rush UI
 
-Rush UI 是一个基于 `pnpm workspace` 的 React 组件库 monorepo，面向后台与管理端场景，当前已经完成基础工程搭建，并落地了 `Badge`、`Button`、`Checkbox`、`CheckboxGroup`、`Field`、`IconButton`、`Input`、`Radio`、`RadioGroup`、`Select` 和 `Textarea` 等基础组件。
+Rush UI 是一个基于 `pnpm workspace` 的 React 组件库 monorepo，面向后台与管理端场景，提供基础表单、导航、浮层与反馈组件。
 
 仓库技术栈：
 
@@ -39,12 +39,17 @@ docs/
 - `Button`
 - `Checkbox`
 - `CheckboxGroup`
+- `Dialog`
+- `DropdownMenu`
 - `Field`
 - `IconButton`
 - `Input`
+- `Popover`
 - `Radio`
 - `RadioGroup`
 - `Select`
+- `Switch`
+- `Tabs`
 - `Textarea`
 - `BadgeProps`
 - `BadgeVariant`
@@ -56,6 +61,16 @@ docs/
 - `CheckboxGroupProps`
 - `CheckboxGroupOrientation`
 - `CheckboxSize`
+- `DialogRootProps`
+- `DialogTriggerProps`
+- `DialogContentProps`
+- `DialogTitleProps`
+- `DialogDescriptionProps`
+- `DialogCloseProps`
+- `DropdownMenuRootProps`
+- `DropdownMenuTriggerProps`
+- `DropdownMenuContentProps`
+- `DropdownMenuItemProps`
 - `FieldProps`
 - `FieldControlProps`
 - `IconButtonProps`
@@ -63,6 +78,9 @@ docs/
 - `IconButtonSize`
 - `InputProps`
 - `InputSize`
+- `PopoverRootProps`
+- `PopoverTriggerProps`
+- `PopoverContentProps`
 - `RadioProps`
 - `RadioGroupProps`
 - `RadioGroupOrientation`
@@ -70,6 +88,14 @@ docs/
 - `SelectProps`
 - `SelectOption`
 - `SelectSize`
+- `SwitchProps`
+- `SwitchSize`
+- `TabsRootProps`
+- `TabsListProps`
+- `TabsTriggerProps`
+- `TabsContentProps`
+- `TabsOrientation`
+- `TabsActivationMode`
 - `TextareaProps`
 - `TextareaSize`
 - `TextareaAutoSizeOptions`
@@ -117,8 +143,8 @@ docs/
 
 相关文档：
 
-- Badge 文档: [docs/components/badge.md](/Users/shuang/Documents/frontend/proj/RushUI/docs/components/badge.md)
-- Badge RFC: [docs/rfcs/badge.md](/Users/shuang/Documents/frontend/proj/RushUI/docs/rfcs/badge.md)
+- Badge 文档: [docs/components/badge.md](docs/components/badge.md)
+- Badge RFC: [docs/rfcs/badge.md](docs/rfcs/badge.md)
 
 ### Button
 
@@ -135,8 +161,8 @@ docs/
 
 相关文档：
 
-- Button 文档: [docs/components/button.md](/Users/shuang/Documents/frontend/proj/RushUI/docs/components/button.md)
-- Button RFC: [docs/rfcs/button.md](/Users/shuang/Documents/frontend/proj/RushUI/docs/rfcs/button.md)
+- Button 文档: [docs/components/button.md](docs/components/button.md)
+- Button RFC: [docs/rfcs/button.md](docs/rfcs/button.md)
 
 ### Field
 
@@ -155,8 +181,8 @@ docs/
 
 相关文档：
 
-- Field 文档: [docs/components/field.md](/Users/shuang/Documents/frontend/proj/RushUI/docs/components/field.md)
-- Field RFC: [docs/rfcs/field.md](/Users/shuang/Documents/frontend/proj/RushUI/docs/rfcs/field.md)
+- Field 文档: [docs/components/field.md](docs/components/field.md)
+- Field RFC: [docs/rfcs/field.md](docs/rfcs/field.md)
 
 ### Checkbox
 
@@ -178,8 +204,8 @@ docs/
 
 相关文档：
 
-- Checkbox 文档: [docs/components/checkbox.md](/Users/shuang/Documents/frontend/proj/RushUI/docs/components/checkbox.md)
-- Checkbox RFC: [docs/rfcs/checkbox.md](/Users/shuang/Documents/frontend/proj/RushUI/docs/rfcs/checkbox.md)
+- Checkbox 文档: [docs/components/checkbox.md](docs/components/checkbox.md)
+- Checkbox RFC: [docs/rfcs/checkbox.md](docs/rfcs/checkbox.md)
 
 ### Radio
 
@@ -201,8 +227,8 @@ docs/
 
 相关文档：
 
-- Radio 文档: [docs/components/radio.md](/Users/shuang/Documents/frontend/proj/RushUI/docs/components/radio.md)
-- Radio RFC: [docs/rfcs/radio.md](/Users/shuang/Documents/frontend/proj/RushUI/docs/rfcs/radio.md)
+- Radio 文档: [docs/components/radio.md](docs/components/radio.md)
+- Radio RFC: [docs/rfcs/radio.md](docs/rfcs/radio.md)
 
 ### Select
 
@@ -223,8 +249,8 @@ docs/
 
 相关文档：
 
-- Select 文档: [docs/components/select.md](/Users/shuang/Documents/frontend/proj/RushUI/docs/components/select.md)
-- Select RFC: [docs/rfcs/select.md](/Users/shuang/Documents/frontend/proj/RushUI/docs/rfcs/select.md)
+- Select 文档: [docs/components/select.md](docs/components/select.md)
+- Select RFC: [docs/rfcs/select.md](docs/rfcs/select.md)
 
 ### IconButton
 
@@ -240,7 +266,7 @@ docs/
 
 相关文档：
 
-- IconButton 文档: [docs/components/icon-button.md](/Users/shuang/Documents/frontend/proj/RushUI/docs/components/icon-button.md)
+- IconButton 文档: [docs/components/icon-button.md](docs/components/icon-button.md)
 
 ### Input
 
@@ -263,8 +289,8 @@ docs/
 
 相关文档：
 
-- Input 文档: [docs/components/input.md](/Users/shuang/Documents/frontend/proj/RushUI/docs/components/input.md)
-- Input RFC: [docs/rfcs/input.md](/Users/shuang/Documents/frontend/proj/RushUI/docs/rfcs/input.md)
+- Input 文档: [docs/components/input.md](docs/components/input.md)
+- Input RFC: [docs/rfcs/input.md](docs/rfcs/input.md)
 
 ### Textarea
 
@@ -284,8 +310,8 @@ docs/
 
 相关文档：
 
-- Textarea 文档: [docs/components/textarea.md](/Users/shuang/Documents/frontend/proj/RushUI/docs/components/textarea.md)
-- Textarea RFC: [docs/rfcs/textarea.md](/Users/shuang/Documents/frontend/proj/RushUI/docs/rfcs/textarea.md)
+- Textarea 文档: [docs/components/textarea.md](docs/components/textarea.md)
+- Textarea RFC: [docs/rfcs/textarea.md](docs/rfcs/textarea.md)
 
 ## 安装与使用
 
@@ -351,10 +377,10 @@ CI、版本 PR 与 Trusted Publishing 发布流程参见 [发布流程](https://
 
 组件与仓库约定请优先参考：
 
-- [AGENTS.md](/Users/shuang/Documents/frontend/proj/RushUI/AGENTS.md)
-- [component-conventions.md](/Users/shuang/Documents/frontend/proj/RushUI/component-conventions.md)
-- [Git 提交规范](/Users/shuang/Documents/frontend/proj/RushUI/docs/contributing/git-commit.md)
-- [发布流程](/Users/shuang/Documents/frontend/proj/RushUI/docs/contributing/release.md)
+- [AGENTS.md](AGENTS.md)
+- [component-conventions.md](component-conventions.md)
+- [Git 提交规范](docs/contributing/git-commit.md)
+- [发布流程](docs/contributing/release.md)
 
 核心原则：
 
@@ -374,10 +400,6 @@ CI、版本 PR 与 Trusted Publishing 发布流程参见 [发布流程](https://
 - `pnpm build`
 - Storybook 可启动
 
-## 后续建议
+## 当前阶段
 
-下一阶段比较自然的推进方向：
-
-1. 补充 `FieldGroup` 或表单分区能力，承接一组字段的标题、说明、错误摘要和布局关系。
-2. 为 Storybook 补充更系统的文档导航和用例分组。
-3. 随组件增长继续扩展语义化 token，并保持 CSS 变量层与组件样式同步。
+`0.2` 阶段聚焦复杂交互基础和管理端页面闭环：公共组件共享 Portal、浮层定位、外部关闭和受控状态能力，并通过成员管理集成 Story 验证 loading、empty、error 和键盘流程。

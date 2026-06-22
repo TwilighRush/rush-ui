@@ -1,0 +1,87 @@
+.rui-tabs {
+  color: var(--rui-color-ink);
+}
+
+.rui-tabs__list {
+  align-items: center;
+  border-bottom: 1px solid var(--rui-color-border);
+  display: flex;
+  gap: 0.25rem;
+}
+
+.rui-tabs[data-orientation="vertical"] {
+  display: grid;
+  gap: var(--rui-space-md);
+  grid-template-columns: minmax(9rem, auto) 1fr;
+}
+
+.rui-tabs[data-orientation="vertical"] .rui-tabs__list {
+  align-items: stretch;
+  border-bottom: 0;
+  border-right: 1px solid var(--rui-color-border);
+  flex-direction: column;
+  padding-right: var(--rui-space-sm);
+}
+
+.rui-tabs__trigger {
+  appearance: none;
+  background: transparent;
+  border: 0;
+  border-bottom: 2px solid transparent;
+  color: color-mix(in srgb, var(--rui-color-ink) 70%, transparent);
+  cursor: pointer;
+  font: inherit;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  margin-bottom: -1px;
+  min-height: 2.75rem;
+  padding: 0 0.875rem;
+  transition: background-color 160ms ease, border-color 160ms ease, color 160ms ease;
+
+  &:hover:not(:disabled) {
+    background: var(--rui-color-interaction-hover);
+    color: var(--rui-color-ink);
+  }
+
+  &[data-state="active"] {
+    border-color: var(--rui-color-ink);
+    color: var(--rui-color-ink);
+  }
+
+  &:focus-visible {
+    border-radius: var(--rui-radius-sm);
+    box-shadow: 0 0 0 4px var(--rui-color-focus-ring);
+    outline: none;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+}
+
+.rui-tabs[data-orientation="vertical"] .rui-tabs__trigger {
+  border-bottom: 0;
+  border-radius: var(--rui-radius-sm);
+  margin: 0;
+  text-align: left;
+}
+
+.rui-tabs[data-orientation="vertical"] .rui-tabs__trigger[data-state="active"] {
+  background: var(--rui-color-interaction-selected);
+}
+
+.rui-tabs__content {
+  line-height: 1.5;
+  padding: var(--rui-space-md) 0;
+}
+
+.rui-tabs__content:focus-visible {
+  border-radius: var(--rui-radius-sm);
+  box-shadow: 0 0 0 4px var(--rui-color-focus-ring);
+  outline: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rui-tabs__trigger { transition-duration: 0.01ms; }
+}

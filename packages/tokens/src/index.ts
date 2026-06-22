@@ -3,9 +3,22 @@ export const tokens = {
     surface: "#fffaf1",
     canvas: "#f6efe3",
     ink: "#1d1a16",
+    inkHover: "#342f2a",
     accent: "#c56a1b",
     accentMuted: "#f2d3b3",
+    accentMutedHover: "#ebc59b",
+    accentText: "#5f3309",
     border: "#d6c6b2",
+    borderStrong: "#8f7c67",
+    borderHover: "#6f5f50",
+    focusRing: "rgba(197, 106, 27, 0.28)",
+    interaction: {
+      hover: "rgba(29, 26, 22, 0.05)",
+      selected: "rgba(29, 26, 22, 0.08)"
+    },
+    overlay: {
+      backdrop: "rgba(29, 26, 22, 0.48)"
+    },
     status: {
       default: {
         bg: "rgba(29, 26, 22, 0.06)",
@@ -48,7 +61,8 @@ export const tokens = {
   radius: {
     sm: "6px",
     md: "12px",
-    lg: "20px"
+    lg: "20px",
+    pill: "999px"
   },
   space: {
     xs: "4px",
@@ -58,7 +72,17 @@ export const tokens = {
     xl: "32px"
   },
   shadow: {
-    card: "0 10px 30px rgba(29, 26, 22, 0.08)"
+    card: "0 10px 30px rgba(29, 26, 22, 0.08)",
+    action: "0 4px 8px rgba(29, 26, 22, 0.12)",
+    floating: "0 8px 12px rgba(29, 26, 22, 0.14)",
+    modal: "0 8px 12px rgba(29, 26, 22, 0.18)",
+    thumb: "0 1px 3px rgba(29, 26, 22, 0.28)"
+  },
+  zIndex: {
+    dropdown: 200,
+    popover: 300,
+    modalBackdrop: 400,
+    modal: 410
   }
 } as const;
 

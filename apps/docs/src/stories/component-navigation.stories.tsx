@@ -53,12 +53,17 @@ const categories = [
   {
     name: "表单",
     description: "覆盖输入、选择、校验提示和表单项组合。",
-    components: ["Field", "Input", "Textarea", "Checkbox", "Radio", "Select"]
+    components: ["Field", "Input", "Textarea", "Checkbox", "Radio", "Select", "Switch"]
+  },
+  {
+    name: "导航",
+    description: "组织并列内容和对象级操作入口。",
+    components: ["Tabs", "DropdownMenu"]
   },
   {
     name: "反馈",
-    description: "用于后续放置 Alert、Toast、Modal、Tooltip 等响应状态和提示类组件。",
-    components: ["待补充"]
+    description: "处理需要聚焦的短流程与轻量上下文内容。",
+    components: ["Dialog", "Popover"]
   },
   {
     name: "数据展示",

@@ -1,0 +1,46 @@
+.rui-popover__trigger {
+  min-height: 2.75rem;
+}
+
+.rui-popover__content {
+  animation: rui-popover-in 160ms cubic-bezier(0.22, 1, 0.36, 1);
+  background: var(--rui-color-surface);
+  border: 1px solid var(--rui-color-border);
+  border-radius: var(--rui-radius-md);
+  box-shadow: var(--rui-shadow-floating);
+  box-sizing: border-box;
+  color: var(--rui-color-ink);
+  max-width: min(22rem, calc(100vw - 1rem));
+  overflow: auto;
+  padding: var(--rui-space-md);
+  width: max-content;
+  z-index: var(--rui-z-popover, 300);
+}
+
+.rui-popover__content:focus-visible {
+  box-shadow: 0 0 0 4px var(--rui-color-focus-ring), var(--rui-shadow-floating);
+  outline: none;
+}
+
+@keyframes rui-popover-in {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+}
+
+.rui-popover__content[data-side="top"] {
+  transform-origin: bottom;
+}
+
+.rui-popover__content[data-side="right"] {
+  transform-origin: left;
+}
+
+.rui-popover__content[data-side="left"] {
+  transform-origin: right;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rui-popover__content { animation-duration: 0.01ms; }
+}
