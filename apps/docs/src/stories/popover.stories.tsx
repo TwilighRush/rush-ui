@@ -1,4 +1,4 @@
-import { Checkbox, CheckboxGroup, Field, Popover } from "@rush_ui/react";
+import { Button, Checkbox, CheckboxGroup, Field, Popover, Select } from "@rush_ui/react";
 import type { Meta, StoryObj } from "@storybook/react";
 import { useState } from "react";
 
@@ -47,6 +47,30 @@ export const Placement: Story = {
         <Popover.Content align="end" aria-label="底部提示">末端对齐内容。</Popover.Content>
       </Popover.Root>
     </div>
+  )
+};
+
+export const WithSelect: Story = {
+  name: "内嵌选择器",
+  render: () => (
+    <Popover.Root>
+      <Popover.Trigger>筛选角色</Popover.Trigger>
+      <Popover.Content aria-label="角色筛选条件">
+        <div style={{ display: "grid", gap: 12, width: 280 }}>
+          <Field label="成员角色">
+            <Select
+              options={[
+                { label: "管理员", value: "admin" },
+                { label: "编辑者", value: "editor" },
+                { label: "只读成员", value: "viewer" }
+              ]}
+              placeholder="请选择角色"
+            />
+          </Field>
+          <Button size="sm">应用筛选</Button>
+        </div>
+      </Popover.Content>
+    </Popover.Root>
   )
 };
 

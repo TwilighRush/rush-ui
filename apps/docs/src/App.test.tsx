@@ -9,5 +9,10 @@ describe("App", () => {
 
     expect(screen.getByText("面向后台系统的 React 组件库基础工程")).toBeInTheDocument();
     expect(screen.getByText("@rush_ui/react")).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: "Dialog 文档示例" })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: "DropdownMenu 文档示例" })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: "Popover 文档示例" })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: "Switch 文档示例" })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: "Tabs 文档示例" })).toBeInTheDocument();
   });
 });

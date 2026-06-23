@@ -8,13 +8,15 @@ import { Portal } from "../internal/Portal";
 import { createComponentClassName } from "../internal/component-class-name";
 import { focusFirst, focusRelativeTo, getFocusableElements } from "../internal/focus";
 import { joinClassNames } from "../internal/join-class-names";
-import { useModalBranch } from "../internal/modal-layer";
+import { ModalLayerProvider, getModalBranchZIndex, useModalBranch, useModalLayer } from "../internal/modal-layer";
 import { useAnchoredPosition } from "../internal/use-anchored-position";
 import type { FloatingAlign, FloatingSide } from "../internal/use-anchored-position";
 import { useControllableState } from "../internal/use-controllable-state";
 import { useDismissableLayer } from "../internal/use-dismissable-layer";
 import { useMergedRefs } from "../internal/use-merged-refs";
 import "./popover.less";
+
+const POPOVER_Z_INDEX = "var(--rui-z-popover, 300)";
 
 interface PopoverContextValue {
   open: boolean;
@@ -87,6 +89,8 @@ const PopoverContent = forwardRef<HTMLDivElement, PopoverContentProps>(function 
   const mergedRef = useMergedRefs(ref, context.contentRef);
   const { contentRef, open, setOpen, triggerRef } = context;
   const layerRefs = useMemo(() => [context.triggerRef, context.contentRef], [context.contentRef, context.triggerRef]);
+  const branchesRef = useRef(new Set<HTMLElement>());
+  const parentLayer = useModalLayer();
   const ownerDocument = context.triggerRef.current?.ownerDocument;
   const position = useAnchoredPosition({
     open: context.open,
@@ -96,7 +100,23 @@ const PopoverContent = forwardRef<HTMLDivElement, PopoverContentProps>(function 
     side,
     gap: sideOffset
   });
-  useModalBranch(context.contentRef, context.open);
+  const modalBranchZIndex = useModalBranch(context.contentRef, context.open);
+  const nestedBranchZIndex = getModalBranchZIndex(props.style?.zIndex ?? modalBranchZIndex, POPOVER_Z_INDEX);
+  const nestedLayer = useMemo(
+    () => ({
+      containsBranch: (target: Node) => Array.from(branchesRef.current).some((branch) => branch.contains(target)),
+      branchZIndex: nestedBranchZIndex,
+      registerBranch: (branch: HTMLElement) => {
+        branchesRef.current.add(branch);
+        const unregisterParentBranch = parentLayer?.registerBranch(branch);
+        return () => {
+          branchesRef.current.delete(branch);
+          unregisterParentBranch?.();
+        };
+      }
+    }),
+    [nestedBranchZIndex, parentLayer]
+  );
 
   useDismissableLayer({
     open: context.open,
@@ -113,14 +133,16 @@ const PopoverContent = forwardRef<HTMLDivElement, PopoverContentProps>(function 
     const frame = ownerWindow.requestAnimationFrame(() => focusFirst(content, initialFocusRef?.current));
     const handleFocusIn = (event: FocusEvent) => {
       if (!(event.target instanceof Node)) return;
-      if (!content.contains(event.target) && !triggerRef.current?.contains(event.target)) setOpen(false);
+      if (!content.contains(event.target) && !triggerRef.current?.contains(event.target) && !nestedLayer.containsBranch(event.target)) {
+        setOpen(false);
+      }
     };
     documentNode.addEventListener("focusin", handleFocusIn);
     return () => {
       ownerWindow.cancelAnimationFrame(frame);
       documentNode.removeEventListener("focusin", handleFocusIn);
     };
-  }, [contentRef, initialFocusRef, open, setOpen, triggerRef]);
+  }, [contentRef, initialFocusRef, nestedLayer, open, setOpen, triggerRef]);
 
   function handleKeyDown(event: KeyboardEvent<HTMLDivElement>) {
     onKeyDown?.(event);
@@ -157,10 +179,10 @@ const PopoverContent = forwardRef<HTMLDivElement, PopoverContentProps>(function 
         id={context.contentId}
         onKeyDown={handleKeyDown}
         role="dialog"
-        style={{ ...position.style, ...props.style }}
+        style={{ ...position.style, zIndex: modalBranchZIndex, ...props.style }}
         tabIndex={-1}
       >
-        {children}
+        <ModalLayerProvider value={nestedLayer}>{children}</ModalLayerProvider>
       </div>
     </Portal>
   );

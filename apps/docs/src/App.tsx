@@ -1,4 +1,21 @@
-import { Badge, Button, Checkbox, CheckboxGroup, Field, IconButton, Input, Radio, RadioGroup, Select, Textarea } from "@rush_ui/react";
+import {
+  Badge,
+  Button,
+  Checkbox,
+  CheckboxGroup,
+  Dialog,
+  DropdownMenu,
+  Field,
+  IconButton,
+  Input,
+  Popover,
+  Radio,
+  RadioGroup,
+  Select,
+  Switch,
+  Tabs,
+  Textarea
+} from "@rush_ui/react";
 import { tokens } from "@rush_ui/tokens";
 
 const packageRoles = [
@@ -29,6 +46,12 @@ const selectStatusOptions = [
   { label: "待处理", textValue: "pending", value: "pending" },
   { label: "处理中", textValue: "processing", value: "processing" },
   { label: "已完成", textValue: "done", value: "done" }
+] as const;
+
+const memberRoleOptions = [
+  { description: "可以管理成员、角色和系统设置。", label: "管理员", textValue: "admin", value: "admin" },
+  { description: "可以编辑业务数据和处理审批任务。", label: "编辑者", textValue: "editor", value: "editor" },
+  { description: "只能查看授权范围内的数据。", label: "只读成员", textValue: "viewer", value: "viewer" }
 ] as const;
 
 export function App() {
@@ -187,6 +210,103 @@ export function App() {
             ]}
           />
           <Select aria-label="导出状态" emptyText="暂无状态" options={[]} placeholder="请选择状态" />
+        </div>
+      </section>
+
+      <section className="token-card">
+        <h2>Switch 文档示例</h2>
+        <p className="lede">Switch 用于立即生效的二元设置，基于原生 checkbox 暴露表单能力，并通过 role=switch 提供开关语义。</p>
+        <div className="input-demo-grid">
+          <Switch defaultChecked description="开启后系统会向成员发送审批与权限变更通知。">
+            邮件通知
+          </Switch>
+          <Switch description="仅影响新提交的低风险申请。">自动通过低风险审批</Switch>
+          <Switch disabled>禁止外部成员登录</Switch>
+          <Switch errorText="上线前必须启用审计日志" invalid>
+            审计日志
+          </Switch>
+        </div>
+      </section>
+
+      <section className="token-card">
+        <h2>Tabs 文档示例</h2>
+        <p className="lede">Tabs 用于在同一工作上下文中切换并列内容，支持自动/手动激活、水平/垂直方向和禁用项跳过。</p>
+        <Tabs.Root defaultValue="members">
+          <Tabs.List aria-label="工作区设置">
+            <Tabs.Trigger value="members">成员</Tabs.Trigger>
+            <Tabs.Trigger value="roles">角色</Tabs.Trigger>
+            <Tabs.Trigger disabled value="audit">
+              审计
+            </Tabs.Trigger>
+          </Tabs.List>
+          <Tabs.Content value="members">管理成员状态、部门和访问范围。</Tabs.Content>
+          <Tabs.Content value="roles">配置角色权限与默认数据范围。</Tabs.Content>
+          <Tabs.Content value="audit">查看关键配置和成员权限的变更记录。</Tabs.Content>
+        </Tabs.Root>
+      </section>
+
+      <section className="token-card">
+        <h2>DropdownMenu 文档示例</h2>
+        <p className="lede">DropdownMenu 用于承载与当前对象相关的紧凑操作，支持方向键、Home、End、Escape 和多字符定位。</p>
+        <div className="button-demo-row">
+          <DropdownMenu.Root>
+            <DropdownMenu.Trigger>成员操作</DropdownMenu.Trigger>
+            <DropdownMenu.Content aria-label="成员操作">
+              <DropdownMenu.Label>成员操作</DropdownMenu.Label>
+              <DropdownMenu.Item textValue="edit member">编辑成员</DropdownMenu.Item>
+              <DropdownMenu.Item textValue="reset password">重置密码</DropdownMenu.Item>
+              <DropdownMenu.Item disabled textValue="transfer owner">
+                转移所有权
+              </DropdownMenu.Item>
+              <DropdownMenu.Separator />
+              <DropdownMenu.Item textValue="remove member">移除成员</DropdownMenu.Item>
+            </DropdownMenu.Content>
+          </DropdownMenu.Root>
+        </div>
+      </section>
+
+      <section className="token-card">
+        <h2>Popover 文档示例</h2>
+        <p className="lede">Popover 用于轻量筛选和快捷设置，打开后焦点进入内容，Escape 或外部点击会关闭并恢复触发器焦点。</p>
+        <div className="button-demo-row">
+          <Popover.Root>
+            <Popover.Trigger>筛选成员</Popover.Trigger>
+            <Popover.Content aria-label="成员筛选条件">
+              <div className="input-demo-grid">
+                <Field label="成员状态">
+                  <Select options={selectStatusOptions} placeholder="请选择状态" />
+                </Field>
+                <Checkbox defaultChecked>只看已启用成员</Checkbox>
+                <Button size="sm">应用筛选</Button>
+              </div>
+            </Popover.Content>
+          </Popover.Root>
+        </div>
+      </section>
+
+      <section className="token-card">
+        <h2>Dialog 文档示例</h2>
+        <p className="lede">Dialog 用于阻断式确认和短流程编辑，负责初始焦点、焦点环、背景 inert、Escape 关闭和焦点恢复。</p>
+        <div className="button-demo-row">
+          <Dialog.Root>
+            <Dialog.Trigger>编辑成员</Dialog.Trigger>
+            <Dialog.Content>
+              <Dialog.Title>编辑成员</Dialog.Title>
+              <Dialog.Description>成员信息和权限变更会在保存后立即生效。</Dialog.Description>
+              <div className="input-demo-grid">
+                <Field label="成员名称" required>
+                  <Input defaultValue="李明" />
+                </Field>
+                <Field helpText="Dialog 内的 Select 下拉层会显示在模态内容上方。" label="成员角色" required>
+                  <Select defaultValue="editor" options={memberRoleOptions} />
+                </Field>
+                <div className="dialog-actions">
+                  <Dialog.Close>取消</Dialog.Close>
+                  <Button>保存变更</Button>
+                </div>
+              </div>
+            </Dialog.Content>
+          </Dialog.Root>
         </div>
       </section>
 

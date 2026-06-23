@@ -280,7 +280,7 @@ export const Select = forwardRef<HTMLButtonElement, SelectProps>(function Select
     maxHeight: POPUP_MAX_HEIGHT
   });
   const dismissableRefs = useMemo(() => [rootRef, popupRef], []);
-  useModalBranch(popupRef, open);
+  const modalBranchZIndex = useModalBranch(popupRef, open);
 
   useDismissableLayer({
     open,
@@ -398,7 +398,7 @@ export const Select = forwardRef<HTMLButtonElement, SelectProps>(function Select
     <div
       ref={popupRef}
       className={joinClassNames(createComponentClassName("select", "popup"), "rui-select__popup")}
-      style={popupPosition.style}
+      style={{ ...popupPosition.style, zIndex: modalBranchZIndex }}
       data-side={popupPosition.side}
       data-empty={options.length === 0 ? "" : undefined}
       data-size={size}

@@ -137,7 +137,7 @@ const DropdownMenuContent = forwardRef<HTMLDivElement, DropdownMenuContentProps>
     side,
     gap: sideOffset
   });
-  useModalBranch(context.contentRef, context.open);
+  const modalBranchZIndex = useModalBranch(context.contentRef, context.open);
 
   useDismissableLayer({
     open: context.open,
@@ -222,7 +222,7 @@ const DropdownMenuContent = forwardRef<HTMLDivElement, DropdownMenuContentProps>
         id={context.contentId}
         onKeyDown={handleKeyDown}
         role="menu"
-        style={{ ...position.style, ...props.style }}
+        style={{ ...position.style, zIndex: modalBranchZIndex, ...props.style }}
         tabIndex={-1}
       >
         {children}

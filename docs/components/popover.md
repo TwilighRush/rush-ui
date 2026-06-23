@@ -17,6 +17,7 @@
 - 打开后焦点进入 `initialFocusRef`、第一个可聚焦后代或 Content。
 - Escape 与外部点击关闭；Escape 关闭时焦点回到触发器。
 - 从内容末尾按 Tab 时关闭并继续到 Trigger 后的页面元素，Shift+Tab 从首项返回 Trigger。
+- Content 内可以组合 Select、DropdownMenu 等会通过 Portal 渲染的子级浮层；子级浮层会显示在 Popover 内容之上。
 - 不锁定背景滚动，也不建立焦点环；需要阻断流程时应使用 `Dialog`。
 
 ## 定位边界

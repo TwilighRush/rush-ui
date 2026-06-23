@@ -252,6 +252,91 @@ docs/
 - Select 文档: [docs/components/select.md](docs/components/select.md)
 - Select RFC: [docs/rfcs/select.md](docs/rfcs/select.md)
 
+### Switch
+
+`Switch` 用于立即生效的开关设置，使用原生 checkbox 作为交互和表单基础，支持：
+
+- `size`: `sm | md | lg`
+- `checked` / `defaultChecked`
+- `disabled`
+- `invalid`
+- `description`
+- `errorText`
+- `onCheckedChange`
+- `forwardRef<HTMLInputElement>`
+
+相关文档：
+
+- Switch 文档: [docs/components/switch.md](docs/components/switch.md)
+- Switch RFC: [docs/rfcs/switch.md](docs/rfcs/switch.md)
+
+### Tabs
+
+`Tabs` 用于在同一页面区域切换互斥内容面板，支持：
+
+- `value` / `defaultValue`
+- `orientation`: `horizontal | vertical`
+- `activationMode`: `automatic | manual`
+- `forceMount`
+- 禁用标签页跳过
+- 方向键、Home 和 End 键盘导航
+- `forwardRef` 到 Root、List、Trigger 和 Content
+
+相关文档：
+
+- Tabs 文档: [docs/components/tabs.md](docs/components/tabs.md)
+- Tabs RFC: [docs/rfcs/tabs.md](docs/rfcs/tabs.md)
+
+### DropdownMenu
+
+`DropdownMenu` 用于收纳与当前对象相关的紧凑操作，支持：
+
+- `open` / `defaultOpen`
+- `onOpenChange`
+- `side` / `align` / `sideOffset`
+- `disabled`
+- `textValue`
+- `onSelect`
+- 方向键、Home、End、Escape 和多字符定位
+- `forwardRef` 到 Trigger、Content、Item、Label 和 Separator
+
+相关文档：
+
+- DropdownMenu 文档: [docs/components/dropdown-menu.md](docs/components/dropdown-menu.md)
+- DropdownMenu RFC: [docs/rfcs/dropdown-menu.md](docs/rfcs/dropdown-menu.md)
+
+### Popover
+
+`Popover` 用于轻量筛选、快捷设置和补充信息，支持：
+
+- `open` / `defaultOpen`
+- `onOpenChange`
+- `side` / `align` / `sideOffset`
+- `initialFocusRef`
+- Escape 和外部点击关闭
+- `forwardRef` 到 Trigger 和 Content
+
+相关文档：
+
+- Popover 文档: [docs/components/popover.md](docs/components/popover.md)
+- Popover RFC: [docs/rfcs/popover.md](docs/rfcs/popover.md)
+
+### Dialog
+
+`Dialog` 用于阻断式确认和短流程编辑，支持：
+
+- `open` / `defaultOpen`
+- `onOpenChange`
+- `closeOnBackdropClick`
+- `initialFocusRef`
+- 背景 inert、页面滚动锁定、焦点环和关闭后焦点恢复
+- `forwardRef` 到 Trigger、Content、Title、Description 和 Close
+
+相关文档：
+
+- Dialog 文档: [docs/components/dialog.md](docs/components/dialog.md)
+- Dialog RFC: [docs/rfcs/dialog.md](docs/rfcs/dialog.md)
+
 ### IconButton
 
 `IconButton` 用于纯图标操作，支持：

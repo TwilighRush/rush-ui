@@ -5,6 +5,7 @@ import userEvent from "@testing-library/user-event";
 import { describe, expect, it, vi } from "vitest";
 
 import { Popover } from "../popover";
+import { Select } from "../select";
 import { Dialog } from "./Dialog";
 
 function DialogExample({ onOpenChange }: { onOpenChange?: (open: boolean) => void }) {
@@ -167,6 +168,83 @@ describe("Dialog", () => {
     await waitFor(() => expect(screen.getByRole("button", { name: "应用" })).toHaveFocus());
     fireEvent.keyDown(document, { key: "Escape" });
     expect(screen.queryByRole("dialog", { name: "筛选条件" })).not.toBeInTheDocument();
+    expect(screen.getByRole("dialog", { name: "编辑成员" })).toBeInTheDocument();
+  });
+
+  it("renders a nested Select popup above the modal layer", () => {
+    render(
+      <Dialog.Root defaultOpen>
+        <Dialog.Trigger>打开</Dialog.Trigger>
+        <Dialog.Content>
+          <Dialog.Title>编辑成员</Dialog.Title>
+          <Select
+            aria-label="成员角色"
+            options={[
+              { label: "管理员", value: "admin" },
+              { label: "编辑者", value: "editor" }
+            ]}
+          />
+        </Dialog.Content>
+      </Dialog.Root>
+    );
+
+    const select = screen.getByRole("combobox", { name: "成员角色" });
+    fireEvent.click(select);
+
+    const popup = screen.getByRole("listbox").parentElement as HTMLElement;
+    expect(popup).toHaveClass("rui-select__popup");
+    expect(popup.style.zIndex).toBe("calc(var(--rui-z-modal, 410) + 1)");
+
+    fireEvent.click(screen.getByRole("option", { name: "编辑者" }));
+    expect(select).toHaveTextContent("编辑者");
+  });
+
+  it("derives nested popup z-index from a custom dialog z-index", () => {
+    render(
+      <Dialog.Root defaultOpen>
+        <Dialog.Trigger>打开</Dialog.Trigger>
+        <Dialog.Content style={{ zIndex: 900 }}>
+          <Dialog.Title>编辑成员</Dialog.Title>
+          <Select
+            aria-label="成员角色"
+            options={[
+              { label: "管理员", value: "admin" },
+              { label: "编辑者", value: "editor" }
+            ]}
+          />
+        </Dialog.Content>
+      </Dialog.Root>
+    );
+
+    fireEvent.click(screen.getByRole("combobox", { name: "成员角色" }));
+
+    expect((screen.getByRole("listbox").parentElement as HTMLElement).style.zIndex).toBe("901");
+  });
+
+  it("lets a nested Select handle Escape without closing the dialog", () => {
+    render(
+      <Dialog.Root defaultOpen>
+        <Dialog.Trigger>打开</Dialog.Trigger>
+        <Dialog.Content>
+          <Dialog.Title>编辑成员</Dialog.Title>
+          <Select
+            aria-label="成员角色"
+            options={[
+              { label: "管理员", value: "admin" },
+              { label: "编辑者", value: "editor" }
+            ]}
+          />
+        </Dialog.Content>
+      </Dialog.Root>
+    );
+
+    const select = screen.getByRole("combobox", { name: "成员角色" });
+    fireEvent.click(select);
+    expect(screen.getByRole("listbox")).toBeInTheDocument();
+
+    fireEvent.keyDown(select, { key: "Escape" });
+
+    expect(screen.queryByRole("listbox")).not.toBeInTheDocument();
     expect(screen.getByRole("dialog", { name: "编辑成员" })).toBeInTheDocument();
   });
 });

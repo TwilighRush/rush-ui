@@ -8,12 +8,14 @@ import { Portal } from "../internal/Portal";
 import { createComponentClassName } from "../internal/component-class-name";
 import { focusFirst, trapTabKey } from "../internal/focus";
 import { joinClassNames } from "../internal/join-class-names";
-import { ModalLayerProvider } from "../internal/modal-layer";
+import { ModalLayerProvider, getModalBranchZIndex } from "../internal/modal-layer";
 import { useBodyScrollLock } from "../internal/use-body-scroll-lock";
 import { useControllableState } from "../internal/use-controllable-state";
 import { useInertOthers } from "../internal/use-inert-others";
 import { useMergedRefs } from "../internal/use-merged-refs";
 import "./dialog.less";
+
+const DIALOG_Z_INDEX = "var(--rui-z-modal, 410)";
 
 interface DialogContextValue {
   open: boolean;
@@ -118,6 +120,7 @@ const DialogContent = forwardRef<HTMLDivElement, DialogContentProps>(function Di
     closeOnBackdropClick = true,
     initialFocusRef,
     onKeyDown,
+    style,
     ...props
   },
   ref
@@ -129,15 +132,17 @@ const DialogContent = forwardRef<HTMLDivElement, DialogContentProps>(function Di
   const { open, setOpen, triggerRef } = context;
   const ownerDocument = triggerRef.current?.ownerDocument;
   const branchesRef = useRef(new Set<HTMLElement>());
+  const branchZIndex = getModalBranchZIndex(style?.zIndex, DIALOG_Z_INDEX);
   const modalLayer = useMemo(
     () => ({
       containsBranch: (target: Node) => Array.from(branchesRef.current).some((branch) => branch.contains(target)),
+      branchZIndex,
       registerBranch: (branch: HTMLElement) => {
         branchesRef.current.add(branch);
         return () => branchesRef.current.delete(branch);
       }
     }),
-    []
+    [branchZIndex]
   );
 
   useBodyScrollLock(open, ownerDocument);
@@ -168,6 +173,7 @@ const DialogContent = forwardRef<HTMLDivElement, DialogContentProps>(function Di
     };
     const handleKeyDown = (event: globalThis.KeyboardEvent) => {
       if (event.key !== "Escape" || event.defaultPrevented) return;
+      if (branchesRef.current.size > 0) return;
       event.preventDefault();
       setOpen(false);
     };
@@ -209,6 +215,7 @@ const DialogContent = forwardRef<HTMLDivElement, DialogContentProps>(function Di
             onKeyDown?.(event);
             if (event.defaultPrevented) return;
             if (event.key === "Escape") {
+              if (branchesRef.current.size > 0) return;
               event.preventDefault();
               event.stopPropagation();
               context.setOpen(false);
@@ -217,6 +224,7 @@ const DialogContent = forwardRef<HTMLDivElement, DialogContentProps>(function Di
             if (contentRef.current) trapTabKey(event, contentRef.current);
           }}
           role="dialog"
+          style={style}
           tabIndex={-1}
         >
           <ModalLayerProvider value={modalLayer}>{children}</ModalLayerProvider>
