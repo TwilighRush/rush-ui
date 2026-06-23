@@ -35,6 +35,7 @@ docs/
 
 当前已提供：
 
+- `Alert`
 - `Badge`
 - `Button`
 - `Checkbox`
@@ -51,6 +52,8 @@ docs/
 - `Switch`
 - `Tabs`
 - `Textarea`
+- `AlertProps`
+- `AlertVariant`
 - `BadgeProps`
 - `BadgeVariant`
 - `BadgeSize`
@@ -131,6 +134,23 @@ docs/
 - 组件集成展示
 
 ## 已实现内容
+
+### Alert
+
+`Alert` 用于页面、表单和流程区域内的非阻断反馈，支持：
+
+- `variant`: `default | success | warning | error | info`
+- `title`
+- `icon`
+- `actions`
+- `className`
+- `forwardRef<HTMLDivElement>`
+- `role="status"` / `role="alert"` 默认语义，可由使用方覆盖
+
+相关文档：
+
+- Alert 文档: [docs/components/alert.md](docs/components/alert.md)
+- Alert RFC: [docs/rfcs/alert.md](docs/rfcs/alert.md)
 
 ### Badge
 

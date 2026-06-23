@@ -42,7 +42,8 @@ export const Overview: Story = {
       </header>
       <section style={panelStyles}>
         <p style={{ color: "var(--rui-color-ink-muted)", lineHeight: 1.7, margin: 0 }}>
-          当前分类先作为稳定导航入口保留。后续可将 Alert、Toast、Modal、Tooltip、Loading 等提示与响应状态组件归入这里。
+          当前已包含区域内提示 Alert，以及承担聚焦流程和上下文内容的 Dialog、Popover。后续可将 Toast、Tooltip、Loading
+          等提示与响应状态组件归入这里。
         </p>
       </section>
     </main>

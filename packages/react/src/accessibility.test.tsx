@@ -3,6 +3,7 @@ import axe from "axe-core";
 import type { ReactElement } from "react";
 import { describe, expect, it } from "vitest";
 
+import { Alert } from "./alert";
 import { Dialog } from "./dialog";
 import { DropdownMenu } from "./dropdown-menu";
 import { Popover } from "./popover";
@@ -10,6 +11,7 @@ import { Switch } from "./switch";
 import { Tabs } from "./tabs";
 
 const cases: Array<[string, ReactElement]> = [
+  ["Alert", <Alert key="alert" title="同步完成">客户资料已更新。</Alert>],
   ["Switch", <Switch key="switch">启用通知</Switch>],
   [
     "Tabs",

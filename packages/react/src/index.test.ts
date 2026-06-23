@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 
 import {
+  Alert,
   Badge,
   Button,
   Checkbox,
@@ -21,6 +22,7 @@ import {
 
 describe("@rush_ui/react entry", () => {
   it("exports public components", () => {
+    expect(Alert).toBeTypeOf("object");
     expect(Badge).toBeTypeOf("object");
     expect(Button).toBeTypeOf("object");
     expect(Checkbox).toBeTypeOf("object");

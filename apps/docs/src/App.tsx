@@ -1,4 +1,5 @@
 import {
+  Alert,
   Badge,
   Button,
   Checkbox,
@@ -99,6 +100,30 @@ export function App() {
           <Badge variant="error">错误</Badge>
           <Badge variant="info">信息</Badge>
           <Badge variant="processing">处理中</Badge>
+        </div>
+      </section>
+
+      <section className="token-card">
+        <h2>Alert 文档示例</h2>
+        <p className="lede">Alert 用于页面、表单和流程区域内的非阻断反馈，支持标题、正文、图标和轻量操作。</p>
+        <div className="input-demo-grid">
+          <Alert title="同步完成" variant="success">
+            客户资料已更新，相关审批任务也已重新计算。
+          </Alert>
+          <Alert
+            actions={
+              <>
+                <Button size="sm" variant="outline">
+                  稍后处理
+                </Button>
+                <Button size="sm">查看详情</Button>
+              </>
+            }
+            title="发现 12 条高风险记录"
+            variant="warning"
+          >
+            系统已暂停自动通过规则，建议先确认命中原因再继续批量审批。
+          </Alert>
         </div>
       </section>
 
