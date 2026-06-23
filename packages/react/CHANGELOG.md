@@ -1,5 +1,17 @@
 # @rush_ui/react
 
+## 0.2.0
+
+### Minor Changes
+
+- b78367a: 新增 Alert 区域内提示组件，支持 default、success、warning、error、info 状态、标题、图标和操作区，并补充文档、Storybook 示例与测试。
+- 4e21164: 新增经 RFC 评审的 Dialog、DropdownMenu、Popover、Switch 和 Tabs 组件，补齐共享 Portal、浮层定位、模态分支、焦点管理与受控状态能力，并增加浮层、遮罩和交互状态设计令牌。
+
+### Patch Changes
+
+- df42e3a: 补充 npm 包说明、仓库与公开发布元数据，并收紧类型声明产物，避免发布测试文件和 Vite 配置声明。
+- 3a93f2d: 修复 Dialog 和 Popover 内嵌 Select、DropdownMenu 等 Portal 浮层的层级，使嵌套浮层显示在父级浮层之上并可正常交互。
+
 ## 0.1.2
 
 ### Patch Changes

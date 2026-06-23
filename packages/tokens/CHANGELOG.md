@@ -1,5 +1,12 @@
 # @rush_ui/tokens
 
+## 0.0.3
+
+### Patch Changes
+
+- df42e3a: 补充 npm 包说明、仓库与公开发布元数据，并收紧类型声明产物，避免发布测试文件和 Vite 配置声明。
+- 4e21164: 新增经 RFC 评审的 Dialog、DropdownMenu、Popover、Switch 和 Tabs 组件，补齐共享 Portal、浮层定位、模态分支、焦点管理与受控状态能力，并增加浮层、遮罩和交互状态设计令牌。
+
 ## 0.0.2
 
 ### Patch Changes
