@@ -1,6 +1,6 @@
 {
   "name": "@rush_ui/tokens",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "private": false,
   "description": "Rush UI 组件库使用的设计 token。",
   "license": "MIT",
