@@ -6,6 +6,7 @@ import {
   CheckboxGroup,
   Dialog,
   DropdownMenu,
+  Empty,
   Field,
   IconButton,
   Input,
@@ -125,6 +126,23 @@ export function App() {
           >
             系统已暂停自动通过规则，建议先确认命中原因再继续批量审批。
           </Alert>
+        </div>
+      </section>
+
+      <section className="token-card">
+        <h2>Empty 文档示例</h2>
+        <p className="lede">Empty 用于表格无数据、搜索无结果和配置缺失等空状态，支持标题、说明、图标和操作区。</p>
+        <div className="empty-demo-panel">
+          <Empty
+            actions={
+              <>
+                <Button variant="outline">清空筛选</Button>
+                <Button>新建成员</Button>
+              </>
+            }
+            description="没有成员匹配当前关键词和状态筛选，可以清空条件后重新查看全部成员。"
+            title="未找到匹配结果"
+          />
         </div>
       </section>
 

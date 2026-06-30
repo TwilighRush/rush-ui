@@ -11,6 +11,7 @@ describe("App", () => {
     expect(screen.getByText("@rush_ui/react")).toBeInTheDocument();
     expect(screen.getByRole("heading", { name: "Dialog 文档示例" })).toBeInTheDocument();
     expect(screen.getByRole("heading", { name: "DropdownMenu 文档示例" })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: "Empty 文档示例" })).toBeInTheDocument();
     expect(screen.getByRole("heading", { name: "Popover 文档示例" })).toBeInTheDocument();
     expect(screen.getByRole("heading", { name: "Switch 文档示例" })).toBeInTheDocument();
     expect(screen.getByRole("heading", { name: "Tabs 文档示例" })).toBeInTheDocument();

@@ -6,6 +6,7 @@ import { describe, expect, it } from "vitest";
 import { Alert } from "./alert";
 import { Dialog } from "./dialog";
 import { DropdownMenu } from "./dropdown-menu";
+import { Empty } from "./empty";
 import { Popover } from "./popover";
 import { Switch } from "./switch";
 import { Tabs } from "./tabs";
@@ -13,6 +14,7 @@ import { Tooltip } from "./tooltip";
 
 const cases: Array<[string, ReactElement]> = [
   ["Alert", <Alert key="alert" title="同步完成">客户资料已更新。</Alert>],
+  ["Empty", <Empty actions={<button type="button">新建成员</button>} key="empty" title="暂无成员" />],
   ["Switch", <Switch key="switch">启用通知</Switch>],
   [
     "Tabs",

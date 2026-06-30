@@ -8,6 +8,7 @@ import {
   CheckboxGroup,
   Dialog,
   DropdownMenu,
+  Empty,
   Field,
   IconButton,
   Input,
@@ -30,6 +31,7 @@ describe("@rush_ui/react entry", () => {
     expect(CheckboxGroup).toBeTypeOf("object");
     expect(Dialog.Root).toBeTypeOf("function");
     expect(DropdownMenu.Root).toBeTypeOf("function");
+    expect(Empty).toBeTypeOf("object");
     expect(Field).toBeTypeOf("object");
     expect(IconButton).toBeTypeOf("object");
     expect(Input).toBeTypeOf("object");

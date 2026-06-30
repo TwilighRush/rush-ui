@@ -26,6 +26,8 @@ export type {
   DropdownMenuSeparatorProps,
   DropdownMenuTriggerProps
 } from "./dropdown-menu";
+export { Empty } from "./empty";
+export type { EmptyProps, EmptySize } from "./empty";
 export { Field } from "./field";
 export type { FieldControlProps, FieldProps } from "./field";
 export { IconButton } from "./icon-button";

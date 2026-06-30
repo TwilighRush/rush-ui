@@ -44,6 +44,7 @@ docs/
 - `CheckboxGroup`
 - `Dialog`
 - `DropdownMenu`
+- `Empty`
 - `Field`
 - `IconButton`
 - `Input`
@@ -77,6 +78,8 @@ docs/
 - `DropdownMenuTriggerProps`
 - `DropdownMenuContentProps`
 - `DropdownMenuItemProps`
+- `EmptyProps`
+- `EmptySize`
 - `FieldProps`
 - `FieldControlProps`
 - `IconButtonProps`
@@ -171,6 +174,23 @@ docs/
 
 - Badge 文档: [docs/components/badge.md](docs/components/badge.md)
 - Badge RFC: [docs/rfcs/badge.md](docs/rfcs/badge.md)
+
+### Empty
+
+`Empty` 用于表格无数据、搜索无结果、首次创建和配置缺失等空状态场景，支持：
+
+- `title`
+- `description`
+- `icon`
+- `actions`
+- `size`: `sm | md | lg`
+- `className`
+- `forwardRef<HTMLDivElement>`
+
+相关文档：
+
+- Empty 文档: [docs/components/empty.md](docs/components/empty.md)
+- Empty RFC: [docs/rfcs/empty.md](docs/rfcs/empty.md)
 
 ### Button
 
