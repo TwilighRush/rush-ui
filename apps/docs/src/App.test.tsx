@@ -14,5 +14,6 @@ describe("App", () => {
     expect(screen.getByRole("heading", { name: "Popover 文档示例" })).toBeInTheDocument();
     expect(screen.getByRole("heading", { name: "Switch 文档示例" })).toBeInTheDocument();
     expect(screen.getByRole("heading", { name: "Tabs 文档示例" })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: "Tooltip 文档示例" })).toBeInTheDocument();
   });
 });

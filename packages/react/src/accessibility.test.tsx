@@ -9,6 +9,7 @@ import { DropdownMenu } from "./dropdown-menu";
 import { Popover } from "./popover";
 import { Switch } from "./switch";
 import { Tabs } from "./tabs";
+import { Tooltip } from "./tooltip";
 
 const cases: Array<[string, ReactElement]> = [
   ["Alert", <Alert key="alert" title="同步完成">客户资料已更新。</Alert>],
@@ -48,6 +49,15 @@ const cases: Array<[string, ReactElement]> = [
         <Dialog.Close>关闭</Dialog.Close>
       </Dialog.Content>
     </Dialog.Root>
+  ],
+  [
+    "Tooltip",
+    <Tooltip.Root defaultOpen key="tooltip">
+      <Tooltip.Trigger>
+        <button type="button">刷新列表</button>
+      </Tooltip.Trigger>
+      <Tooltip.Content>重新获取最新成员数据</Tooltip.Content>
+    </Tooltip.Root>
   ]
 ];
 

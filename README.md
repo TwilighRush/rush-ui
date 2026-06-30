@@ -27,6 +27,8 @@ docs/
   rfcs/           组件 RFC 文档
 ```
 
+组件建设路线参见 [组件路线规划](docs/component-roadmap.md)。
+
 ## 各包职责
 
 ### `@rush_ui/react`
@@ -52,6 +54,7 @@ docs/
 - `Switch`
 - `Tabs`
 - `Textarea`
+- `Tooltip`
 - `AlertProps`
 - `AlertVariant`
 - `BadgeProps`
@@ -102,6 +105,9 @@ docs/
 - `TextareaProps`
 - `TextareaSize`
 - `TextareaAutoSizeOptions`
+- `TooltipRootProps`
+- `TooltipTriggerProps`
+- `TooltipContentProps`
 
 组件内部类名工具仅供源码使用，不从 npm 入口导出。
 
@@ -340,6 +346,23 @@ docs/
 
 - Popover 文档: [docs/components/popover.md](docs/components/popover.md)
 - Popover RFC: [docs/rfcs/popover.md](docs/rfcs/popover.md)
+
+### Tooltip
+
+`Tooltip` 用于图标按钮、字段解释和截断文本等短说明场景，支持：
+
+- `open` / `defaultOpen`
+- `onOpenChange`
+- `openDelay` / `closeDelay`
+- `disabled`
+- `side` / `align` / `sideOffset`
+- hover 延迟打开、focus 立即打开、Escape 关闭
+- `forwardRef` 到 Trigger 子元素和 Content
+
+相关文档：
+
+- Tooltip 文档: [docs/components/tooltip.md](docs/components/tooltip.md)
+- Tooltip RFC: [docs/rfcs/tooltip.md](docs/rfcs/tooltip.md)
 
 ### Dialog
 

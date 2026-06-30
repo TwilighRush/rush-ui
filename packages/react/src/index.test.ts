@@ -17,7 +17,8 @@ import {
   Select,
   Switch,
   Tabs,
-  Textarea
+  Textarea,
+  Tooltip
 } from "./index";
 
 describe("@rush_ui/react entry", () => {
@@ -39,5 +40,6 @@ describe("@rush_ui/react entry", () => {
     expect(Switch).toBeTypeOf("object");
     expect(Tabs.Root).toBeTypeOf("object");
     expect(Textarea).toBeTypeOf("object");
+    expect(Tooltip.Root).toBeTypeOf("function");
   });
 });

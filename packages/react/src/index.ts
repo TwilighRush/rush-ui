@@ -51,3 +51,5 @@ export type {
 } from "./tabs";
 export { Textarea } from "./textarea";
 export type { TextareaAutoSizeOptions, TextareaProps, TextareaSize } from "./textarea";
+export { Tooltip } from "./tooltip";
+export type { TooltipContentProps, TooltipRootProps, TooltipTriggerProps } from "./tooltip";

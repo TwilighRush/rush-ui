@@ -1,0 +1,47 @@
+.rui-tooltip__content {
+  animation: rui-tooltip-in 140ms cubic-bezier(0.22, 1, 0.36, 1);
+  background: var(--rui-color-ink);
+  border: 1px solid color-mix(in srgb, var(--rui-color-surface) 12%, transparent);
+  border-radius: var(--rui-radius-sm);
+  box-shadow: 0 4px 8px rgba(29, 26, 22, 0.16);
+  box-sizing: border-box;
+  color: var(--rui-color-surface);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  line-height: 1.45;
+  max-width: min(18rem, calc(100vw - 1rem));
+  overflow-wrap: anywhere;
+  padding: 0.375rem 0.5rem;
+  pointer-events: auto;
+  width: max-content;
+  z-index: var(--rui-z-tooltip, 500);
+}
+
+.rui-tooltip__content[data-side="top"] {
+  transform-origin: bottom;
+}
+
+.rui-tooltip__content[data-side="right"] {
+  transform-origin: left;
+}
+
+.rui-tooltip__content[data-side="bottom"] {
+  transform-origin: top;
+}
+
+.rui-tooltip__content[data-side="left"] {
+  transform-origin: right;
+}
+
+@keyframes rui-tooltip-in {
+  from {
+    opacity: 0;
+    transform: translateY(-2px) scale(0.98);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rui-tooltip__content {
+    animation-duration: 0.01ms;
+  }
+}

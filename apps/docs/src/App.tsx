@@ -15,7 +15,8 @@ import {
   Select,
   Switch,
   Tabs,
-  Textarea
+  Textarea,
+  Tooltip
 } from "@rush_ui/react";
 import { tokens } from "@rush_ui/tokens";
 
@@ -155,6 +156,43 @@ export function App() {
           <IconButton aria-label="刷新列表" icon={<span>↻</span>} variant="outline" />
           <IconButton aria-label="更多操作" icon={<span>⋯</span>} />
           <IconButton aria-label="关闭面板" icon={<span>×</span>} loading variant="subtle" />
+        </div>
+      </section>
+
+      <section className="token-card">
+        <h2>Tooltip 文档示例</h2>
+        <p className="lede">Tooltip 用于给可聚焦控件提供短说明，适合图标按钮、字段解释和截断文本提示；交互内容应使用 Popover。</p>
+        <div className="input-demo-grid">
+          <div className="button-demo-row">
+            <Tooltip.Root>
+              <Tooltip.Trigger>
+                <IconButton aria-label="刷新列表" icon={<span>↻</span>} variant="outline" />
+              </Tooltip.Trigger>
+              <Tooltip.Content>重新获取最新成员数据</Tooltip.Content>
+            </Tooltip.Root>
+            <Tooltip.Root>
+              <Tooltip.Trigger>
+                <IconButton aria-label="导出数据" icon={<span>↓</span>} variant="outline" />
+              </Tooltip.Trigger>
+              <Tooltip.Content>导出当前筛选结果</Tooltip.Content>
+            </Tooltip.Root>
+          </div>
+          <Field
+            helpText="展示名称会用于成员列表和审批记录。"
+            label={
+              <span className="label-with-help">
+                展示名称
+                <Tooltip.Root>
+                  <Tooltip.Trigger>
+                    <IconButton aria-label="查看展示名称说明" icon={<span>?</span>} size="sm" variant="ghost" />
+                  </Tooltip.Trigger>
+                  <Tooltip.Content align="start">建议使用真实姓名或团队内统一昵称。</Tooltip.Content>
+                </Tooltip.Root>
+              </span>
+            }
+          >
+            <Input placeholder="请输入展示名称" />
+          </Field>
         </div>
       </section>
 
