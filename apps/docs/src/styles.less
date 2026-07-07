@@ -119,6 +119,38 @@ body {
   margin-top: 20px;
 }
 
+.loading-demo-grid {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  margin-top: 20px;
+}
+
+.loading-demo-panel {
+  border: 1px solid var(--rui-color-border);
+  border-radius: var(--rui-radius-sm);
+  display: grid;
+  gap: 16px;
+  padding: 18px;
+}
+
+.loading-demo-panel p {
+  color: color-mix(in srgb, var(--rui-color-ink) 72%, transparent);
+  margin: 6px 0 0;
+}
+
+.skeleton-profile-row {
+  align-items: center;
+  display: grid;
+  gap: 12px;
+  grid-template-columns: auto minmax(0, 1fr);
+}
+
+.skeleton-profile-row > div {
+  display: grid;
+  gap: 8px;
+}
+
 .label-with-help {
   align-items: center;
   display: inline-flex;

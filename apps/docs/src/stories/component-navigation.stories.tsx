@@ -62,8 +62,8 @@ const categories = [
   },
   {
     name: "反馈",
-    description: "处理区域内提示、需要聚焦的短流程与轻量上下文内容。",
-    components: ["Alert", "Dialog", "Empty", "Popover", "Tooltip"]
+    description: "处理区域内提示、加载占位、需要聚焦的短流程与轻量上下文内容。",
+    components: ["Alert", "Dialog", "Empty", "Popover", "Skeleton", "Spinner", "Tooltip"]
   },
   {
     name: "数据展示",

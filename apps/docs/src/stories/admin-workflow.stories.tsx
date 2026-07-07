@@ -1,6 +1,6 @@
 import { useMemo, useState } from "react";
 
-import { Badge, Button, Dialog, DropdownMenu, Field, Input, Select, Switch, Tabs } from "@rush_ui/react";
+import { Badge, Button, Dialog, DropdownMenu, Field, Input, Select, Skeleton, Switch, Tabs } from "@rush_ui/react";
 import type { Meta, StoryObj } from "@storybook/react";
 import "./admin-workflow.less";
 
@@ -81,8 +81,8 @@ function MemberManagement({ state = "ready" }: { state?: WorkflowState }) {
                 <Button variant="outline">重新加载</Button>
               </div>
             ) : state === "loading" ? (
-              <div aria-label="正在加载成员" aria-live="polite" className="member-workflow__loading">
-                {[0, 1, 2].map((item) => <span className="member-workflow__skeleton" key={item} />)}
+              <div aria-busy="true" aria-label="正在加载成员" aria-live="polite" className="member-workflow__loading" role="status">
+                {[0, 1, 2].map((item) => <Skeleton height={65} key={item} />)}
               </div>
             ) : visibleMembers.length === 0 ? (
               <div className="member-workflow__message">

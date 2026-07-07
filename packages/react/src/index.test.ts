@@ -16,6 +16,8 @@ import {
   Radio,
   RadioGroup,
   Select,
+  Skeleton,
+  Spinner,
   Switch,
   Tabs,
   Textarea,
@@ -39,6 +41,8 @@ describe("@rush_ui/react entry", () => {
     expect(Radio).toBeTypeOf("object");
     expect(RadioGroup).toBeTypeOf("object");
     expect(Select).toBeTypeOf("object");
+    expect(Skeleton).toBeTypeOf("object");
+    expect(Spinner).toBeTypeOf("object");
     expect(Switch).toBeTypeOf("object");
     expect(Tabs.Root).toBeTypeOf("object");
     expect(Textarea).toBeTypeOf("object");

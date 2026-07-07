@@ -42,8 +42,8 @@ export const Overview: Story = {
       </header>
       <section style={panelStyles}>
         <p style={{ color: "var(--rui-color-ink-muted)", lineHeight: 1.7, margin: 0 }}>
-          当前已包含区域内提示 Alert、空状态 Empty、短说明 Tooltip，以及承担聚焦流程和上下文内容的 Dialog、Popover。后续可将 Toast、Loading
-          等提示与响应状态组件归入这里。
+          当前已包含区域内提示 Alert、空状态 Empty、加载反馈 Spinner、渐进占位 Skeleton、短说明 Tooltip，以及承担聚焦流程和上下文内容的 Dialog、Popover。
+          后续可将 Toast 等提交反馈组件归入这里。
         </p>
       </section>
     </main>

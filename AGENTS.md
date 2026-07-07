@@ -26,6 +26,7 @@ This repository is a React component library for admin and dashboard web apps. A
   - tests
   - typed props
   - accessibility notes
+  - Vite demo page example in `apps/docs/src/App.tsx`
 - Prefer controlled/uncontrolled dual support where appropriate
 - Forward refs on all interactive primitives
 - Support className as an escape hatch
@@ -57,5 +58,5 @@ A task is done only if:
 3. tests pass
 4. stories render
 5. public exports are updated
-6. docs/examples are updated if API changed
+6. docs/examples are updated if API changed, including Storybook stories and `apps/docs/src/App.tsx`
 7. changeset is added when public API changes

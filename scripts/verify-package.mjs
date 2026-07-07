@@ -15,20 +15,27 @@ const esm = await import(esmEntry.href);
 const cjs = createRequire(import.meta.url)(cjsEntry);
 
 for (const exportName of [
+  "Alert",
   "Badge",
   "Button",
   "Checkbox",
+  "CheckboxGroup",
   "Dialog",
   "DropdownMenu",
+  "Empty",
   "Field",
   "IconButton",
   "Input",
   "Popover",
   "Radio",
+  "RadioGroup",
   "Select",
+  "Skeleton",
+  "Spinner",
   "Switch",
   "Tabs",
-  "Textarea"
+  "Textarea",
+  "Tooltip"
 ]) {
   assert.equal(typeof esm[exportName], "object", `ESM 缺少 ${exportName} 导出`);
   assert.equal(typeof cjs[exportName], "object", `CJS 缺少 ${exportName} 导出`);

@@ -1,0 +1,94 @@
+.rui-skeleton {
+  --rui-skeleton-bg: color-mix(in srgb, var(--rui-color-border) 42%, var(--rui-color-surface));
+  --rui-skeleton-block-height: 6rem;
+  --rui-skeleton-highlight: color-mix(in srgb, var(--rui-color-surface) 84%, var(--rui-color-border));
+  --rui-skeleton-line-gap: var(--rui-space-sm);
+  --rui-skeleton-text-height: 0.875rem;
+  background: var(--rui-skeleton-bg);
+  border-radius: var(--rui-radius-sm);
+  box-sizing: border-box;
+  display: block;
+  max-width: 100%;
+  min-height: var(--rui-skeleton-block-height);
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+
+  &[data-variant="text"] {
+    --rui-skeleton-block-height: var(--rui-skeleton-text-height);
+    border-radius: var(--rui-radius-pill);
+  }
+
+  &[data-variant="circle"] {
+    --rui-skeleton-block-height: 2.5rem;
+    aspect-ratio: 1;
+    border-radius: var(--rui-radius-pill);
+    height: var(--rui-skeleton-block-height);
+    width: var(--rui-skeleton-block-height);
+  }
+
+  &[data-has-lines] {
+    background: transparent;
+    border-radius: 0;
+    display: grid;
+    gap: var(--rui-skeleton-line-gap);
+    min-height: 0;
+    overflow: visible;
+  }
+
+  &[data-animated]::after {
+    animation: rui-skeleton-shimmer 1.35s ease-in-out infinite;
+    background: linear-gradient(90deg, transparent, var(--rui-skeleton-highlight), transparent);
+    content: "";
+    inset: 0;
+    position: absolute;
+    transform: translateX(-100%);
+  }
+
+  &[data-has-lines]::after {
+    display: none;
+  }
+}
+
+.rui-skeleton__line {
+  background: var(--rui-skeleton-bg);
+  border-radius: var(--rui-radius-pill);
+  box-sizing: border-box;
+  display: block;
+  height: var(--rui-skeleton-text-height);
+  max-width: 100%;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+
+  &:nth-child(3n + 2) {
+    width: 92%;
+  }
+
+  &:last-child {
+    width: 76%;
+  }
+}
+
+.rui-skeleton[data-animated] .rui-skeleton__line::after {
+  animation: rui-skeleton-shimmer 1.35s ease-in-out infinite;
+  background: linear-gradient(90deg, transparent, var(--rui-skeleton-highlight), transparent);
+  content: "";
+  inset: 0;
+  position: absolute;
+  transform: translateX(-100%);
+}
+
+@keyframes rui-skeleton-shimmer {
+  to {
+    transform: translateX(100%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rui-skeleton[data-animated]::after,
+  .rui-skeleton[data-animated] .rui-skeleton__line::after {
+    animation: none;
+    opacity: 0;
+  }
+}

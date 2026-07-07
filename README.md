@@ -52,6 +52,8 @@ docs/
 - `Radio`
 - `RadioGroup`
 - `Select`
+- `Skeleton`
+- `Spinner`
 - `Switch`
 - `Tabs`
 - `Textarea`
@@ -97,6 +99,10 @@ docs/
 - `SelectProps`
 - `SelectOption`
 - `SelectSize`
+- `SkeletonProps`
+- `SkeletonVariant`
+- `SpinnerProps`
+- `SpinnerSize`
 - `SwitchProps`
 - `SwitchSize`
 - `TabsRootProps`
@@ -191,6 +197,39 @@ docs/
 
 - Empty 文档: [docs/components/empty.md](docs/components/empty.md)
 - Empty RFC: [docs/rfcs/empty.md](docs/rfcs/empty.md)
+
+### Spinner
+
+`Spinner` 用于按钮外的局部刷新、表格请求、弹层内提交等待和后台任务同步，支持：
+
+- `size`: `sm | md | lg`
+- `label`
+- 默认 `role="status"` 和 `aria-label="加载中"`
+- `aria-hidden` 装饰模式
+- `className`
+- `forwardRef<HTMLSpanElement>`
+
+相关文档：
+
+- Spinner 文档: [docs/components/spinner.md](docs/components/spinner.md)
+- Spinner RFC: [docs/rfcs/spinner.md](docs/rfcs/spinner.md)
+
+### Skeleton
+
+`Skeleton` 用于内容结构已知但真实数据尚未返回的占位状态，支持：
+
+- `variant`: `text | block | circle`
+- `width` / `height`
+- `lines`
+- `animated`
+- 默认 `aria-hidden="true"` 装饰语义
+- `className`
+- `forwardRef<HTMLDivElement>`
+
+相关文档：
+
+- Skeleton 文档: [docs/components/skeleton.md](docs/components/skeleton.md)
+- Skeleton RFC: [docs/rfcs/skeleton.md](docs/rfcs/skeleton.md)
 
 ### Button
 

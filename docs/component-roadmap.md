@@ -1,10 +1,10 @@
 # Rush UI 组件路线规划
 
-更新日期：2026-06-24
+更新日期：2026-06-30
 
 ## 1. 规划结论
 
-Rush UI 当前已经具备一套可靠的交互基础组件：按钮、输入、选择、弹层、Tabs、Dialog、DropdownMenu、Popover、Alert、Badge、Empty 等。它适合继续向“可直接组装后台页面”的方向推进，但还缺少后台产品最常用的列表页、筛选页、详情页和复杂表单能力。
+Rush UI 当前已经具备一套可靠的交互基础组件：按钮、输入、选择、弹层、Tabs、Dialog、DropdownMenu、Popover、Alert、Badge、Empty、Spinner、Skeleton 等。它适合继续向“可直接组装后台页面”的方向推进，但还缺少后台产品最常用的列表页、筛选页、详情页和复杂表单能力。
 
 后续组件建设建议按以下目标推进：
 
@@ -21,7 +21,7 @@ Rush UI 当前已经具备一套可靠的交互基础组件：按钮、输入、
 | 操作入口 | Button、IconButton、DropdownMenu、Tooltip | Confirm、快捷操作组合 | 基础动作能力已成型，短说明已补齐，后续需要补足确认和全局反馈 |
 | 表单录入 | Field、Input、Textarea、Checkbox、Radio、Switch、Select | NumberInput、DatePicker、DateRangePicker、Combobox、Upload | 后台筛选和编辑页仍缺核心录入控件 |
 | 浮层 | Dialog、Popover、DropdownMenu、Tooltip | Drawer、Toast、AlertDialog | 弹层基础设施已具备，可优先复用现有 Portal、定位、焦点能力 |
-| 反馈 | Alert、Badge、Empty | Toast、Spinner、Skeleton、Progress | 页面加载、异步提交和渐进占位场景还不完整 |
+| 反馈 | Alert、Badge、Empty、Spinner、Skeleton | Toast、Progress | 页面加载和渐进占位能力已补齐，异步提交反馈仍需 Toast |
 | 导航 | Tabs | Breadcrumb、Pagination、Steps、SideNav | 还不能完整支撑后台页面信息架构 |
 | 数据展示 | Badge、Alert | Table、Descriptions、Tag、Timeline、Metric | 管理端核心是数据浏览，Table 是最高优先级缺口 |
 | 布局模式 | Story 中有集成示例 | PageHeader、Toolbar、FilterBar、Layout recipes | 先以文档 recipe 沉淀，不急于全部导出为公共组件 |
@@ -78,7 +78,7 @@ P0 的目标是让 Rush UI 能独立组装一个标准后台列表页和编辑�
 
 1. Tooltip（已完成）：复用现有浮层定位和关闭逻辑，快速补齐图标按钮可访问说明。
 2. Empty（已完成）：补齐表格空态、搜索无结果和配置缺失场景，支撑后续 Table stories。
-3. Spinner、Skeleton：继续补异步加载和渐进占位反馈。
+3. Spinner、Skeleton（已完成）：补齐异步加载和渐进占位反馈。
 4. Pagination：作为 Table 的配套组件，但保持可单独使用。
 5. Table：先做语义表格和受控行为，不做 DataGrid。
 6. Toast：补齐提交反馈和异步操作闭环。
@@ -230,13 +230,13 @@ P2 的目标是覆盖权限、组织、批量配置和大数据量选择。建�
 
 建议下一批 RFC 按以下顺序创建：
 
-1. `docs/rfcs/spinner.md`
-2. `docs/rfcs/skeleton.md`
-3. `docs/rfcs/pagination.md`
-4. `docs/rfcs/table.md`
-5. `docs/rfcs/toast.md`
-6. `docs/rfcs/number-input.md`
-7. `docs/rfcs/date-picker.md`
+1. `docs/rfcs/pagination.md`
+2. `docs/rfcs/table.md`
+3. `docs/rfcs/toast.md`
+4. `docs/rfcs/number-input.md`
+5. `docs/rfcs/date-picker.md`
+6. `docs/rfcs/date-range-picker.md`
+7. `docs/rfcs/alert-dialog.md`
 8. `docs/rfcs/drawer.md`
 
 这组 backlog 可以最短路径补齐后台产品闭环，同时复用 Rush UI 已经完成的 Button、Field、Select、Popover、Dialog、DropdownMenu 和 Tabs 基础能力。

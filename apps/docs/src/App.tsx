@@ -14,6 +14,8 @@ import {
   Radio,
   RadioGroup,
   Select,
+  Skeleton,
+  Spinner,
   Switch,
   Tabs,
   Textarea,
@@ -143,6 +145,30 @@ export function App() {
             description="没有成员匹配当前关键词和状态筛选，可以清空条件后重新查看全部成员。"
             title="未找到匹配结果"
           />
+        </div>
+      </section>
+
+      <section className="token-card">
+        <h2>加载反馈文档示例</h2>
+        <p className="lede">Spinner 用于明确等待状态，Skeleton 用于内容结构已知但数据尚未返回的渐进占位。</p>
+        <div className="loading-demo-grid">
+          <article aria-busy="true" aria-label="成员列表刷新中" className="loading-demo-panel">
+            <div>
+              <strong>局部刷新</strong>
+              <p>重新获取成员、角色和登录状态。</p>
+            </div>
+            <Spinner label="刷新中" size="sm" />
+          </article>
+          <article aria-busy="true" aria-label="成员详情加载中" className="loading-demo-panel">
+            <div className="skeleton-profile-row">
+              <Skeleton variant="circle" />
+              <div>
+                <Skeleton height={16} variant="text" width="48%" />
+                <Skeleton height={14} variant="text" width="70%" />
+              </div>
+            </div>
+            <Skeleton lines={3} variant="text" />
+          </article>
         </div>
       </section>
 

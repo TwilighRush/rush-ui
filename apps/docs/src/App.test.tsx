@@ -12,6 +12,10 @@ describe("App", () => {
     expect(screen.getByRole("heading", { name: "Dialog 文档示例" })).toBeInTheDocument();
     expect(screen.getByRole("heading", { name: "DropdownMenu 文档示例" })).toBeInTheDocument();
     expect(screen.getByRole("heading", { name: "Empty 文档示例" })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: "加载反馈文档示例" })).toBeInTheDocument();
+    expect(screen.getByRole("article", { name: "成员列表刷新中" })).toBeInTheDocument();
+    expect(screen.getByRole("article", { name: "成员详情加载中" })).toBeInTheDocument();
+    expect(screen.getByText("刷新中")).toBeInTheDocument();
     expect(screen.getByRole("heading", { name: "Popover 文档示例" })).toBeInTheDocument();
     expect(screen.getByRole("heading", { name: "Switch 文档示例" })).toBeInTheDocument();
     expect(screen.getByRole("heading", { name: "Tabs 文档示例" })).toBeInTheDocument();

@@ -59,20 +59,13 @@
 .member-workflow__message p { color: color-mix(in srgb, var(--rui-color-ink) 72%, transparent); margin: 8px 0 18px; }
 
 .member-workflow__loading { display: grid; gap: 1px; }
-.member-workflow__skeleton { animation: member-skeleton 1.4s ease-in-out infinite; background: rgba(29, 26, 22, 0.07); height: 65px; }
 .member-workflow__form { display: grid; gap: 16px; margin-top: 20px; }
 .member-workflow__dialog-actions { display: flex; gap: 8px; justify-content: flex-end; margin-top: 24px; }
 .member-workflow__sr-only { clip: rect(0, 0, 0, 0); clip-path: inset(50%); height: 1px; overflow: hidden; position: absolute; white-space: nowrap; width: 1px; }
-
-@keyframes member-skeleton { 50% { background: rgba(29, 26, 22, 0.12); } }
 
 @media (max-width: 680px) {
   .member-workflow { padding: 24px 16px; }
   .member-workflow__header { align-items: stretch; flex-direction: column; }
   .member-workflow__toolbar { align-items: stretch; flex-direction: column; }
   .member-workflow__toolbar .rui-input, .member-workflow__toolbar .rui-select { max-width: none; width: 100%; }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .member-workflow__skeleton { animation: none; }
 }
