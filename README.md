@@ -48,6 +48,7 @@ docs/
 - `Field`
 - `IconButton`
 - `Input`
+- `Pagination`
 - `Popover`
 - `Radio`
 - `RadioGroup`
@@ -89,6 +90,9 @@ docs/
 - `IconButtonSize`
 - `InputProps`
 - `InputSize`
+- `PaginationProps`
+- `PaginationSize`
+- `PaginationTotalInfo`
 - `PopoverRootProps`
 - `PopoverTriggerProps`
 - `PopoverContentProps`
@@ -371,6 +375,25 @@ docs/
 
 - Tabs 文档: [docs/components/tabs.md](docs/components/tabs.md)
 - Tabs RFC: [docs/rfcs/tabs.md](docs/rfcs/tabs.md)
+
+### Pagination
+
+`Pagination` 用于表格、列表和搜索结果底部的页码导航，支持：
+
+- `page` / `defaultPage`
+- `total` / `pageSize`
+- `siblingCount` / `boundaryCount`
+- `showTotal`
+- `disabled`
+- `loading`
+- `errorText`
+- 方向键、Home 和 End 焦点移动
+- `forwardRef<HTMLElement>`
+
+相关文档：
+
+- Pagination 文档: [docs/components/pagination.md](docs/components/pagination.md)
+- Pagination RFC: [docs/rfcs/pagination.md](docs/rfcs/pagination.md)
 
 ### DropdownMenu
 

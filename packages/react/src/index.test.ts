@@ -12,6 +12,7 @@ import {
   Field,
   IconButton,
   Input,
+  Pagination,
   Popover,
   Radio,
   RadioGroup,
@@ -37,6 +38,7 @@ describe("@rush_ui/react entry", () => {
     expect(Field).toBeTypeOf("object");
     expect(IconButton).toBeTypeOf("object");
     expect(Input).toBeTypeOf("object");
+    expect(Pagination).toBeTypeOf("object");
     expect(Popover.Root).toBeTypeOf("function");
     expect(Radio).toBeTypeOf("object");
     expect(RadioGroup).toBeTypeOf("object");

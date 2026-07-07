@@ -34,6 +34,8 @@ export { IconButton } from "./icon-button";
 export type { IconButtonProps, IconButtonSize, IconButtonVariant } from "./icon-button";
 export { Input } from "./input";
 export type { InputProps, InputSize } from "./input";
+export { Pagination } from "./pagination";
+export type { PaginationProps, PaginationSize, PaginationTotalInfo } from "./pagination";
 export { Popover } from "./popover";
 export type { PopoverContentProps, PopoverRootProps, PopoverTriggerProps } from "./popover";
 export { Radio, RadioGroup } from "./radio";

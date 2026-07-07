@@ -13,7 +13,7 @@ const preview: Preview = {
         order: [
           "指南",
           "组件",
-          ["概览", "基础", ["Button", "IconButton"], "表单", ["Field", "Input", "Textarea", "Checkbox", "Radio", "Select", "Switch"], "导航", ["Tabs", "DropdownMenu"], "反馈", ["Dialog", "Popover"], "数据展示", ["Badge"]]
+          ["概览", "基础", ["Button", "IconButton"], "表单", ["Field", "Input", "Textarea", "Checkbox", "Radio", "Select", "Switch"], "导航", ["Tabs", "DropdownMenu", "Pagination"], "反馈", ["Dialog", "Popover"], "数据展示", ["Badge"]]
         ]
       }
     }

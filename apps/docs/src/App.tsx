@@ -10,6 +10,7 @@ import {
   Field,
   IconButton,
   Input,
+  Pagination,
   Popover,
   Radio,
   RadioGroup,
@@ -350,6 +351,16 @@ export function App() {
           <Tabs.Content value="roles">配置角色权限与默认数据范围。</Tabs.Content>
           <Tabs.Content value="audit">查看关键配置和成员权限的变更记录。</Tabs.Content>
         </Tabs.Root>
+      </section>
+
+      <section className="token-card">
+        <h2>Pagination 文档示例</h2>
+        <p className="lede">Pagination 用于表格、列表和搜索结果底部的页码导航，支持受控/非受控、总数说明、加载和错误提示。</p>
+        <div className="pagination-demo-stack">
+          <Pagination defaultPage={4} showTotal total={128} />
+          <Pagination aria-label="成员列表加载分页" defaultPage={4} loading loadingText="成员列表刷新中" showTotal total={128} />
+          <Pagination aria-label="成员列表错误分页" defaultPage={4} errorText="当前页加载失败，请重试或返回上一页。" showTotal total={128} />
+        </div>
       </section>
 
       <section className="token-card">

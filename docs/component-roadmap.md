@@ -1,14 +1,14 @@
 # Rush UI 组件路线规划
 
-更新日期：2026-06-30
+更新日期：2026-07-07
 
 ## 1. 规划结论
 
-Rush UI 当前已经具备一套可靠的交互基础组件：按钮、输入、选择、弹层、Tabs、Dialog、DropdownMenu、Popover、Alert、Badge、Empty、Spinner、Skeleton 等。它适合继续向“可直接组装后台页面”的方向推进，但还缺少后台产品最常用的列表页、筛选页、详情页和复杂表单能力。
+Rush UI 当前已经具备一套可靠的交互基础组件：按钮、输入、选择、弹层、Tabs、Pagination、Dialog、DropdownMenu、Popover、Alert、Badge、Empty、Spinner、Skeleton 等。它适合继续向“可直接组装后台页面”的方向推进，但还缺少后台产品最常用的列表页、筛选页、详情页和复杂表单能力。
 
 后续组件建设建议按以下目标推进：
 
-1. 先补齐后台页面闭环：表格、分页、空状态、加载态、全局提示、Tooltip、日期和数字输入。
+1. 继续补齐后台页面闭环：表格、全局提示、日期和数字输入。
 2. 再增强业务编辑流：Drawer、Confirm、Upload、Combobox、多选选择、Steps。
 3. 最后覆盖复杂企业场景：Tree、Cascader、Transfer、VirtualList、Timeline、Metric 等。
 
@@ -22,7 +22,7 @@ Rush UI 当前已经具备一套可靠的交互基础组件：按钮、输入、
 | 表单录入 | Field、Input、Textarea、Checkbox、Radio、Switch、Select | NumberInput、DatePicker、DateRangePicker、Combobox、Upload | 后台筛选和编辑页仍缺核心录入控件 |
 | 浮层 | Dialog、Popover、DropdownMenu、Tooltip | Drawer、Toast、AlertDialog | 弹层基础设施已具备，可优先复用现有 Portal、定位、焦点能力 |
 | 反馈 | Alert、Badge、Empty、Spinner、Skeleton | Toast、Progress | 页面加载和渐进占位能力已补齐，异步提交反馈仍需 Toast |
-| 导航 | Tabs | Breadcrumb、Pagination、Steps、SideNav | 还不能完整支撑后台页面信息架构 |
+| 导航 | Tabs、Pagination | Breadcrumb、Steps、SideNav | 已具备页签与列表分页能力，仍缺详情路径和流程导航 |
 | 数据展示 | Badge、Alert | Table、Descriptions、Tag、Timeline、Metric | 管理端核心是数据浏览，Table 是最高优先级缺口 |
 | 布局模式 | Story 中有集成示例 | PageHeader、Toolbar、FilterBar、Layout recipes | 先以文档 recipe 沉淀，不急于全部导出为公共组件 |
 
@@ -63,7 +63,7 @@ P0 的目标是让 Rush UI 能独立组装一个标准后台列表页和编辑�
 | 组件 | 主要场景 | MVP 范围 | 暂不做 |
 | --- | --- | --- | --- |
 | Table | 列表页、明细表、权限矩阵 | 语义 table、列定义、空状态插槽、加载态、行选择、受控排序事件、固定尺寸密度 | 虚拟滚动、列拖拽、复杂单元格编辑、内置请求 |
-| Pagination | 列表分页、弹层内分页 | page、pageSize、total、onPageChange、快捷上一页/下一页、可访问标签 | 复杂跳页模板、服务端请求封装 |
+| Pagination（已完成） | 列表分页、弹层内分页 | page、pageSize、total、onPageChange、快捷上一页/下一页、可访问标签 | 复杂跳页模板、服务端请求封装 |
 | Empty | 表格空态、搜索无结果、配置缺失 | 标题、说明、图标/插图插槽、操作区 | 大型营销插画、多种强视觉变体 |
 | Spinner / Loading | 按钮外的局部加载、页面区块加载 | 尺寸、label、`role="status"`、延迟显示建议 | 全屏 loading 管理器 |
 | Skeleton | 首屏等待、表格/详情占位 | 文本行、块、圆形、组合 recipe | 自动识别真实布局 |
@@ -79,7 +79,7 @@ P0 的目标是让 Rush UI 能独立组装一个标准后台列表页和编辑�
 1. Tooltip（已完成）：复用现有浮层定位和关闭逻辑，快速补齐图标按钮可访问说明。
 2. Empty（已完成）：补齐表格空态、搜索无结果和配置缺失场景，支撑后续 Table stories。
 3. Spinner、Skeleton（已完成）：补齐异步加载和渐进占位反馈。
-4. Pagination：作为 Table 的配套组件，但保持可单独使用。
+4. Pagination（已完成）：作为 Table 的配套组件，但保持可单独使用。
 5. Table：先做语义表格和受控行为，不做 DataGrid。
 6. Toast：补齐提交反馈和异步操作闭环。
 7. NumberInput、DatePicker、DateRangePicker：补齐筛选和编辑页关键录入。
@@ -230,13 +230,12 @@ P2 的目标是覆盖权限、组织、批量配置和大数据量选择。建�
 
 建议下一批 RFC 按以下顺序创建：
 
-1. `docs/rfcs/pagination.md`
-2. `docs/rfcs/table.md`
-3. `docs/rfcs/toast.md`
-4. `docs/rfcs/number-input.md`
-5. `docs/rfcs/date-picker.md`
-6. `docs/rfcs/date-range-picker.md`
-7. `docs/rfcs/alert-dialog.md`
-8. `docs/rfcs/drawer.md`
+1. `docs/rfcs/table.md`
+2. `docs/rfcs/toast.md`
+3. `docs/rfcs/number-input.md`
+4. `docs/rfcs/date-picker.md`
+5. `docs/rfcs/date-range-picker.md`
+6. `docs/rfcs/alert-dialog.md`
+7. `docs/rfcs/drawer.md`
 
 这组 backlog 可以最短路径补齐后台产品闭环，同时复用 Rush UI 已经完成的 Button、Field、Select、Popover、Dialog、DropdownMenu 和 Tabs 基础能力。

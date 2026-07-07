@@ -58,7 +58,7 @@ const categories = [
   {
     name: "导航",
     description: "组织并列内容和对象级操作入口。",
-    components: ["Tabs", "DropdownMenu"]
+    components: ["Tabs", "DropdownMenu", "Pagination"]
   },
   {
     name: "反馈",
