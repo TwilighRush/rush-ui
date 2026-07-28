@@ -140,4 +140,4 @@ export type { SkeletonProps, SkeletonVariant } from "@rush_ui/react";
 
 ### Table
 
-后续 `Table` 可以通过 loading 插槽或 body 占位组合 `Skeleton`。`Skeleton` 不知道列定义、排序、选择或分页状态。
+`Table` 默认 loading 状态会组合 `Skeleton`，也允许通过 `loadingContent` 替换占位内容。`Skeleton` 不知道列定义、排序、选择或分页状态。

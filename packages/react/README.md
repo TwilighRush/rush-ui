@@ -36,6 +36,7 @@ export function App() {
 - `Field`
 - `IconButton`
 - `Input`
+- `Pagination`
 - `Popover`
 - `Radio`
 - `RadioGroup`
@@ -43,6 +44,7 @@ export function App() {
 - `Skeleton`
 - `Spinner`
 - `Switch`
+- `Table`
 - `Tabs`
 - `Textarea`
 - `Tooltip`
@@ -82,6 +84,9 @@ export function App() {
 - `IconButtonVariant`
 - `InputProps`
 - `InputSize`
+- `PaginationProps`
+- `PaginationSize`
+- `PaginationTotalInfo`
 - `PopoverContentProps`
 - `PopoverRootProps`
 - `PopoverTriggerProps`
@@ -98,6 +103,14 @@ export function App() {
 - `SpinnerSize`
 - `SwitchProps`
 - `SwitchSize`
+- `TableColumn`
+- `TableColumnAlign`
+- `TableProps`
+- `TableRowKey`
+- `TableRowSelection`
+- `TableSize`
+- `TableSortDirection`
+- `TableSortState`
 - `TabsActivationMode`
 - `TabsContentProps`
 - `TabsListProps`

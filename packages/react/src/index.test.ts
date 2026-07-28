@@ -20,6 +20,7 @@ import {
   Skeleton,
   Spinner,
   Switch,
+  Table,
   Tabs,
   Textarea,
   Tooltip
@@ -46,6 +47,7 @@ describe("@rush_ui/react entry", () => {
     expect(Skeleton).toBeTypeOf("object");
     expect(Spinner).toBeTypeOf("object");
     expect(Switch).toBeTypeOf("object");
+    expect(Table).toBeTypeOf("object");
     expect(Tabs.Root).toBeTypeOf("object");
     expect(Textarea).toBeTypeOf("object");
     expect(Tooltip.Root).toBeTypeOf("function");

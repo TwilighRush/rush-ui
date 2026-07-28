@@ -68,7 +68,7 @@ const categories = [
   {
     name: "数据展示",
     description: "用于展示对象状态、列表状态和轻量信息标识。",
-    components: ["Badge"]
+    components: ["Badge", "Table"]
   }
 ] as const;
 
@@ -77,7 +77,7 @@ const meta = {
   parameters: {
     docs: {
       description: {
-        component: "Rush UI 组件文档按基础、表单、反馈、数据展示四类组织，便于在组件数量增长后快速定位。"
+        component: "Rush UI 组件文档按基础、表单、导航、反馈、数据展示五类组织，便于在组件数量增长后快速定位。"
       }
     }
   }

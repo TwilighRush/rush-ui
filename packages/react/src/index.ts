@@ -48,6 +48,17 @@ export { Spinner } from "./spinner";
 export type { SpinnerProps, SpinnerSize } from "./spinner";
 export { Switch } from "./switch";
 export type { SwitchProps, SwitchSize } from "./switch";
+export { Table } from "./table";
+export type {
+  TableColumn,
+  TableColumnAlign,
+  TableProps,
+  TableRowKey,
+  TableRowSelection,
+  TableSize,
+  TableSortDirection,
+  TableSortState
+} from "./table";
 export { Tabs } from "./tabs";
 export type {
   TabsActivationMode,

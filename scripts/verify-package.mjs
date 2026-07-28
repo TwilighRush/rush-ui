@@ -26,6 +26,7 @@ for (const exportName of [
   "Field",
   "IconButton",
   "Input",
+  "Pagination",
   "Popover",
   "Radio",
   "RadioGroup",
@@ -33,6 +34,7 @@ for (const exportName of [
   "Skeleton",
   "Spinner",
   "Switch",
+  "Table",
   "Tabs",
   "Textarea",
   "Tooltip"

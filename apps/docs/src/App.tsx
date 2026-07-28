@@ -18,10 +18,12 @@ import {
   Skeleton,
   Spinner,
   Switch,
+  Table,
   Tabs,
   Textarea,
   Tooltip
 } from "@rush_ui/react";
+import type { TableColumn } from "@rush_ui/react";
 import { tokens } from "@rush_ui/tokens";
 
 const packageRoles = [
@@ -59,6 +61,104 @@ const memberRoleOptions = [
   { description: "可以编辑业务数据和处理审批任务。", label: "编辑者", textValue: "editor", value: "editor" },
   { description: "只能查看授权范围内的数据。", label: "只读成员", textValue: "viewer", value: "viewer" }
 ] as const;
+
+interface AppMember {
+  id: string;
+  name: string;
+  email: string;
+  role: string;
+  status: "active" | "invited" | "locked";
+  lastActive: string;
+  locked?: boolean;
+}
+
+const appMembers: readonly AppMember[] = [
+  {
+    id: "member-lin",
+    name: "林一",
+    email: "linyi@example.com",
+    role: "管理员",
+    status: "active",
+    lastActive: "刚刚"
+  },
+  {
+    id: "member-zhou",
+    name: "周然",
+    email: "zhouran@example.com",
+    role: "编辑者",
+    status: "active",
+    lastActive: "12 分钟前"
+  },
+  {
+    id: "member-song",
+    name: "宋闻",
+    email: "songwen@example.com",
+    role: "只读成员",
+    status: "invited",
+    lastActive: "尚未登录"
+  },
+  {
+    id: "member-he",
+    name: "何清",
+    email: "heqing@example.com",
+    role: "外部协作者",
+    status: "locked",
+    lastActive: "2 天前",
+    locked: true
+  }
+] as const;
+
+const appMemberColumns = [
+  {
+    id: "member",
+    header: "成员",
+    cell: (member) => (
+      <div className="table-demo-member">
+        <strong>{member.name}</strong>
+        <span>{member.email}</span>
+      </div>
+    )
+  },
+  {
+    id: "role",
+    header: "角色",
+    cell: (member) => member.role
+  },
+  {
+    id: "status",
+    header: "状态",
+    cell: (member) => {
+      if (member.status === "active") return <Badge variant="success">已启用</Badge>;
+      if (member.status === "invited") return <Badge variant="warning">待加入</Badge>;
+      return <Badge>已锁定</Badge>;
+    }
+  },
+  {
+    id: "lastActive",
+    header: "最近活跃",
+    cell: (member) => <span className="table-demo-secondary">{member.lastActive}</span>
+  },
+  {
+    id: "actions",
+    header: "操作",
+    align: "end",
+    cell: (member) => (
+      <DropdownMenu.Root>
+        <DropdownMenu.Trigger aria-label={`${member.name}的成员操作`} size="sm" variant="ghost">
+          操作
+        </DropdownMenu.Trigger>
+        <DropdownMenu.Content aria-label={`${member.name}的成员操作`}>
+          <DropdownMenu.Item textValue="edit member">编辑成员</DropdownMenu.Item>
+          <DropdownMenu.Item textValue="reset password">重置密码</DropdownMenu.Item>
+          <DropdownMenu.Separator />
+          <DropdownMenu.Item disabled={member.locked} textValue="remove member">
+            移除成员
+          </DropdownMenu.Item>
+        </DropdownMenu.Content>
+      </DropdownMenu.Root>
+    )
+  }
+] satisfies readonly TableColumn<AppMember>[];
 
 export function App() {
   return (
@@ -360,6 +460,31 @@ export function App() {
           <Pagination defaultPage={4} showTotal total={128} />
           <Pagination aria-label="成员列表加载分页" defaultPage={4} loading loadingText="成员列表刷新中" showTotal total={128} />
           <Pagination aria-label="成员列表错误分页" defaultPage={4} errorText="当前页加载失败，请重试或返回上一页。" showTotal total={128} />
+        </div>
+      </section>
+
+      <section className="token-card">
+        <h2>Table 文档示例</h2>
+        <p className="lede">Table 使用原生表格语义，支持泛型列、行选择、受控排序、状态插槽和三档密度。</p>
+        <div className="table-demo-stack">
+          <Table
+            caption="成员列表"
+            columns={appMemberColumns}
+            data={appMembers}
+            getRowKey={(member) => member.id}
+            rowSelection={{
+              defaultValue: ["member-lin"],
+              getRowAriaLabel: (member, _index, selected) => `${selected ? "取消选择" : "选择"}成员${member.name}`,
+              getSelectAllAriaLabel: (selected) => (selected ? "取消选择本页全部成员" : "选择本页全部成员"),
+              isRowDisabled: (member) => Boolean(member.locked)
+            }}
+            size="sm"
+            style={{ minWidth: 760 }}
+          />
+          <div className="table-demo-footer">
+            <span>已展示 4 名成员，其中 1 名不可选择</span>
+            <Pagination aria-label="成员列表分页" defaultPage={2} pageSize={4} showTotal size="sm" total={48} />
+          </div>
         </div>
       </section>
 

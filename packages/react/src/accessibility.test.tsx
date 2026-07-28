@@ -11,8 +11,32 @@ import { Pagination } from "./pagination";
 import { Popover } from "./popover";
 import { Spinner } from "./spinner";
 import { Switch } from "./switch";
+import { Table } from "./table";
+import type { TableColumn } from "./table";
 import { Tabs } from "./tabs";
 import { Tooltip } from "./tooltip";
+
+interface AccessibilityMember {
+  id: number;
+  name: string;
+  role: string;
+}
+
+const accessibilityMembers = [{ id: 1, name: "张三", role: "管理员" }] satisfies AccessibilityMember[];
+const accessibilityTableColumns = [
+  {
+    cell: (member: AccessibilityMember) => member.name,
+    header: "姓名",
+    id: "name",
+    sortAriaLabel: "按姓名排序",
+    sortable: true
+  },
+  {
+    cell: (member: AccessibilityMember) => member.role,
+    header: "角色",
+    id: "role"
+  }
+] satisfies readonly TableColumn<AccessibilityMember>[];
 
 const cases: Array<[string, ReactElement]> = [
   ["Alert", <Alert key="alert" title="同步完成">客户资料已更新。</Alert>],
@@ -20,6 +44,19 @@ const cases: Array<[string, ReactElement]> = [
   ["Spinner", <Spinner key="spinner" label="正在加载成员" />],
   ["Pagination", <Pagination key="pagination" showTotal total={95} />],
   ["Switch", <Switch key="switch">启用通知</Switch>],
+  [
+    "Table",
+    <Table
+      caption="成员列表"
+      columns={accessibilityTableColumns}
+      data={accessibilityMembers}
+      getRowKey={(member) => member.id}
+      key="table"
+      onSortChange={() => undefined}
+      rowSelection={{}}
+      sort={{ columnId: "name", direction: "asc" }}
+    />
+  ],
   [
     "Tabs",
     <Tabs.Root defaultValue="members" key="tabs">

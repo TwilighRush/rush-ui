@@ -1,6 +1,6 @@
 # Rush UI
 
-Rush UI 是一个基于 `pnpm workspace` 的 React 组件库 monorepo，面向后台与管理端场景，提供基础表单、导航、浮层与反馈组件。
+Rush UI 是一个基于 `pnpm workspace` 的 React 组件库 monorepo，面向后台与管理端场景，提供基础表单、导航、浮层、反馈与数据展示组件。
 
 仓库技术栈：
 
@@ -56,6 +56,7 @@ docs/
 - `Skeleton`
 - `Spinner`
 - `Switch`
+- `Table`
 - `Tabs`
 - `Textarea`
 - `Tooltip`
@@ -109,6 +110,14 @@ docs/
 - `SpinnerSize`
 - `SwitchProps`
 - `SwitchSize`
+- `TableColumn`
+- `TableColumnAlign`
+- `TableProps`
+- `TableRowKey`
+- `TableRowSelection`
+- `TableSize`
+- `TableSortDirection`
+- `TableSortState`
 - `TabsRootProps`
 - `TabsListProps`
 - `TabsTriggerProps`
@@ -394,6 +403,24 @@ docs/
 
 - Pagination 文档: [docs/components/pagination.md](docs/components/pagination.md)
 - Pagination RFC: [docs/rfcs/pagination.md](docs/rfcs/pagination.md)
+
+### Table
+
+`Table` 用于后台列表页、明细表和权限矩阵，支持：
+
+- 泛型 `Table<T>` 与类型安全列定义
+- 稳定 `getRowKey`
+- `size`: `sm | md | lg`
+- loading、empty、error 状态插槽
+- 受控/非受控行选择、全选、半选和禁选行
+- 纯受控三态排序与 `aria-sort`
+- 原生 table 语义、caption 和窄屏横向滚动
+- `forwardRef<HTMLTableElement>`
+
+相关文档：
+
+- Table 文档: [docs/components/table.md](docs/components/table.md)
+- Table RFC: [docs/rfcs/table.md](docs/rfcs/table.md)
 
 ### DropdownMenu
 

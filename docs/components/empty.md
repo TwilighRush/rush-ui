@@ -78,7 +78,7 @@ import { Button, Empty } from "@rush_ui/react";
 
 ## 设计边界
 
-- `Empty` 表达“加载完成后没有内容”，不表达加载中；加载中应使用后续 `Spinner` 或 `Skeleton`。
+- `Empty` 表达“加载完成后没有内容”，不表达加载中；加载中应使用 `Spinner` 或 `Skeleton`。
 - `Empty` 不负责接口错误、权限错误或危险提示；这类状态优先使用 `Alert`，必要时组合恢复操作。
-- `Empty` 不知道表格列、分页、筛选条件或请求状态；后续 `Table` 可以通过空态插槽组合它。
+- `Empty` 不知道表格列、分页、筛选条件或请求状态；`Table` 通过 `emptyContent` 插槽组合它。
 - 首版不提供多套视觉 `variant`，搜索无结果、首次创建和配置缺失应通过文案、图标和操作区表达差异。

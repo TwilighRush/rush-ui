@@ -169,7 +169,7 @@ export type { EmptyProps, EmptySize } from "@rush_ui/react";
 - 配置缺失态，自定义图标。
 - 无图标空态，`icon={null}`。
 - 长标题和长说明换行。
-- 与 Table 首版 story 的组合空态；如果 Table 尚未实现，可先用语义 `table` 或 recipe 占位。
+- 与 Table 的组合空态，验证 `emptyContent` 插槽和紧凑尺寸。
 
 ## Tests
 

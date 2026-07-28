@@ -6,7 +6,7 @@
 
 ## 摘要
 
-`Pagination` 是 `@rush_ui/react` 的页码导航组件，用于后台表格、列表、搜索结果和弹层内列表的分页切换。它提供受控/非受控页码、总条数计算、上一页/下一页、页码省略、加载和错误提示，并保持请求与数据状态由业务层或后续 Table 组件管理。
+`Pagination` 是 `@rush_ui/react` 的页码导航组件，用于后台表格、列表、搜索结果和弹层内列表的分页切换。它提供受控/非受控页码、总条数计算、上一页/下一页、页码省略、加载和错误提示，并保持请求与数据状态由业务层管理；Table 只在页面层与它组合。
 
 本文档只定义 `Pagination` 的组件设计与接口约束，不包含服务端请求、查询缓存或表格集成实现。
 
@@ -25,7 +25,7 @@
 
 - v1 不内置 pageSize 切换器；需要时由外部组合 `Select`。
 - v1 不内置跳页输入框、服务端请求封装、URL 同步或查询缓存。
-- v1 不提供 Table 绑定 API；后续 Table 可以组合 `Pagination`。
+- v1 不提供 Table 绑定 API；Table 与 `Pagination` 通过页面层状态组合。
 - v1 不提供链接模式、路由导航或 SEO 分页。
 - v1 不暴露内部 DOM 结构作为公共 API。
 
@@ -155,7 +155,7 @@ export type { PaginationProps, PaginationSize, PaginationTotalInfo } from "@rush
 
 ### Table
 
-Table 负责数据表格、列、行、排序、选择和空态组合。Pagination 只负责页码导航。Table 后续可以暴露分页插槽或推荐组合方式，但不应把请求逻辑塞进 Pagination。
+Table 负责数据表格、列、行、排序、选择和空态组合。Pagination 只负责页码导航。两者通过外部状态组合，均不承载请求逻辑。
 
 ### Select
 

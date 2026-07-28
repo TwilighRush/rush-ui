@@ -112,6 +112,38 @@ body {
   margin-top: 20px;
 }
 
+.table-demo-stack {
+  display: grid;
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.table-demo-footer {
+  align-items: center;
+  color: var(--rui-color-status-default-text);
+  display: flex;
+  flex-wrap: wrap;
+  font-size: 0.875rem;
+  gap: 12px 20px;
+  justify-content: space-between;
+}
+
+.table-demo-member {
+  display: grid;
+  gap: 2px;
+  min-width: 10rem;
+}
+
+.table-demo-member strong {
+  color: var(--rui-color-ink);
+}
+
+.table-demo-member span,
+.table-demo-secondary {
+  color: color-mix(in srgb, var(--rui-color-ink) 68%, var(--rui-color-surface));
+  font-size: 0.875rem;
+}
+
 .input-demo-grid {
   display: grid;
   gap: 12px;
@@ -178,5 +210,10 @@ body {
 
   .hero-card {
     padding: 28px;
+  }
+
+  .table-demo-footer {
+    align-items: flex-start;
+    flex-direction: column;
   }
 }

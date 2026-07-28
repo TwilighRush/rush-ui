@@ -19,6 +19,11 @@ describe("App", () => {
     expect(screen.getByRole("heading", { name: "Popover 文档示例" })).toBeInTheDocument();
     expect(screen.getByRole("heading", { name: "Switch 文档示例" })).toBeInTheDocument();
     expect(screen.getByRole("heading", { name: "Tabs 文档示例" })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: "Table 文档示例" })).toBeInTheDocument();
+    expect(screen.getByRole("table", { name: "成员列表" })).toBeInTheDocument();
+    expect(screen.getByRole("checkbox", { name: "取消选择成员林一" })).toBeChecked();
+    expect(screen.getByRole("button", { name: "周然的成员操作" })).toBeInTheDocument();
+    expect(screen.getByText("linyi@example.com")).toBeInTheDocument();
     expect(screen.getByRole("heading", { name: "Tooltip 文档示例" })).toBeInTheDocument();
   });
 });
